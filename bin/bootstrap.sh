@@ -11,6 +11,7 @@ brew install mackup
 brew install neovim
 brew install ripgrep
 brew install tmux
+brew install tree
 
 platform='unknown'
 unamestr=$(uname)
@@ -40,6 +41,8 @@ if [[ $platform == 'macos' ]]; then
   brew install --cask google-drive
   brew install --cask typora
   brew install --cask telegram
+  brew tap homebrew/cask-fonts 
+  brew install --cask font-hack-nerd-font
 fi
 
 
