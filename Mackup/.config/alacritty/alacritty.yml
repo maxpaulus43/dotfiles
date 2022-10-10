@@ -1,0 +1,67 @@
+
+window:
+  startup_mode: Fullscreen
+  dynamic_title: true
+  multiplier: 3
+
+font:
+  size: 20.0
+
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
+
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+
+  italic:
+    family: "Hack Nerd Font" 
+    style: Italic
+
+  bold italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
+
+draw_bold_text_with_bright_colors: true
+
+colors:
+  bright:
+    black: '#d6dbe5'
+    blue: '#1081d6'
+    cyan: '#0f7ddb'
+    green: '#1dd361'
+    magenta: '#5350b9'
+    red: '#de352e'
+    white: '#ffffff'
+    yellow: '#f3bd09'
+  cursor:
+    cursor: '#FFF93D'
+    text: '#101010'
+  normal:
+    black: '#1f1f1f'
+    blue: '#2a84d2'
+    cyan: '#1081d6'
+    green: '#2dc55e'
+    magenta: '#4e5ab7'
+    red: '#f81118'
+    white: '#d6dbe5'
+    yellow: '#ecba0f'
+  primary:
+    background: '#131313'
+    foreground: '#d6dbe5'
+  selection:
+    background: '#B164B2'
+    text: '#211322'
+
+key_bindings:
+  - { key: T, mods: Command, chars: "\x60\x25" } # ` + % (tmux vertical split)
+  - { key: T, mods: Shift|Command, chars: "\x60\x22" } # ` + " (tmux horizontal split)
+  - { key: W, mods: Command, chars: "\x60\x78" } # ` + x (tmux kill pane)
+  - { key: K, mods: Command, chars: "\x60\x6b" } # ` + k (tmux C-l and :clear-history)
+  #- { key: J,        mods: Alt,     chars: "\x1bj" }
+  #- { key: K,        mods: Alt,     chars: "\x1bk" }
+  #- { key: H,        mods: Alt,     chars: "\x1bh" }
+  #- { key: L,        mods: Alt,     chars: "\x1bl" }
+
+

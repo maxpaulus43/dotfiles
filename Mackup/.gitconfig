@@ -1,0 +1,70 @@
+[user]
+	email = maxpaulu@amazon.com
+	name = Max Paulus 🥪
+[color]
+ ui = auto
+[core]
+ pager = less -MRi
+	excludesfile = /Users/maxpaulu/.gitignore_global
+[push]
+ default = simple
+[alias]
+ dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+
+##########################
+[diff]
+ tool = p4merge
+[difftool]
+ prompt = false
+
+[merge]
+ tool = p4merge
+[mergetool]
+ prompt = false
+ keepBackup = false
+
+[commit]
+	template = /Users/maxpaulu/.stCommitMsg
+
+###########################
+[difftool "vscode"]
+ cmd = /usr/local/bin/code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+ cmd = /usr/local/bin/code --wait $MERGED
+
+###########################
+
+[difftool "idea"]
+    cmd = idea diff $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\")
+[mergetool "idea"]
+    cmd = idea merge $(cd $(dirname \"$LOCAL\") && pwd)/$(\"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(\"$REMOTE\") $(cd $(dirname \"$BASE\") && pwd)/$(\"$BASE\") $(cd $(dirname \"$MERGED\") && pwd)/$(\"$MERGED\")
+    trustExitCode = true
+        
+
+#[difftool "idea"]
+# cmd = /usr/local/bin/idea diff $LOCAL $REMOTE
+#[mergetool "idea"]
+# cmd = /usr/local/bin/idea merge $LOCAL $REMOTE $BASE $MERGED
+# trustExitCode = true
+
+#[mergetool "idea"]
+#        cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+#            trustExitCode = true
+#[diff]
+#        tool = idea
+#[difftool "idea"]
+#        cmd = idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+
+############################
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[pull]
+ rebase = true
+[init]
+ defaultBranch = main
