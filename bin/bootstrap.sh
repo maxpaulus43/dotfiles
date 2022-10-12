@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd ~ & mkdir c && cd c
-git clone git@github.com:maxpaulus43/dotfiles.git && cd ~
+git clone https://github.com/maxpaulus43/dotfiles.git && cd ~
 
 platform='unknown'
 unamestr=$(uname)
@@ -14,6 +14,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='macos'
 fi
 
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 mkdir ~/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
@@ -22,8 +23,12 @@ nvm install 'lts/*'
 #git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #~/.tmux/plugins/tpm/bin/install_plugins
 
-if [[ $platform == 'macos' ]]; then
+if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if [[ $platform == 'linux' ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 
   brew install fzf
   brew install git
@@ -33,21 +38,25 @@ if [[ $platform == 'macos' ]]; then
   brew install tmux
   brew install tree
 
-  brew install --cask alacritty
-  brew install --cask spotify
-  brew install --cask visual-studio-code
-  brew install --cask pixel-picker
-  brew install --cask google-drive
-  brew install --cask typora
-  brew install --cask telegram
+  if [[ $platform == 'macos' ]]; then
+	  brew install --cask alacritty
+	  brew install --cask spotify
+	  brew install --cask visual-studio-code
+	  brew install --cask pixel-picker
+	  brew install --cask google-drive
+	  brew install --cask typora
+	  brew install --cask telegram
 
-  brew tap homebrew/cask-fonts 
-  brew install --cask font-hack-nerd-font
+	  brew tap homebrew/cask-fonts 
+	  brew install --cask font-hack-nerd-font
+  fi
 
   brew install mackup
   cp ~/c/dotfiles/Mackup/.mackup.cfg ~/.mackup.cfg
   mackup restore
 fi
+
+
 
 
 

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
  
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/maxpaulu/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
  
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -110,10 +110,6 @@ lg()
 #if [ -f '/Users/maxpaulu/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxpaulu/google-cloud-sdk/completion.zsh.inc'; fi
  
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -123,3 +119,11 @@ if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] &&
 fi
 
 export PATH=/Users/maxpaulu/.local/bin:$PATH
+if [[ "$(uname)" == 'Linux' ]]; then
+  # Set PATH, MANPATH, etc., for Homebrew.
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
