@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-cd ~ & mkdir c && cd c
-git clone https://github.com/maxpaulus43/dotfiles.git && cd ~
+cd $HOME & mkdir c && cd c
+git clone https://github.com/maxpaulus43/dotfiles.git && cd $HOME
 
 platform='unknown'
 unamestr=$(uname)
@@ -16,12 +16,12 @@ fi
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-mkdir ~/.nvm
+mkdir $HOME/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 nvm install 'lts/*'
 
-#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-#~/.tmux/plugins/tpm/bin/install_plugins
+#git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+#$HOME/.tmux/plugins/tpm/bin/install_plugins
 
 if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -52,7 +52,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   fi
 
   brew install mackup
-  cp ~/c/dotfiles/Mackup/.mackup.cfg ~/.mackup.cfg
+  cp $HOME/c/dotfiles/Mackup/.mackup.cfg $HOME/.mackup.cfg
   mackup restore
 fi
 
