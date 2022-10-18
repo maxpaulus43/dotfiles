@@ -58,10 +58,9 @@ alias studio="open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 alias glo="git log --pretty='format:%Cblue%h %Cgreen%<(15,trunc)%an %Cred%d %Creset %s'"
 alias urlencode='node --eval "console.log(encodeURIComponent(process.argv[1]))"'
 alias urldecode='node --eval "console.log(decodeURIComponent(process.argv[1]))"'
-alias cm='chezmoi'
-alias cme='chezmoi edit --apply'
-alias cmg='chezmoi git -- '
-alias vn='nvim ~/.config/nvim/lua/user'
+alias vn='nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
+alias cl='clear'
+alias c='cd ~/c'
 
 function csb() {
   rm -rf ~/Library/Developer/Xcode/DerivedData && nvm use 12 && brc 'brazil-build prepare-beta' && cd ../IPhone && BRAZIL_WORKSPACE_PATH=$(pwd -P) open -a ~/Downloads/Xcode.app IPhone.xcworkspace && nvm use 14
