@@ -7,8 +7,10 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
+		hidden = true,
+		sorting_strategy = "ascending",
 		layout_config = {
-			prompt_position = "bottom",
+			prompt_position = "top",
 		},
 		vimgrep_arguments = {
 			"rg",
@@ -32,6 +34,7 @@ telescope.setup({
 				["<Up>"] = actions.cycle_history_prev,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["jk"] = actions.close,
 			},
 		},
 	},
