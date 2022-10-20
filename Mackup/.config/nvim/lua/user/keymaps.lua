@@ -57,8 +57,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move Test up and down --
--- keymap("x", "K", "<cmd>move '<-2<CR>gv-gv", opts)
--- keymap("x", "J", "<cmd>move '>+1<CR>gv-gv", opts)
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Plugins --
 

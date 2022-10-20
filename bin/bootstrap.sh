@@ -38,6 +38,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install tmux
   brew install tree
   brew install ffmpeg
+  brew install zoxide
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty

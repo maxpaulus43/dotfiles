@@ -70,6 +70,8 @@ function csb() {
   rm -rf ~/Library/Developer/Xcode/DerivedData && nvm use 12 && brc 'brazil-build prepare-beta' && cd ../IPhone && BRAZIL_WORKSPACE_PATH=$(pwd -P) open -a ~/Downloads/Xcode.app IPhone.xcworkspace && nvm use 14
 } 
 
+eval "$(zoxide init zsh)"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" # This loads nvm
 #[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion

@@ -5,7 +5,7 @@ window:
   multiplier: 3
 
 font:
-  size: 20.0
+  size: 16.0
 
   normal:
     family: "Hack Nerd Font"
