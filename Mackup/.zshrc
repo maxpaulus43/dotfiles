@@ -1,3 +1,7 @@
+export ZDOTDIR=$HOME/.config/zsh
+
+setopt AUTO_CD
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
  
@@ -39,7 +43,7 @@ export PATH=/Users/maxpaulu/Library/Python/3.7/bin:$PATH
 export BRAZIL_BUILD_HOME=~/.toolbox
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk/
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export LESS='--mouse --wheel-lines 3'
+export LESS='-M --mouse --wheel-lines 3'
  
 alias vim="nvim"
 alias bz="brazil"
@@ -88,6 +92,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
+export PATH=/Users/maxpaulu/.local/bin:$PATH
 
 lg()
 {
@@ -117,7 +122,6 @@ if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] &&
   exec tmux
 fi
 
-export PATH=/Users/maxpaulu/.local/bin:$PATH
 if [[ "$(uname)" == 'Linux' ]]; then
   # Set PATH, MANPATH, etc., for Homebrew.
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
