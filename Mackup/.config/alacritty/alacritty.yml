@@ -59,9 +59,5 @@ key_bindings:
   - { key: T, mods: Shift|Command, chars: "\x60\x22" } # ` + " (tmux horizontal split)
   - { key: W, mods: Command, chars: "\x60\x78" } # ` + x (tmux kill pane)
   - { key: K, mods: Command, chars: "\x60\x6b" } # ` + k (tmux C-l and :clear-history)
-  #- { key: J,        mods: Alt,     chars: "\x1bj" }
-  #- { key: K,        mods: Alt,     chars: "\x1bk" }
-  #- { key: H,        mods: Alt,     chars: "\x1bh" }
-  #- { key: L,        mods: Alt,     chars: "\x1bl" }
 
 

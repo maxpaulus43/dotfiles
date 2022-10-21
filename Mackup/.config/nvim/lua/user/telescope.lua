@@ -27,7 +27,11 @@ telescope.setup({
 		selection_caret = " ",
 		path_display = { "smart" },
 		file_ignore_patterns = { ".git/", "node_modules" },
-
+		extensions = {
+			project = {
+				hidden_files = true,
+			},
+		},
 		mappings = {
 			i = {
 				["<Down>"] = actions.cycle_history_next,

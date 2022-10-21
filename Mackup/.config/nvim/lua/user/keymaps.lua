@@ -16,11 +16,14 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- show full filename
+keymap("n", "<C-g>", "1<C-g>", opts)
 -- insert newline
 keymap("n", "<leader>o", "o<ESC>", opts)
 keymap("n", "<leader>O", "O<ESC>", opts)
 
-keymap("n", "<leader>q", "<C-w>c", opts)
+-- keymap("n", "<C-q>", "<cmd>:qa<CR>", opts)
+keymap("n", "<C-x>", "<cmd>:xa<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -80,8 +83,8 @@ keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
 keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
 
 -- Comment
-keymap("n", "<leader>/", require("Comment.api").toggle.linewise.current, opts)
-keymap("x", "<leader>/", '<ESC><cmd> lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
+-- keymap("n", "<leader>/", require("Comment.api").toggle.linewise.current, opts)
+-- keymap("x", "<leader>/", '<ESC><cmd> lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- LSP
 -- keymap("n", "<leader>dk", "<cmd> lua vim.diagnostic.goto_prev()<CR>", opts)
@@ -92,30 +95,32 @@ keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 
 local function lsp_keymaps(bufnr)
 	local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
+
 	keymap("n", "gD", vim.lsp.buf.declaration, lsp_opts)
 	keymap("n", "gd", vim.lsp.buf.definition, lsp_opts)
 	keymap("n", "K", vim.lsp.buf.hover, lsp_opts)
 	keymap("n", "gI", vim.lsp.buf.implementation, lsp_opts)
-	keymap("n", "gr", vim.lsp.buf.references, lsp_opts)
-	keymap("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", lsp_opts)
+	keymap("n", "gr", require("telescope.builtin").lsp_references, lsp_opts)
 	keymap("n", "gl", vim.diagnostic.open_float, lsp_opts)
-	keymap("n", "<leader>lf", function()
-		vim.lsp.buf.format({ async = true })
-	end, lsp_opts)
+	keymap("n", "<leader>gr", vim.lsp.buf.references, lsp_opts)
 	keymap("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
 	keymap("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
 	keymap("n", "<leader>la", vim.lsp.buf.code_action, lsp_opts)
+	keymap("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
+	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
+	keymap("n", "<leader>lq", vim.diagnostic.setloclist, lsp_opts)
+	keymap("n", "<leader>dd", require("telescope.builtin").diagnostics, lsp_opts)
+	keymap("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
+
+	keymap("n", "<leader>lf", function()
+		vim.lsp.buf.format({ async = true })
+	end, lsp_opts)
 	keymap("n", "<leader>J", function()
 		vim.diagnostic.goto_next({ buffer = bufnr })
 	end, lsp_opts)
 	keymap("n", "<leader>K", function()
 		vim.diagnostic.goto_prev({ buffer = 0 })
 	end, lsp_opts)
-	keymap("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
-	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
-	keymap("n", "<leader>lq", vim.diagnostic.setloclist, lsp_opts)
-	keymap("n", "<leader>dd", "<cmd> Telescope diagnostics<CR>", lsp_opts)
-	keymap("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 end
 
 vim.api.nvim_create_autocmd("User", {

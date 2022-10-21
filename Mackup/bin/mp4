@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+import os
+import subprocess
+import shutil
+
+parser = argparse.ArgumentParser(
+    description='Convert an mov into an mp4 using ffmpeg')
+parser.add_argument('inputfile', type=str, help='a file to convert to mp4')
+parser.add_argument('-o', type=str, metavar='outputfile',
+                    help="output file name")
+args = parser.parse_args()
+
+fin: str = args.inputfile
+fout: str = args.o
+if fout is None:
+    fout = fin[:fin.rindex('.')]
+if not fout.endswith('.mp4'):
+    fout = fout + '.mp4'
+
+if not os.path.exists(fin):
+    print(f'Error: inputfile doesn\'t exist: "{fin}"')
+    sys.exit(1)
+if os.path.exists(fout):
+    print(f'Error: "{fout}" already exists')
+    sys.exit(1)
+if shutil.which('ffmpeg') is None:
+    if sys.platform.startswith('linux'):
+        install_cmd = '\n\n\tapt install ffmpeg\n'
+    elif sys.platform.startswith('darwin'):
+        install_cmd = '\n\n\tbrew install ffmpeg\n'
+    else:
+        install_cmd = 'installing ffmpeg.'
+    print(f'This tool requires ffmpeg on your system. Try: {install_cmd}')
+    sys.exit(1)
+
+cmd = f"ffmpeg -i '{fin}' '{fout}'"
+print(f'\n\n{cmd}\n\n')
+subprocess.run(cmd, shell=True)

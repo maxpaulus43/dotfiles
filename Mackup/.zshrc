@@ -1,4 +1,4 @@
-export ZDOTDIR=$HOME/.config/zsh
+# export ZDOTDIR=$HOME/.config/zsh
 
 setopt AUTO_CD
 
