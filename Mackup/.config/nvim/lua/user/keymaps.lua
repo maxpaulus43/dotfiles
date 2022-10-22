@@ -22,8 +22,8 @@ keymap("n", "<C-g>", "1<C-g>", opts)
 keymap("n", "<leader>o", "o<ESC>", opts)
 keymap("n", "<leader>O", "O<ESC>", opts)
 
--- keymap("n", "<C-q>", "<cmd>:qa<CR>", opts)
-keymap("n", "<C-x>", "<cmd>:xa<CR>", opts)
+-- keymap("n", "<C-q>", "<cmd>qa<CR>", opts)
+-- keymap("n", "<C-x>", "<cmd>xa<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -132,12 +132,13 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- DAP
-keymap("n", "<leader>db", require("dap").toggle_breakpoint, opts)
-keymap("n", "<leader>dc", require("dap").continue, opts)
-keymap("n", "<leader>di", require("dap").step_into, opts)
-keymap("n", "<leader>do", require("dap").step_over, opts)
-keymap("n", "<leader>dO", require("dap").step_out, opts)
-keymap("n", "<leader>dr", require("dap").repl.toggle, opts)
-keymap("n", "<leader>dl", require("dap").run_last, opts)
+local dap = require("dap")
+keymap("n", "<leader>db", dap.toggle_breakpoint, opts)
+keymap("n", "<leader>dc", dap.continue, opts)
+keymap("n", "<leader>di", dap.step_into, opts)
+keymap("n", "<leader>do", dap.step_over, opts)
+keymap("n", "<leader>dO", dap.step_out, opts)
+keymap("n", "<leader>dr", dap.repl.toggle, opts)
+keymap("n", "<leader>dl", dap.run_last, opts)
+keymap("n", "<leader>dt", dap.terminate, opts)
 keymap("n", "<leader>du", require("dapui").toggle, opts)
-keymap("n", "<leader>dt", require("dap").terminate, opts)

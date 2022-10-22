@@ -56,6 +56,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install mackup
   cp $HOME/c/dotfiles/Mackup/.mackup.cfg $HOME/.mackup.cfg
   mackup restore
+
+  chmod +x $HOME/c/dotfiles/Mackup/bin/*
 fi
 
 
