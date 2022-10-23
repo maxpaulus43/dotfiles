@@ -105,6 +105,8 @@ return packer.startup(function(use)
 	-- Markdown
 	use({ "ellisonleao/glow.nvim", commit = "9038d7cdd76a930973b6158d800c8dbc02236a4b" })
 
+	use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

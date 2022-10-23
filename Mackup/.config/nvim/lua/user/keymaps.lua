@@ -18,6 +18,7 @@ vim.g.mapleader = " "
 -- Normal --
 -- show full filename
 keymap("n", "<C-g>", "1<C-g>", opts)
+
 -- insert newline
 keymap("n", "<leader>o", "o<ESC>", opts)
 keymap("n", "<leader>O", "O<ESC>", opts)
