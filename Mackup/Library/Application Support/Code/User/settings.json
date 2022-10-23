@@ -103,6 +103,9 @@
   "rust-analyzer.cargo.allFeatures": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.jupyterServerType": "remote",
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontSize": 13,
   "python.languageServer": "Pylance",
   "workbench.editorAssociations": {
     "*.md": "default",
