@@ -72,7 +72,7 @@ function csb() {
 
 eval "$(zoxide init zsh)"
 
-
+# (NVM stuff)
 # Install zsh-async if it’s not present
 if [[ ! -a $HOME/.zsh-async ]]; then
   git clone git@github.com:mafredri/zsh-async.git $HOME/.zsh-async
@@ -90,30 +90,9 @@ function load_nvm() {
 async_start_worker nvm_worker -n
 async_register_callback nvm_worker load_nvm
 async_job nvm_worker sleep 0.1
+# End NVM stuff
 
-# Defer initialization of nvm until nvm, node or a node-dependent command is
-# run. Ensure this block is only run once if .bashrc gets sourced multiple times
-# by checking whether __init_nvm is a function.
-# if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(whence __init_nvm)" = __init_vim  ]; then
-#   export NVM_DIR="$HOME/.nvm"
-#
-#   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-#   
-#   declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
-#
-#   function __init_nvm() {
-#     for i in "${__node_commands[@]}"; do unalias $i; done
-#     . "$NVM_DIR"/nvm.sh
-#     unset __node_commands
-#     unset -f __init_nvm
-#   }
-#
-#   for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
-# fi
 
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
- 
 # RDE completion
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
@@ -123,9 +102,6 @@ autoload -Uz compinit && compinit -i
  
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
- 
-#eval "$(rbenv init -)"
- 
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
@@ -146,23 +122,12 @@ lg()
     fi
 }
  
-# end max's custom options
- 
-# The next line updates PATH for the Google Cloud SDK.
-#if [ -f '/Users/maxpaulu/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxpaulu/google-cloud-sdk/path.zsh.inc'; fi
-# The next line enables shell command completion for gcloud.
-#if [ -f '/Users/maxpaulu/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxpaulu/google-cloud-sdk/completion.zsh.inc'; fi
- 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ "$TERM" =~ alacritty ]] && [ -z "$TMUX" ]; then
-  # exec tmux
-  # exec tmux new-session -A -s main
-  # tmux attach || exec tmux new-session && exit;
   exec tmux new -AD -t main -s main
+else 
+  alias tmux='exec tmux new -AD -t main -s main'
 fi
 
 if [[ "$(uname)" == 'Linux' ]]; then
@@ -173,3 +138,6 @@ fi
 export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

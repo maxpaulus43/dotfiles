@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME & mkdir c && cd c
-git clone https://github.com/maxpaulus43/dotfiles.git && cd $HOME
+cd $HOME & mkdir c && cd c && git clone https://github.com/maxpaulus43/dotfiles.git && cd $HOME
 
 platform='unknown'
 unamestr=$(uname)

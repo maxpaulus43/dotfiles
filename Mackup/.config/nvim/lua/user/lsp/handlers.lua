@@ -74,7 +74,7 @@ M.on_attach = function(client, bufnr)
 		})
 	end
 
-	vim.api.nvim_exec_autocmds("User", { pattern = "LSPkeymaps" })
+	vim.api.nvim_exec_autocmds("User", { pattern = "LSPKeymaps" })
 
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
