@@ -13,7 +13,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='macos'
 fi
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 mkdir $HOME/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
@@ -30,6 +30,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   fi
 
   brew install fzf
+
   brew install git
   brew install lazygit
   brew install neovim
@@ -55,6 +56,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install mackup
   cp $HOME/c/dotfiles/Mackup/.mackup.cfg $HOME/.mackup.cfg
   mackup -v restore
+
+  $(brew --prefix)/opt/fzf/install
 
   chmod +x $HOME/c/dotfiles/Mackup/bin/*
 fi

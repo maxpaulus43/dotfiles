@@ -1,3 +1,4 @@
+echo "old zshrc running"
 # export ZDOTDIR=$HOME/.config/zsh
 
 setopt AUTO_CD
