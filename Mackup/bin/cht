@@ -507,11 +507,17 @@ if [ "$shell_mode" != yes ]; then
     uri="$uri\&T"
   fi
 
+  noLess=
+  if [ x"$1" = x-l ]; then
+    shift
+    noLess=true
+  fi
+
   echo "$uri"
 
   output=$(curl -s "$uri")
 
-  if [ -z "$lines" ] || [ $(echo "$output" | wc -l) -lt "$lines" ]; then
+  if [ "$noLess" = "true" ] || [ -z "$lines" ] || [ $(echo "$output" | wc -l) -lt "$lines" ]; then
     echo "$output"
   else
     echo "$output" | less -R
