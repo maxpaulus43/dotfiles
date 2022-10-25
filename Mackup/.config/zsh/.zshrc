@@ -1,4 +1,3 @@
-
 HISTFILE=$ZDOTDIR/.zsh_history
 export HISTSIZE=50000 # Maximum events for internal history
 export SAVEHIST=50000 # Maximum events in history file
@@ -10,8 +9,10 @@ zle_highlight=('paste:none')
 HYPHEN_INSENSITIVE="true"
 
 # The following lines were added by compinstall
+
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
