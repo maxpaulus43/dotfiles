@@ -82,6 +82,7 @@ keymap("n", "<leader>fb", "<cmd> Telescope buffers<CR>", opts)
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
 keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
 
 -- Comment
 -- keymap("n", "<leader>/", require("Comment.api").toggle.linewise.current, opts)

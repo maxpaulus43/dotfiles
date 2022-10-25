@@ -22,6 +22,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 export PATH=/Users/maxpaulu/.local/bin:$PATH
+export CHTSH_CONF=$HOME/.config/cht.sh/cht.sh.conf
  
 eval "$(zoxide init zsh)"
 

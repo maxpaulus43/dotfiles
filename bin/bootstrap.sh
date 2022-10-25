@@ -39,6 +39,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install tree
   brew install ffmpeg
   brew install zoxide
+  brew install rlwrap # needed for ~/bin/cht
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty
