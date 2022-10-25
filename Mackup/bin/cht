@@ -334,7 +334,7 @@ do_query()
 {
   local query="$*"
   local b_opts=
-  local uri="${CHTSH_URL}/\"$(get_query_options $query)\""
+  local uri="${CHTSH_URL}"/"$(get_query_options $query)"
 
   if [ -e "$CHTSH_HOME/id" ]; then
     b_opts="-b \"\$CHTSH_HOME/id\""
@@ -347,7 +347,7 @@ do_query()
   if [ -z "$lines" ] || [ "$(wc -l "$TMP1" | awk '{print $1}')" -lt "$lines" ]; then
     cat "$TMP1"
   else
-    eval curl "$b_opts" -s "$uri\&T" > "$TMP1" # add T at the end to prevent color
+    # eval curl "$b_opts" -s "$uri\&T" > "$TMP1" # add T at the end to prevent color
     ${PAGER:-$defpager} "$TMP1"
   fi
 }
