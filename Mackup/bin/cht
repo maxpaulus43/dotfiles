@@ -502,14 +502,12 @@ cmd_query() {
 if [ "$shell_mode" != yes ]; then
   uri="${CHTSH_URL}"/"$(get_query_options "$query")"
   
-  if [ x"$1" = x-T ]; then
-    shift
+  if [[ "$opts" =~ "T" ]]; then
     uri="$uri\&T"
   fi
 
   noLess=
-  if [ x"$1" = x-l ]; then
-    shift
+  if [[ "$opts" =~ "l" ]]; then
     noLess=true
   fi
 
