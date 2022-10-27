@@ -40,6 +40,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install ffmpeg
   brew install zoxide
   brew install rlwrap # needed for ~/bin/cht
+  brew install btop
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty
@@ -49,9 +50,19 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	  brew install --cask google-drive
 	  brew install --cask typora
 	  brew install --cask telegram
+    brew install --cask shottr
+    brew install --cask raycast
 
 	  brew tap homebrew/cask-fonts 
 	  brew install --cask font-hack-nerd-font
+    
+    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+    defaults write com.apple.screencapture type jpg
+    defaults write com.apple.dock showhidden -bool TRUE
+    defaults write com.apple.dock autohide-delay -float 0
+    defaults write com.apple.dock autohide-time-modifier -int 0
+    killall Dock
   fi
 
   brew install mackup

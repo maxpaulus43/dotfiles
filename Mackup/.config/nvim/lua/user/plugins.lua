@@ -108,6 +108,8 @@ return packer.startup(function(use)
 
 	use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
 
+	use({ "ggandor/leap.nvim", comit = "847a1dcfb1a3a576860151754d95fb3b0014663e" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
