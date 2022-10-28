@@ -15,6 +15,9 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+keymap("n", "<leader>s", "<cmd>w<CR>", opts)
+keymap("n", "<leader>S", "<cmd>wa<CR>", opts)
+
 -- Normal --
 -- show full filename
 keymap("n", "<C-g>", "1<C-g>", opts)
