@@ -40,11 +40,8 @@ zsh_add_file "colored-man-pages.zsh"
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-
 zsh_add_plugin "hlissner/zsh-autopair"
-
 zsh_add_plugin "mafredri/zsh-async"
 zsh_add_file "plugins/zsh-async/async.plugin.zsh" # have to do this because this plugin doesn't work with zsh_add_plugin function
 

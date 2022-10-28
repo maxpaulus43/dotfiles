@@ -4,7 +4,7 @@ local keymap = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap("", "<space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Modes
@@ -15,20 +15,18 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "<leader>s", "<cmd>w<CR>", opts)
-keymap("n", "<leader>S", "<cmd>wa<CR>", opts)
+keymap("n", "<leader>w", "<cmd>wall<cr>", opts)
+keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)
+keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)
+keymap("n", "gq", "<cmd>quit<cr>", opts)
 
 -- Normal --
 -- show full filename
 keymap("n", "<C-g>", "1<C-g>", opts)
 
 -- insert newline
-keymap("n", "<leader>o", "o<ESC>", opts)
-keymap("n", "<leader>O", "O<ESC>", opts)
-
--- keymap("n", "<C-q>", "<cmd>qa<CR>", opts)
--- keymap("n", "<C-x>", "<cmd>xa<CR>", opts)
-keymap("n", "gq", "<cmd>close<CR>")
+keymap("n", "<leader>o", "o<esc>", opts)
+keymap("n", "<leader>O", "O<esc>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -37,41 +35,38 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
--- keymap("n", "<C-Up>", ":resize -2<CR>", opts)
--- keymap("n", "<C-Down>", ":resize +2<CR>", opts)
--- keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
--- keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- keymap("n", "<C-Up>", ":resize -2<cr>", opts)
+-- keymap("n", "<C-Down>", ":resize +2<cr>", opts)
+-- keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
+-- keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
-keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
+keymap("n", "<S-l>", "<cmd>bnext<cr>", opts)
+keymap("n", "<S-h>", "<cmd>bprevious<cr>", opts)
 
 -- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-q>", "<cmd>Bdelete!<cr>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<esc>", opts)
 
--- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move Test up and down --
-keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+keymap("v", "J", ":m '>+1<cr>gv=gv", opts)
+keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", "<cmd> NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", function()
@@ -80,22 +75,24 @@ end, opts)
 keymap("n", "<leader>ft", function()
 	require("telescope.builtin").live_grep({ hidden = true, show_line = false })
 end, opts)
-keymap("n", "<leader>fp", "<cmd> Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", "<cmd> Telescope buffers<CR>", opts)
+keymap("n", "<leader>fp", "<cmd> Telescope projects<cr>", opts)
+keymap("n", "<leader>fb", "<cmd> Telescope buffers<cr>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
 keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
+keymap("n", "<leader>rh", "<cmd> Gitsigns reset_hunk<cr>", opts)
+keymap("n", "<leader>rb", "<cmd> Gitsigns reset_buffer<cr>", opts)
 
 -- Comment
 -- keymap("n", "<leader>/", require("Comment.api").toggle.linewise.current, opts)
--- keymap("x", "<leader>/", '<ESC><cmd> lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
+-- keymap("x", "<leader>/", '<esc><cmd> lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>')
 
 -- LSP
--- keymap("n", "<leader>dk", "<cmd> lua vim.diagnostic.goto_prev()<CR>", opts)
--- keymap("n", "<leader>dj", "<cmd> lua vim.diagnostic.goto_next()<CR>", opts)
-keymap("n", "<leader>dd", "<cmd> Telescope diagnostics<CR>", opts)
+-- keymap("n", "<leader>dk", "<cmd> lua vim.diagnostic.goto_prev()<cr>", opts)
+-- keymap("n", "<leader>dj", "<cmd> lua vim.diagnostic.goto_next()<cr>", opts)
+keymap("n", "<leader>dd", "<cmd> Telescope diagnostics<cr>", opts)
 keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 
 local function lsp_keymaps(bufnr)
