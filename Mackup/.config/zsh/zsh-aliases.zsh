@@ -1,4 +1,4 @@
-
+alias jtc='eval "$(pbpaste | jsonToCurl)" | jq | code -'
 alias la='ls -lAh --color=tty'
 alias vim="nvim"
 alias bz="brazil"

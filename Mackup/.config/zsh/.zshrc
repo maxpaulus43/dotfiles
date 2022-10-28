@@ -2,24 +2,27 @@ HISTFILE=$HOME/.zsh_history
 export HISTSIZE=50000 # Maximum events for internal history
 export SAVEHIST=50000 # Maximum events in history file
 
-setopt appendhistory
+setopt appendhistory # Append history to the history file (no overwriting)
+setopt share_history # Share history across terminals
 setopt autocd extendedglob nomatch menucomplete
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt interactive_comments
 zle_highlight=('paste:none')
 HYPHEN_INSENSITIVE="true"
 
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
+zstyle ':completion:*' max-errors 0
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '$HOME/.config/zsh/.zshrc'
+zstyle :compinstall filename '/Users/maxpaulu/.config/zsh/.zshrc'
 
 autoload -Uz compinit
 compinit
