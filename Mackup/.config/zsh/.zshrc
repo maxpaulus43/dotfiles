@@ -61,7 +61,7 @@ async_job nvm_worker sleep 0.1
 if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ "$TERM" =~ alacritty ]] && [ -z "$TMUX" ]; then
   exec tmux new -AD -t main -s main
 else 
-  alias tmux='exec tmux new -AD -t main -s main'
+  alias tmain='tmux new -AD -t main -s main'
 fi
 
 if [[ "$(uname)" == 'Linux' ]]; then
