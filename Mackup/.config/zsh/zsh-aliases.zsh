@@ -21,6 +21,7 @@ alias gst='git status'
 alias gsta='git stash push'
 alias gstaa='git stash apply'
 alias gstp='git stash pop'
+alias grhh='git reset HEAD --hard'
 alias jtc='eval "$(pbpaste | jsonToCurl)" | jq | code -'
 alias la='ls -lAh --color=tty'
 alias nds="ninja-dev-sync"
