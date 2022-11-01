@@ -62,6 +62,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     defaults write com.apple.dock showhidden -bool TRUE
     defaults write com.apple.dock autohide-delay -float 0
     defaults write com.apple.dock autohide-time-modifier -int 0
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
     killall Dock
   fi
 

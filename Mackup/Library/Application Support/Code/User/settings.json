@@ -1,4 +1,7 @@
 {
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   "code-runner.executorMap": {
     "ahk": "autohotkey",
     "applescript": "osascript",
@@ -210,4 +213,8 @@
   "diffEditor.renderSideBySide": false,
   "terminal.integrated.macOptionClickForcesSelection": true,
   "window.zoomLevel": 1,
+  "vscode-neovim.logLevel": "warn",
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim"
 }

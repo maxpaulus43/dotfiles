@@ -24,13 +24,13 @@ silent! normal! zE
 517,548fold
 550,757fold
 758,872fold
-874,896fold
+873,895fold
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 17) / 35)
+let s:l = 873 - ((846 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 873
 normal! 0
 lcd ~/c/dotfiles
 let &g:so = s:so_save | let &g:siso = s:siso_save
