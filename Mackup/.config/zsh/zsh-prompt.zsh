@@ -34,3 +34,7 @@ zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]
 # format our main prompt for hostname current folder, and permissions.
 PROMPT="%B%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
+
+if [[ -n $SSH_CONNECTION ]]; then
+  PROMPT="(ssh) $PROMPT"
+fi
