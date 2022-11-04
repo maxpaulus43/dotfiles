@@ -1,7 +1,7 @@
+# alias brca="brazil-recursive-cmd --matches '^(?!MShopAndroidPhoneApp).*$' -- 'brazil-build'"
 alias bb="brazil-build"
 alias bbx="brazil-build xcode-env"
 alias brc="brazil-recursive-cmd --all"
-alias brca="brazil-recursive-cmd --matches '^(?!MShopAndroidPhoneApp).*$' -- 'brazil-build'"
 alias brcp="BRAZIL_VERBOSE=true brazil-recursive-cmd-parallel --allPackages"
 alias brcx="brazil-recursive-cmd -- 'brazil-build xcode-env'"
 alias bu="bb -u"
@@ -17,37 +17,20 @@ alias gf='git fetch'
 alias gfa='git fetch --all --prune --jobs=10'
 alias gfo='git fetch origin'
 alias glo="git log --pretty='format:%Cblue%h %Cgreen%<(15,trunc)%an %Cred%d %Creset %s'"
+alias grhh='git reset HEAD --hard'
 alias gst='git status'
 alias gsta='git stash push'
 alias gstaa='git stash apply'
 alias gstp='git stash pop'
-alias grhh='git reset HEAD --hard'
 alias jtc='eval "$(pbpaste | jsonToCurl)" | jq | code -'
-# alias la='ls -lAh --color=tty'
 alias la='exa -1la'
 alias ls='exa --icons'
 alias nds="ninja-dev-sync"
 alias studio="open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
-alias sz="source $ZDOTDIR/.zshrc"
+alias sz="source $__fish_config_dir/config.fish"
 alias urldecode='node --eval "console.log(decodeURIComponent(process.argv[1]))"'
 alias urlencode='node --eval "console.log(encodeURIComponent(process.argv[1]))"'
 alias vd='nvim ~/c/dotfiles'
 alias vim="nvim"
 alias vn='nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
-alias vz="nvim $ZDOTDIR/.zshrc"
-
-function csb() {
-  rm -rf ~/Library/Developer/Xcode/DerivedData && nvm use 12 && brc 'brazil-build prepare-beta' && cd ../IPhone && BRAZIL_WORKSPACE_PATH=$(pwd -P) open -a ~/Downloads/Xcode.app IPhone.xcworkspace && nvm use 14
-} 
-
-lg()
-{
-    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
-
-    lazygit "$@"
-
-    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
-    fi
-}
+alias vz="nvim $__fish_config_dir/config.fish"

@@ -3,58 +3,43 @@
 	name = Max Paulus 🥪
 
 [init]
- defaultBranch = main
+   defaultBranch = main
 
 [color]
- ui = auto
+   ui = auto
 
-[core]
- pager = less -MRi
-    excludesfile = /Users/maxpaulu/.gitignore_global
+; [core]
+;  pager = less -MRi
+;     excludesfile = /Users/maxpaulu/.gitignore_global
   
 [push]
- default = simple
+   default = simple
 
 [pull]
- rebase = true
+  rebase = true
  
 [alias]
- dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-
-[diff]
- tool = p4merge
-
-[difftool]
- prompt = false
-
-[merge]
- tool = p4merge
-
-[mergetool]
- prompt = false
- keepBackup = false
+   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 
 [commit]
 	template = /Users/maxpaulu/.stCommitMsg
 
-[difftool "vscode"]
- cmd = /usr/local/bin/code --wait --diff $LOCAL $REMOTE
+[core]
+  pager = delta
+    excludesfile = /Users/maxpaulu/.gitignore_global
 
-[mergetool "vscode"]
- cmd = /usr/local/bin/code --wait $MERGED
+[interactive]
+  diffFilter = delta --color-only
+[add.interactive]
+  useBuiltin = false # required for git 2.37.0
 
-[difftool "idea"]
-    cmd = idea diff $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\")
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 
-[mergetool "idea"]
-    cmd = idea merge $(cd $(dirname \"$LOCAL\") && pwd)/$(\"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(\"$REMOTE\") $(cd $(dirname \"$BASE\") && pwd)/$(\"$BASE\") $(cd $(dirname \"$MERGED\") && pwd)/$(\"$MERGED\")
-    trustExitCode = true
+[merge]
+  conflictstyle = diff3
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[diff]
+  colorMoved = default
 

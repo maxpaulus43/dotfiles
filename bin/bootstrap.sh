@@ -15,9 +15,10 @@ fi
 
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-mkdir $HOME/.nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-nvm install 'lts/*'
+# mkdir $HOME/.nvm
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+# nvm install 'lts/*'
+curl -fsSL https://fnm.vercel.app/install | bash
 
 #git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 #$HOME/.tmux/plugins/tpm/bin/install_plugins
@@ -41,6 +42,10 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install zoxide
   brew install rlwrap # needed for ~/bin/cht
   brew install btop
+  brew install exa
+  brew install bat
+  brew install git-delta
+  brew install fd
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty
@@ -52,6 +57,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	  brew install --cask telegram
     brew install --cask shottr
     brew install --cask raycast
+    brew install scrcpy
 
 	  brew tap homebrew/cask-fonts 
 	  brew install --cask font-hack-nerd-font
