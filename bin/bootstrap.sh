@@ -13,16 +13,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='macos'
 fi
 
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# mkdir $HOME/.nvm
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-# nvm install 'lts/*'
-curl -fsSL https://fnm.vercel.app/install | bash
-
-#git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-#$HOME/.tmux/plugins/tpm/bin/install_plugins
-
 if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -30,35 +20,35 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 
-  brew install bat
-  brew install btop
-  brew install exa
-  brew install fd
-  brew install ffmpeg
-  brew install fish
-  brew install fnm
-  brew install fzf
+  brew install asdf # version manager for node,ruby, etc...
+  brew install bat # cat command with wings
+  brew install btop # top on steroids
+  brew install exa # ls for the modern man
+  brew install fd # find 
+  brew install ffmpeg # image/video manipulations
+  brew install fish # better shell
+  brew install fzf # fuzzy finder
   brew install git
-  brew install git-delta
-  brew install lazygit
-  brew install neovim
-  brew install ripgrep
+  brew install git-delta # better git diffs
+  brew install lazygit # git UI
+  brew install neovim # text editor
+  brew install ripgrep # better grep
   brew install rlwrap # needed for ~/bin/cht
-  brew install tmux
-  brew install tree
-  brew install zoxide
+  brew install tmux # terminal window manager
+  brew install tree 
+  brew install zoxide # cd but smarter
 
   if [[ $platform == 'macos' ]]; then
-	  brew install --cask alacritty
+	  brew install --cask alacritty # terminal emulator
 	  brew install --cask google-drive
 	  brew install --cask pixel-picker
 	  brew install --cask spotify
 	  brew install --cask telegram
-	  brew install --cask typora
+	  brew install --cask typora # markdown editor
 	  brew install --cask visual-studio-code
-    brew install --cask raycast
-    brew install --cask shottr
-    brew install scrcpy
+    brew install --cask raycast # better version of cmd+space
+    brew install --cask shottr # cool screenshots
+    brew install scrcpy # android screen stream program
 
 	  brew tap homebrew/cask-fonts 
 	  brew install --cask font-hack-nerd-font

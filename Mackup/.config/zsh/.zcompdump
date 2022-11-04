@@ -153,6 +153,7 @@ _comps=(
 'arping' '_arping'
 'asciidoctor' '_asciidoctor'
 'asciinema' '_asciinema'
+'asdf' '_asdf'
 'ash' '_sh'
 'at' '_at'
 'atq' '_at'
@@ -498,7 +499,6 @@ _comps=(
 'fmttest' '_mh'
 'fned' '_zed'
 'fnext' '_mh'
-'fnm' '_fnm'
 'fold' '_fold'
 'folder' '_mh'
 'folders' '_mh'
@@ -1803,8 +1803,8 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _alacritty _bat _brew _brew_services _chezmoi \
-            _exa _fd _fnm _heroku _rg \
+autoload -Uz _alacritty _asdf _bat _brew _brew_services \
+            _chezmoi _exa _fd _heroku _rg \
             _scrcpy _zoxide _SUSEconfig _a2ps _a2utils \
             _aap _abcde _absolute_command_paths _ack _acpi \
             _acpitool _acroread _adb _add-zle-hook-widget _add-zsh-hook \

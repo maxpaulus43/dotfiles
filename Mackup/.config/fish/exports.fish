@@ -23,6 +23,4 @@ fish_add_path -a $ANDROID_HOME/tools
 fish_add_path -a $ANDROID_HOME/tools/bin
 fish_add_path -a $ANDROID_HOME/platform-tools
 fish_add_path -a $GOPATH/bin
-# Make sure this is the last PATH variable change.
-fish_add_path -a "$PATH:$HOME/.rvm/bin"
 
