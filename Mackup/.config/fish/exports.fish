@@ -12,7 +12,8 @@ set -gx JAVA_TOOLS_OPTIONS "-Dlog4j2.formatMsgNoLookups=true"
 set -gx LESS '-M --mouse --wheel-lines 3'
 
 fish_add_path -p $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
-fish_add_path -p $HOME/bin:$HOME/.toolbox/bin
+fish_add_path -p $HOME/bin
+fish_add_path -p $HOME/.toolbox/bin
 fish_add_path -p /usr/local/opt/protobuf@3.1/bin
 fish_add_path -p /usr/local/bin
 fish_add_path -p /Users/maxpaulu/Library/Python/3.7/bin

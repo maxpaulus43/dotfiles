@@ -15,7 +15,7 @@ if status is-interactive
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   end
 
-  if which -s tmux \
+  if which tmux &> /dev/null \
     && test ! -n "$visual_studio" \
     && test ! (string match -eiq "screen" "$TERM") \
     && test ! (string match -eiq "tmux" "$TERM") \
