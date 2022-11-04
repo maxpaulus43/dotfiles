@@ -74,7 +74,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   echo "Changing default shell to fish:"
   fish_dir=$(which fish)
   sudo sh -c "echo $fish_dir >> /etc/shells"
-  chsh -s $fish_dir
+  echo 'You should run chsh -s $(which fish)'
 
 fi
 
