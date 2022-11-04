@@ -9,7 +9,9 @@ function fish_add_plugin
   for f in $plugin_dir/conf.d/*
     source $f
   end
-
+  for f in $plugin_dir/completions/*
+    source $f
+  end
   for f in $plugin_dir/functions/*
     source $f
   end

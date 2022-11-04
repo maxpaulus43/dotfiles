@@ -28,6 +28,7 @@ alias ls='exa --icons'
 alias nds="ninja-dev-sync"
 alias studio="open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 alias sz="source $__fish_config_dir/config.fish"
+alias tree="exa -T"
 alias urldecode='node --eval "console.log(decodeURIComponent(process.argv[1]))"'
 alias urlencode='node --eval "console.log(encodeURIComponent(process.argv[1]))"'
 alias vd='nvim ~/c/dotfiles'

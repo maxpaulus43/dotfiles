@@ -35,7 +35,6 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install ripgrep # better grep
   brew install rlwrap # needed for ~/bin/cht
   brew install tmux # terminal window manager
-  brew install tree 
   brew install zoxide # cd but smarter
 
   if [[ $platform == 'macos' ]]; then
