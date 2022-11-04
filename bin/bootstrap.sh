@@ -30,14 +30,14 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 
-  brew install fzf
-
   brew install bat
   brew install btop
   brew install exa
   brew install fd
   brew install ffmpeg
   brew install fish
+  brew install fnm
+  brew install fzf
   brew install git
   brew install git-delta
   brew install lazygit
@@ -80,6 +80,12 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   $(brew --prefix)/opt/fzf/install
 
   chmod +x $HOME/c/dotfiles/Mackup/bin/*
+
+  echo "Changing default shell to fish:"
+  fish_dir=$(which fish)
+  sudo sh -c "echo $fish_dir >> /etc/shells"
+  chsh -s $fish_dir
+
 fi
 
 

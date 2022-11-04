@@ -1,11 +1,13 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  set fish_greeting
 
   source "$__fish_config_dir/exports.fish"
   source "$__fish_config_dir/aliases.fish"
 
   fish_add_plugin "decors/fish-colored-man"
   fish_add_plugin "jorgebucaran/autopair.fish"
+  fish_add_plugin "2m/fish-history-merge"
 
   if test (string match -ei 'Linux' $(uname))
     # Set PATH, MANPATH, etc., for Homebrew.
