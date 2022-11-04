@@ -32,31 +32,32 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
   brew install fzf
 
+  brew install bat
+  brew install btop
+  brew install exa
+  brew install fd
+  brew install ffmpeg
+  brew install fish
   brew install git
+  brew install git-delta
   brew install lazygit
   brew install neovim
   brew install ripgrep
+  brew install rlwrap # needed for ~/bin/cht
   brew install tmux
   brew install tree
-  brew install ffmpeg
   brew install zoxide
-  brew install rlwrap # needed for ~/bin/cht
-  brew install btop
-  brew install exa
-  brew install bat
-  brew install git-delta
-  brew install fd
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty
-	  brew install --cask spotify
-	  brew install --cask visual-studio-code
-	  brew install --cask pixel-picker
 	  brew install --cask google-drive
-	  brew install --cask typora
+	  brew install --cask pixel-picker
+	  brew install --cask spotify
 	  brew install --cask telegram
-    brew install --cask shottr
+	  brew install --cask typora
+	  brew install --cask visual-studio-code
     brew install --cask raycast
+    brew install --cask shottr
     brew install scrcpy
 
 	  brew tap homebrew/cask-fonts 
@@ -64,10 +65,10 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-    defaults write com.apple.screencapture type jpg
-    defaults write com.apple.dock showhidden -bool TRUE
     defaults write com.apple.dock autohide-delay -float 0
     defaults write com.apple.dock autohide-time-modifier -int 0
+    defaults write com.apple.dock showhidden -bool TRUE
+    defaults write com.apple.screencapture type jpg
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
     killall Dock
   fi
