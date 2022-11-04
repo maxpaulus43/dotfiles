@@ -3,5 +3,6 @@ Mackup/.config/zsh/plugins
 Mackup/.config/zsh/.zcompcache
 Mackup/.config/zsh/.zsh_history
 Mackup/.config/fish/plugins
+Mackup/.config/fish/functions/fzf_key_bindings.fish
 # Mackup/.config/fish/functions
 # Mackup/.config/fish/fish_variables
