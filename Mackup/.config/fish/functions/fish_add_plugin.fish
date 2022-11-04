@@ -6,6 +6,10 @@ function fish_add_plugin
     git clone "https://github.com/$argv[1].git" $plugin_dir
   end
 
+  for f in $plugin_dir/conf.d/*
+    source $f
+  end
+
   for f in $plugin_dir/functions/*
     source $f
   end

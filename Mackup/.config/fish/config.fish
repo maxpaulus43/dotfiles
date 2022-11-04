@@ -5,6 +5,7 @@ if status is-interactive
   source "$__fish_config_dir/aliases.fish"
 
   fish_add_plugin "decors/fish-colored-man"
+  fish_add_plugin "jorgebucaran/autopair.fish"
 
   if test (string match -ei 'Linux' $(uname))
     # Set PATH, MANPATH, etc., for Homebrew.

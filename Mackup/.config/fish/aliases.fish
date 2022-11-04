@@ -34,3 +34,15 @@ alias vd='nvim ~/c/dotfiles'
 alias vim="nvim"
 alias vn='nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 alias vz="nvim $__fish_config_dir/config.fish"
+
+function lg
+  set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
+
+  lazygit $argv
+
+  if test -f $LAZYGIT_NEW_DIR_FILE 
+    cd (cat $LAZYGIT_NEW_DIR_FILE)
+    rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+  end
+end
+
