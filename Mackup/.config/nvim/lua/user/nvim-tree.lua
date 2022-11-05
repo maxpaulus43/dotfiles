@@ -17,6 +17,10 @@ nvim_tree.setup({
 			"node_modules",
 		},
 	},
+	git = {
+		enable = true,
+		ignore = false,
+	},
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
