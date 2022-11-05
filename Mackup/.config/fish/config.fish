@@ -20,6 +20,8 @@ if status is-interactive
   set -g man_standout -b b40bd6 white
   set -g man_underline -u 93a1a1
 
+  zoxide init fish | source
+
   if which tmux &> /dev/null \
     && test ! -n "$visual_studio" \
     && test ! (string match -eiq "screen" "$TERM") \
