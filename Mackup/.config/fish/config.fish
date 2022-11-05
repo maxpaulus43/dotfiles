@@ -15,6 +15,11 @@ if status is-interactive
   fish_add_plugin "jorgebucaran/autopair.fish"
   fish_add_plugin "2m/fish-history-merge"
 
+  set -g man_blink -o red
+  set -g man_bold -o green
+  set -g man_standout -b b40bd6 white
+  set -g man_underline -u 93a1a1
+
   if which tmux &> /dev/null \
     && test ! -n "$visual_studio" \
     && test ! (string match -eiq "screen" "$TERM") \
