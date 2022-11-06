@@ -23,6 +23,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install asdf # version manager for node,ruby, etc...
   brew install bat # cat command with wings
   brew install btop # top on steroids
+  brew install dust # du but better
   brew install exa # ls for the modern man
   brew install fd # find 
   brew install ffmpeg # image/video manipulations
@@ -34,6 +35,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install neovim # text editor
   brew install ripgrep # better grep
   brew install rlwrap # needed for ~/bin/cht
+  brew install tealdeer # community driven man pages
   brew install tmux # terminal window manager
   brew install zoxide # cd but smarter
 
@@ -70,11 +72,10 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
   chmod +x $HOME/c/dotfiles/Mackup/bin/*
 
-  echo "Changing default shell to fish:"
   fish_dir=$(which fish)
+  echo "Adding '$fish_dir' to /etc/shells"
   sudo sh -c "echo $fish_dir >> /etc/shells"
   echo 'You should run chsh -s $(which fish)'
-
 fi
 
 
