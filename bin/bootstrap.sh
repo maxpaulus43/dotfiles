@@ -18,6 +18,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
   if [[ $platform == 'linux' ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # note I also needed to download g++ and make from apt
   fi
 
   brew install asdf # version manager for node,ruby, etc...
