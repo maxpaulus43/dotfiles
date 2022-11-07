@@ -11,7 +11,7 @@ if type '/usr/libexec/java_home' &> /dev/null
   set -gx JAVA_HOME $(/usr/libexec/java_home -v 1.8)
 end
 set -gx JAVA_TOOLS_OPTIONS "-Dlog4j2.formatMsgNoLookups=true"
-set -gx LESS '-M --mouse --wheel-lines 3'
+set -gx LESS '-R -M --mouse --wheel-lines 3'
 
 fish_add_path -p $HOME/.toolbox/bin
 fish_add_path -p $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
