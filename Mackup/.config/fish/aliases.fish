@@ -6,6 +6,7 @@ alias brcp="BRAZIL_VERBOSE=true brazil-recursive-cmd-parallel --allPackages"
 alias brcx="brazil-recursive-cmd -- 'brazil-build xcode-env'"
 alias bu="bb -u"
 alias bz="brazil"
+alias cat="bat"
 alias ding="afplay /System/Library/Sounds/Glass.aiff"
 alias gaa='git add --all'
 alias gc='git commit -v'
