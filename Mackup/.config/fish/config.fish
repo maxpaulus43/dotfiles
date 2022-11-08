@@ -19,6 +19,8 @@ if status is-interactive
   set -g man_bold -o green
   set -g man_standout -b b40bd6 white
   set -g man_underline -u 93a1a1
+  set -g fish_pager_color_selected_background --background=533 
+  set fish_color_selection white --bold --background=blue
 
   set fish_cursor_default block
   set fish_cursor_insert line blink
@@ -36,6 +38,5 @@ if status is-interactive
   else 
     alias tmain='tmux new -AD -t main -s main'
   end  
-   
 end
 

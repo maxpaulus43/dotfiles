@@ -39,6 +39,7 @@
   minus-style = syntax auto
   plus-style = syntax darkgreen
   plus-non-emph-style = syntax
+  minus-non-emph-style = syntax
   line-numbers = true
 
 [merge]
