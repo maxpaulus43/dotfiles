@@ -20,6 +20,10 @@ if status is-interactive
   set -g man_standout -b b40bd6 white
   set -g man_underline -u 93a1a1
 
+  set fish_cursor_default block
+  set fish_cursor_insert line blink
+  set fish_cursor_replace_one underscore
+
   zoxide init fish | source
 
   if which tmux &> /dev/null \
