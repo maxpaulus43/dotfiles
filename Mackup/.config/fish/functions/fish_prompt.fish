@@ -86,5 +86,10 @@ function fish_prompt
         end
     end
 
-    echo -n -s $arrow ' '$cwd $repo_info $normal ' '
+    set -l ssh_prefix
+    if test -n "$SSH_CONNECTION"
+      set ssh_prefix "(ssh) "
+    end
+
+    echo -n -s $ssh_prefix $arrow ' '$cwd $repo_info $normal ' '
 end

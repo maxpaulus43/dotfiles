@@ -24,11 +24,11 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=/Users/maxpaulu/.local/bin:$PATH
 export CHTSH_CONF=$HOME/.config/cht.sh/cht.sh.conf
  
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
