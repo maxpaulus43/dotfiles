@@ -77,6 +77,11 @@ keymap("n", "<leader>ft", function()
 end, opts)
 keymap("n", "<leader>fp", "<cmd> Telescope projects<cr>", opts)
 keymap("n", "<leader>fb", "<cmd> Telescope buffers<cr>", opts)
+keymap("n", "<leader>fo", "<cmd> Telescope oldfiles<cr>", opts)
+keymap("n", "gp", "<cmd> Telescope registers<cr>", opts)
+keymap("n", "g*", function()
+	require("telescope.builtin").grep_string({ hidden = true, show_line = false })
+end, opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)

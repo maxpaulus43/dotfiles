@@ -437,7 +437,7 @@ colors:
 #   - (Windows) powershell
 # shell:
 #   program: /usr/local/bin/fish
-  #  args:
+#  args:
 #    - --login
 
 # Startup directory
@@ -760,6 +760,10 @@ key_bindings:
   - { key: T, mods: Shift|Command, chars: "\x60\x22" } # ` + " (tmux horizontal split)
   - { key: W, mods: Command, chars: "\x60\x78" } # ` + x (tmux kill pane)
   - { key: K, mods: Command, chars: "\x60\x6b" } # ` + k (tmux C-l and :clear-history)
+  - { key: Up, mods: Shift|Command, chars: "\x60\x1b\x5b\x41" } # ` + Up (tmux change window up)
+  - { key: Right, mods: Shift|Command, chars: "\x60\x1b\x5b\x43" } # ` + Right (tmux change window up)
+  - { key: Down, mods: Shift|Command, chars: "\x60\x1b\x5b\x42" } # ` + Down (tmux change window up)
+  - { key: Left, mods: Shift|Command, chars: "\x60\x1b\x5b\x44" } # ` + Left (tmux change window up)
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

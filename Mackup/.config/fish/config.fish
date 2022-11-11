@@ -2,7 +2,7 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
   set fish_greeting
 
-  if test (string match -ei 'Linux' $(uname))
+  if test (string match -ei 'Linux' (uname))
     # Set PATH, MANPATH, etc., for Homebrew.
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   end
