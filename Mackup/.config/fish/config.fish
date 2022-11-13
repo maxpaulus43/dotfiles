@@ -13,7 +13,7 @@ if status is-interactive
 
   fish_add_plugin "decors/fish-colored-man"
   fish_add_plugin "jorgebucaran/autopair.fish"
-  fish_add_plugin "2m/fish-history-merge"
+  # fish_add_plugin "2m/fish-history-merge"
 
   set -g man_blink -o red
   set -g man_bold -o green
