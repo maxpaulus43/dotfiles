@@ -59,17 +59,6 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
 	  brew tap homebrew/cask-fonts 
 	  brew install --cask font-hack-nerd-font
-    
-    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-    defaults write com.apple.dock autohide-delay -float 0
-    defaults write com.apple.dock autohide-time-modifier -int 0
-    defaults write com.apple.dock showhidden -bool TRUE
-    defaults write com.apple.screencapture showClicks -int 1
-    defaults write com.apple.screencapture showsCursor -int 1
-    defaults write com.apple.screencapture type jpg
-    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-    killall Dock
 
     brew install mas # mac app store cli
     mas install 441258766 # magnet (window tile manager)
@@ -81,6 +70,18 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew tap robotsandpencils/made
     brew install robotsandpencils/made/xcodes # xcode version picker
     # xcodes install --latest --select
+    echo '...You should run xcodes install --latest --select...'
+
+    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+    defaults write com.apple.dock autohide-delay -float 0
+    defaults write com.apple.dock autohide-time-modifier -int 0
+    defaults write com.apple.dock showhidden -bool TRUE
+    defaults write com.apple.screencapture showClicks -int 1
+    defaults write com.apple.screencapture showsCursor -int 1
+    defaults write com.apple.screencapture type jpg
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    killall Dock
   fi
 
   brew install mackup
@@ -94,8 +95,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   fish_dir=$(which fish)
   echo "Adding '$fish_dir' to /etc/shells"
   sudo sh -c "echo $fish_dir >> /etc/shells"
-  echo 'You should run chsh -s $(which fish)'
-  echo 'Then you should run xcodes install --latest --select'
+  echo '...You should run chsh -s $(which fish)...'
 fi
 
 
