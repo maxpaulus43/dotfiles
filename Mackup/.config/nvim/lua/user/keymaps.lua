@@ -90,6 +90,7 @@ keymap("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
 keymap("n", "<leader>rh", "<cmd> Gitsigns reset_hunk<cr>", opts)
 keymap("n", "<leader>rb", "<cmd> Gitsigns reset_buffer<cr>", opts)
 keymap("n", "<leader>nh", "<cmd> Gitsigns next_hunk<cr>", opts)
+keymap("n", "<leader>b", "<cmd> Gitsigns toggle_current_line_blame<cr>", opts)
 
 -- Comment
 -- keymap("n", "<leader>/", require("Comment.api").toggle.linewise.current, opts)

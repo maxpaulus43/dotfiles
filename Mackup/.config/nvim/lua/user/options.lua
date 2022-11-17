@@ -41,3 +41,6 @@ vim.opt.whichwrap:append("<,>,[,],h,l") -- keys allowed to move to the previous/
 vim.opt.iskeyword:append("-") -- treats words with `-` as single words
 vim.opt.autowriteall = true
 vim.opt.autoread = true
+
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
