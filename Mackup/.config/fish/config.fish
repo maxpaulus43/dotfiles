@@ -29,14 +29,16 @@ if status is-interactive
   zoxide init fish | source
 
   if which tmux &> /dev/null \
-    && test ! -n "$visual_studio" \
-    && test ! (string match -eiq "screen" "$TERM") \
-    && test ! (string match -eiq "tmux" "$TERM") \
-    && test (string match -eiq "alacritty" "$TERM") \
-    && test -z "$TMUX"
+    # && test ! -n "$visual_studio" \
+    # && test ! (string match -eiq "screen" "$TERM") \
+    # && test ! (string match -eiq "tmux" "$TERM") \
+    && string match -eiq "alacritty" "$TERM"
     exec tmux new -AD -t main -s main
   else 
     alias tmain='tmux new -AD -t main -s main'
   end  
+
+  function add_tea_environment --on-variable PWD; tea -Eds | source; end  #tea
 end
+
 

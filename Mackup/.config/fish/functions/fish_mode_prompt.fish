@@ -8,7 +8,7 @@ function fish_mode_prompt --description 'Display vi prompt mode'
                 echo 'N'
             case insert
                 set_color --bold green
-                echo 'I'
+                echo ' '
             case replace_one
                 set_color --bold green
                 echo 'R'

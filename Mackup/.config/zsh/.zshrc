@@ -58,11 +58,11 @@ async_job nvm_worker sleep 0.1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ "$TERM" =~ alacritty ]] && [ -z "$TMUX" ]; then
-  exec tmux new -AD -t main -s main
-else 
-  alias tmain='tmux new -AD -t main -s main'
-fi
+# if [ ! -n "$visual_studio" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ "$TERM" =~ alacritty ]] && [ -z "$TMUX" ]; then
+#   exec tmux new -AD -t main -s main
+# else 
+#   alias tmain='tmux new -AD -t main -s main'
+# fi
 
 if [[ "$(uname)" == 'Linux' ]]; then
   # Set PATH, MANPATH, etc., for Homebrew.

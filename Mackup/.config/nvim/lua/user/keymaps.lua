@@ -21,6 +21,9 @@ keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 
 -- Normal --
+-- undotree
+keymap("n", "<F5>", "<cmd>UndotreeToggle<cr>", opts)
+
 -- show full filename
 keymap("n", "<C-g>", "1<C-g>", opts)
 
@@ -35,10 +38,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
--- keymap("n", "<C-Up>", ":resize -2<cr>", opts)
--- keymap("n", "<C-Down>", ":resize +2<cr>", opts)
--- keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
--- keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
+keymap("n", "<S-Up>", ":resize -2<cr>", opts)
+keymap("n", "<S-Down>", ":resize +2<cr>", opts)
+keymap("n", "<S-Left>", ":vertical resize -2<cr>", opts)
+keymap("n", "<S-Right>", ":vertical resize +2<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", "<cmd>bnext<cr>", opts)
