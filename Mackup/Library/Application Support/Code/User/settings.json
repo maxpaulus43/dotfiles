@@ -216,5 +216,6 @@
   "vscode-neovim.logLevel": "warn",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim"
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "auto-build.defaultEnv.name": "STM32F103RE_creality"
 }

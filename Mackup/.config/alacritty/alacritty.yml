@@ -16,12 +16,12 @@
 # set by alacritty itself.
 
 env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
   TERM: alacritty
   SHELL: /usr/local/bin/fish
 
@@ -760,7 +760,7 @@ key_bindings:
   - { key: T, mods: Command, chars: "\x60\x25" } # ` + % (tmux vertical split)
   - { key: T, mods: Shift|Command, chars: "\x60\x22" } # ` + " (tmux horizontal split)
   - { key: W, mods: Command, chars: "\x60\x78" } # ` + x (tmux kill pane)
-  - { key: K, mods: Command, chars: "\x60\x6b" } # ` + k (tmux C-l and :clear-history)
+  - { key: K, mods: Command, chars: "\x60\x79" } # ` + k (tmux C-l and :clear-history)
   - { key: Up, mods: Shift|Command, chars: "\x60\x1b\x5b\x41" } # ` + Up (tmux change window up)
   - { key: Right, mods: Shift|Command, chars: "\x60\x1b\x5b\x43" } # ` + Right (tmux change window up)
   - { key: Down, mods: Shift|Command, chars: "\x60\x1b\x5b\x42" } # ` + Down (tmux change window up)

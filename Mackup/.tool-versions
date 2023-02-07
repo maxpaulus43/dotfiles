@@ -1,3 +1,4 @@
 nodejs lts
-ruby 2.5.8
+ruby 2.7.2
 deno 1.28.0
+java corretto-11.0.17.8.1

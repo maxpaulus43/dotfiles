@@ -7,9 +7,10 @@ set -gx DEFAULT_USER maxpaulu
 set -gx FZF_DEFAULT_COMMAND "rg --files --no-ignore-vcs --hidden"
 set -gx FZF_DEFAULT_OPTS "--height 50% --layout=reverse"
 set -gx GOPATH $HOME/go
-if type "/usr/libexec/java_home" &> /dev/null
-  set -gx JAVA_HOME $(/usr/libexec/java_home -v 1.8)
-end
+# if type "/usr/libexec/java_home" &> /dev/null
+#   set -gx JAVA_HOME $(/usr/libexec/java_home -v 1.8)
+# end
+. ~/.asdf/plugins/java/set-java-home.fish
 set -gx JAVA_TOOLS_OPTIONS "-Dlog4j2.formatMsgNoLookups=true"
 set -gx LESS "-R -M --mouse --wheel-lines 3"
 set -gx EDITOR "nvim"
