@@ -42,7 +42,7 @@ if status is-interactive
     alias tmain='tmux new -AD -t main -s main'
   end  
 
-  function add_tea_environment --on-variable PWD; tea -Eds | source; end  #tea
+  # function add_tea_environment --on-variable PWD; tea -Eds | source; end  #tea
 end
 
 
