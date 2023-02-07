@@ -7,6 +7,10 @@ if status is-interactive
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   end
 
+  if test (string match -ei 'Darwin' (uname))
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  end
+
   source "$__fish_config_dir/exports.fish"
   source "$__fish_config_dir/aliases.fish"
   source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
