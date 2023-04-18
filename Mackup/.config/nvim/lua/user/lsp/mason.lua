@@ -9,6 +9,8 @@ local servers = {
 	"yamlls",
 	"gopls",
 	"bashls",
+	"tailwindcss",
+	"svelte",
 }
 
 local settings = {
