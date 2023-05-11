@@ -29,8 +29,9 @@ alias ls='exa --icons'
 alias nds="ninja-dev-sync"
 alias studio="open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 alias sz="source $ZDOTDIR/.zshrc"
-alias urldecode='node --eval "console.log(decodeURIComponent(process.argv[1]))"'
-alias urlencode='node --eval "console.log(encodeURIComponent(process.argv[1]))"'
+# alias urldecode='node --eval "console.log(decodeURIComponent(process.argv[1]))"'
+# alias urlencode='node --eval "console.log(encodeURIComponent(process.argv[1]))"'
+# alias urlencode='node --eval "console.log(new URLSearchParams({encoded: process.argv[1]}).toString().split(\"=\")[1]))"'
 alias vd='nvim ~/c/dotfiles'
 alias vim="nvim"
 alias vn='nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'

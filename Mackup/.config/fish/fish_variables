@@ -32,8 +32,6 @@ SETUVAR _fish_abbr_nds:ninja\x2ddev\x2dsync
 SETUVAR _fish_abbr_studio:open\x20\x2da\x20\x7e/Applications/JetBrains\x5c\x20Toolbox/Android\x5c\x20Studio\x2eapp
 SETUVAR _fish_abbr_sz:source\x20/Users/maxpaulu/\x2econfig/fish/config\x2efish
 SETUVAR _fish_abbr_tree:exa\x20\x2dT
-SETUVAR _fish_abbr_urldecode:node\x20\x2d\x2deval\x20\x22console\x2elog\x28decodeURIComponent\x28process\x2eargv\x5b1\x5d\x29\x29\x22
-SETUVAR _fish_abbr_urlencode:node\x20\x2d\x2deval\x20\x22console\x2elog\x28encodeURIComponent\x28process\x2eargv\x5b1\x5d\x29\x29\x22
 SETUVAR _fish_abbr_vd:nvim\x20\x7e/c/dotfiles
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fish_abbr_vn:nvim\x20\x7e/c/dotfiles/Mackup/\x2econfig/nvim/init\x2elua
@@ -77,4 +75,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/usr/local/bin\x1e/Users/maxpaulu/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/Users/maxpaulu/Library/Android/sdk/emulator\x1e/Users/maxpaulu/Library/Android/sdk/platform\x2dtools
+SETUVAR fish_user_paths:/Users/maxpaulu/\x2etoolbox/bin\x1e/usr/local/bin\x1e/Users/maxpaulu/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/Users/maxpaulu/Library/Android/sdk/emulator\x1e/Users/maxpaulu/Library/Android/sdk/platform\x2dtools\x1e/Users/maxpaulu/Library/Android/sdk/tools\x1e/Users/maxpaulu/Library/Android/sdk/tools/bin
