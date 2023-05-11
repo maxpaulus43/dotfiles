@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const arg = process.argv[2];
+
+function decode(data) {
+  return decodeURIComponent(data);
+}
+
+if (arg) {
+  console.log(decode(arg));
+} else {
+  const stdin = process.stdin;
+  let data = "";
+  stdin.setEncoding("utf8");
+  stdin.on("data", function (chunk) {
+    data += chunk;
+  });
+  stdin.on("end", function () {
+    console.log(decode(data));
+  });
+  stdin.on("error", console.error);
+}
