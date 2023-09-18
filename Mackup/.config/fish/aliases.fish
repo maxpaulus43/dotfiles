@@ -31,8 +31,6 @@ abbr nds "ninja-dev-sync"
 abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
 abbr tree "exa -T"
-# abbr urldecode 'node --eval "console.log(decodeURIComponent(process.argv[1]))"'
-# abbr urlencode 'node --eval "console.log(new URLSearchParams({encoded: process.argv[1]}).toString().split(\"=\")[1])"'
 abbr vd 'nvim ~/c/dotfiles'
 abbr vim "nvim"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'

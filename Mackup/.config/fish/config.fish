@@ -15,8 +15,8 @@ if status is-interactive
   source "$__fish_config_dir/aliases.fish"
   source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
 
-  fish_add_plugin "decors/fish-colored-man"
-  fish_add_plugin "jorgebucaran/autopair.fish"
+  fish_add_plugin "decors/fish-colored-man" # colorful man pages
+  fish_add_plugin "jorgebucaran/autopair.fish" # auto pair brackets
   # fish_add_plugin "2m/fish-history-merge"
 
   set -g man_blink -o red

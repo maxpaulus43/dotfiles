@@ -1,7 +1,7 @@
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk/
-set -gx BRAZIL_BUILD_HOME ~/.toolbox
+set -gx BRAZIL_BUILD_HOME $HOME/.toolbox
 set -gx CHTSH_CONF $HOME/.config/cht.sh/cht.sh.conf
 set -gx DEFAULT_USER maxpaulu
 set -gx FZF_DEFAULT_COMMAND "rg --files --no-ignore-vcs --hidden"
@@ -10,7 +10,7 @@ set -gx GOPATH $HOME/go
 # if type "/usr/libexec/java_home" &> /dev/null
 #   set -gx JAVA_HOME $(/usr/libexec/java_home -v 1.8)
 # end
-. ~/.asdf/plugins/java/set-java-home.fish
+. $HOME/.asdf/plugins/java/set-java-home.fish
 set -gx JAVA_TOOLS_OPTIONS "-Dlog4j2.formatMsgNoLookups=true"
 set -gx LESS "-R -M --mouse --wheel-lines 3"
 set -gx EDITOR "nvim"
