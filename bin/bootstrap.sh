@@ -39,6 +39,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install tealdeer # community driven man pages
   brew install tmux # terminal window manager
   brew install zoxide # cd but smarter
+  brew install parallel # build and execute shell command lines from standard input in parallel
 
   if [[ $platform == 'macos' ]]; then
 	  brew install --cask alacritty # terminal emulator
@@ -52,7 +53,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install --cask disk-inventory-x # windirstat for mac
     brew install --cask google-chrome # browser
     brew install --cask google-drive # cloud storage (keep notes here)
-    brew install --cask raycast # better version of cmd+space
+    # brew install --cask raycast # better version of cmd+space
     brew install --cask shottr # cool screenshots
     brew install --cask slack # instant messenger
     brew install scrcpy # android screen stream program
@@ -73,24 +74,30 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     echo '...You should run xcodes install --latest --select...'
 
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-    defaults write com.apple.dock autohide-delay -float 0
-    defaults write com.apple.dock autohide-time-modifier -int 0
-    defaults write com.apple.dock showhidden -bool TRUE
-    defaults write com.apple.screencapture showClicks -int 1
-    defaults write com.apple.screencapture showsCursor -int 1
-    defaults write com.apple.screencapture type jpg
-    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-    killall Dock
+    defaults write -g KeyRepeat -int 1 # how fast keys repeat normal minimum is 2 (30 ms)
+    defaults write com.apple.dock autohide-delay -float 0 # removes the animation of dock hide/show
+    defaults write com.apple.dock autohide-time-modifier -int 0 # immediately hides/show dock with no delay
+    defaults write com.apple.dock showhidden -bool TRUE # hides the dock
+    defaults write com.apple.screencapture showClicks -int 1 # show screen capture clicks
+    defaults write com.apple.screencapture showsCursor -int 1 # show cursor when capturing screen
+    defaults write com.apple.screencapture type jpg # save screen caps as jpg (smaller file size)
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false # allow press and hold keys in vscode
+    killall Dock # restart dock to pick up new settings
   fi
 
-  brew install mackup
+  brew install mackup # tool for working with multiple dotfiles
   cp $HOME/c/dotfiles/Mackup/.mackup.cfg $HOME/.mackup.cfg
-  mackup -v restore
+  mackup -v restore # symlink all dotfiles in this repo to my /~ folder
 
-  $(brew --prefix)/opt/fzf/install
+  $(brew --prefix)/opt/fzf/install # CTRL+r to enable fuzzy history search
 
   chmod +x $HOME/c/dotfiles/Mackup/bin/*
+
+  bat ~/.tool-versions | \
+    awk '{print $1}' | \
+    parallel 'asdf plugin-add {}' # add plugins .tool-versions 
+
+  asdf install # install tools from /~/.tool-versions file
 
   fish_dir=$(which fish)
   echo "Adding '$fish_dir' to /etc/shells"

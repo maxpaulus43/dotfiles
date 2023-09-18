@@ -119,7 +119,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "[jsonc]": {
@@ -153,6 +153,8 @@
   "sqlite.recordsPerPage": 500,
   "json.schemas": [],
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "yaml.schemas": {
     "file:///Users/maxpaulu/.vscode/extensions/marklel.vscode-brazil-0.46.0/assets/languages/rde/schema.json": "**/definition.yaml"
   },
@@ -161,7 +163,7 @@
   "ruby.format": "rufo",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "viceroy.config.lastVersion": "0.46.0",
+  "viceroy.config.lastVersion": "0.51.201448",
   "files.watcherExclude": {
     "**/build/**": true,
     "**/.git/objects/**": true,
@@ -193,7 +195,7 @@
     "**/bower_components": true,
     "**/*.code-search": true
   },
-  "viceroy.config.internal.lastUpdateTime": "2022-05-18T17:35:34.376Z",
+  "viceroy.config.internal.lastUpdateTime": "2023-09-15T22:45:36.362Z",
   "viceroy.doc.welcome.showAtStartup": false,
   "gopls": {
     "experimentalWorkspaceModule": true
@@ -214,12 +216,17 @@
   "terminal.integrated.macOptionClickForcesSelection": true,
   "vscode-neovim.logLevel": "warn",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
   "auto-build.defaultEnv.name": "STM32F103RE_creality",
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "git.openRepositoryInParentFolders": "always",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "aws.suppressPrompts": {
+    "codeWhispererConnectionExpired": true
+  },
+  "editor.formatOnSave": true,
   "window.zoomLevel": 1
 }

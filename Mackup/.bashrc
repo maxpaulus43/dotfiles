@@ -1,1 +1,1 @@
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# I mainly use fish shell
