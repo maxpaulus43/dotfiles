@@ -48,3 +48,8 @@ function lg
   end
 end
 
+function mp4Desktop
+  for i in ~/Desktop/*.{mov,MOV}
+    mp4 $i && rm $i
+  end
+end
