@@ -66,7 +66,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" })
-	use("RRethy/nvim-base16")
+	use({ "RRethy/nvim-base16", commit = "96e308958625a84940d5e443475465abf99c7bd9" })
 	use({ "norcalli/nvim-colorizer.lua", commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" })
 
 	-- cmp plugins
@@ -95,6 +95,7 @@ return packer.startup(function(use)
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		commit = "fc93fa5c07df7cd578a3ea82d7c075c0460a6884",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()

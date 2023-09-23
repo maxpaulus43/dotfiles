@@ -29,6 +29,7 @@ dap.adapters.python = {
 	command = vim.fn.exepath("python3"),
 	args = { "-m", "debugpy.adapter" },
 }
+
 dap.configurations.python = {
 	{
 		-- The first three options are required by nvim-dap
