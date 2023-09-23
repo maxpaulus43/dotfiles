@@ -15,9 +15,9 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "<leader>w", "<cmd>wall<cr>", opts)
-keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)
-keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)
+keymap("n", "<leader>w", "<cmd>wall<cr>", opts) -- write all
+keymap("n", "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
+keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 
 -- Normal --
@@ -57,6 +57,7 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<cr>", opts)
 keymap("v", "p", '"_dP', opts)
 
 keymap("i", "jk", "<esc>", opts)
+keymap("i", "kj", "<esc>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
