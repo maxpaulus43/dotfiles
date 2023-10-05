@@ -13,6 +13,7 @@ set -gx GOPATH $HOME/go
 . $HOME/.asdf/plugins/java/set-java-home.fish
 set -gx JAVA_TOOLS_OPTIONS "-Dlog4j2.formatMsgNoLookups=true"
 set -gx LESS "-R -M --mouse --wheel-lines 3"
+set -gx PAGER "less -R -M --mouse --wheel-lines 3"
 set -gx EDITOR "nvim"
 
 # -p == "prepend"
