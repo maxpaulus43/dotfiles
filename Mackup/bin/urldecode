@@ -6,7 +6,7 @@ function decode(data) {
   return decodeURIComponent(data);
 }
 
-if (arg) {
+if (arg !== undefined) {
   console.log(decode(arg));
 } else {
   const stdin = process.stdin;

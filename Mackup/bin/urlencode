@@ -6,8 +6,7 @@ function encode(data) {
   const p = new URLSearchParams({ encoded: data });
   return p.toString().split("=")[1];
 }
-
-if (arg) {
+if (arg !== undefined) {
   console.log(encode(arg));
 } else {
   const stdin = process.stdin;
