@@ -63,6 +63,7 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround", commit = "3d188ed2113431cf8dac77be61b842acb64433d9" })
 	use({ "tpope/vim-repeat", commit = "24afe922e6a05891756ecf331f39a1f6743d3d5a" })
 	use({ "mbbill/undotree", commit = "bd60cb564e3c3220b35293679669bb77af5f389d" })
+	use({ "vrischmann/tree-sitter-templ", commit = "71c9bef872f6dc216837c93bd15671fb763fc3e8" })
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" })
@@ -83,9 +84,9 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets", commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1" }) -- a bunch of snippets to use
 
 	-- LSP
-	use({ "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" }) -- enable LSP
-	use({ "williamboman/mason.nvim", commit = "c2002d7a6b5a72ba02388548cfaf420b864fbc12" })
-	use({ "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" })
+	use({ "neovim/nvim-lspconfig", commit = "8f3ddc448769f563248654a5099c943c7139137e" }) -- enable LSP
+	use({ "williamboman/mason.nvim", commit = "cd7835b15f5a4204fc37e0aa739347472121a54c" })
+	use({ "williamboman/mason-lspconfig.nvim", commit = "e7b64c11035aa924f87385b72145e0ccf68a7e0a" })
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" })
 
