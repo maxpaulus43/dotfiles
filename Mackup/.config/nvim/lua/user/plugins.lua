@@ -64,6 +64,7 @@ return packer.startup(function(use)
 	use({ "tpope/vim-repeat", commit = "24afe922e6a05891756ecf331f39a1f6743d3d5a" })
 	use({ "mbbill/undotree", commit = "bd60cb564e3c3220b35293679669bb77af5f389d" })
 	use({ "vrischmann/tree-sitter-templ", commit = "71c9bef872f6dc216837c93bd15671fb763fc3e8" })
+	use({ "edluffy/hologram.nvim", commit = "f5194f71ec1578d91b2e3119ff08e574e2eab542" })
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" })
