@@ -42,7 +42,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install parallel # build and execute shell command lines from standard input in parallel
 
   if [[ $platform == 'macos' ]]; then
-	  brew install --cask alacritty # terminal emulator
+	  # brew install --cask alacritty # terminal emulator
+    brew install --cask kitty
 	  brew install --cask pixel-picker # color dropper tool
 	  brew install --cask spotify # music
 	  brew install --cask telegram # messages

@@ -36,6 +36,7 @@ abbr vim "nvim"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr typora "open -a typora"
+abbr icat "kitten icat"
 
 function lg
   set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
