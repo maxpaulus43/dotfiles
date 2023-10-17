@@ -38,6 +38,7 @@ abbr vd 'nvim ~/c/dotfiles'
 abbr vim "nvim"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
+abbr cfg 'kitty +kitten config.py | less'
 
 function lg
   set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir

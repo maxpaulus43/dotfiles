@@ -57,7 +57,8 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<cr>", opts)
 keymap("v", "p", '"_dP', opts)
 
 keymap("i", "jk", "<esc>", opts)
-keymap("i", "kj", "<esc>", opts)
+keymap("c", "jk", "<esc>", opts)
+-- keymap("i", "kj", "<esc>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
