@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 keymap("n", "<leader>w", "<cmd>wall<cr>", opts) -- write all
+keymap("n", "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't format)
 keymap("n", "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
 keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
@@ -90,11 +91,13 @@ end, opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
-keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
+-- keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>sh", "<cmd> Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
 keymap("n", "<leader>rh", "<cmd> Gitsigns reset_hunk<cr>", opts)
 keymap("n", "<leader>rb", "<cmd> Gitsigns reset_buffer<cr>", opts)
 keymap("n", "<leader>nh", "<cmd> Gitsigns next_hunk<cr>", opts)
+keymap("n", "<leader>ph", "<cmd> Gitsigns prev_hunk<cr>", opts)
 keymap("n", "<leader>b", "<cmd> Gitsigns toggle_current_line_blame<cr>", opts)
 
 -- Comment

@@ -19,6 +19,7 @@ dap.configurations.go = {
 		request = "launch",
 		showLog = false,
 		program = "${file}",
+		args = { "serve" }, -- for pocketbase. nocommit
 		dlvToolPath = vim.fn.exepath("dlv"),
 	},
 }

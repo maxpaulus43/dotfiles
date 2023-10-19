@@ -42,4 +42,16 @@ telescope.setup({
 			},
 		},
 	},
+	pickers = {
+		buffers = {
+			mappings = {
+				i = {
+					["<C-l>"] = actions.delete_buffer,
+				},
+				n = {
+					["<C-l>"] = actions.delete_buffer,
+				},
+			},
+		},
+	},
 })
