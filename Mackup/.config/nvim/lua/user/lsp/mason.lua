@@ -12,6 +12,7 @@ local servers = {
 	"tailwindcss",
 	"svelte",
 	"templ",
+	"marksman",
 }
 
 local settings = {
