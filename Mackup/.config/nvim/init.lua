@@ -34,6 +34,8 @@ require('lazy').setup({
   'moll/vim-bbye',
   'RRethy/vim-illuminate',
   'akinsho/toggleterm.nvim',
+  'nvimtools/none-ls.nvim',
+  'norcalli/nvim-colorizer.lua',
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -64,8 +66,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
@@ -148,6 +148,8 @@ require('my.cmp')
 require('my.bufferline')
 require('my.illuminate')
 require('my.toggleterm')
+require('my.none-ls');
+require('colorizer').setup();
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -176,12 +178,29 @@ require('which-key').register {
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#ffffff", bg = "#141a1f" })
+vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
+
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
 
 local servers = {
+  cssls = {},
+  html = {},
+  tsserver = {},
+  pyright = {},
+  jsonls = {},
+  yamlls = {},
+  gopls = {},
+  bashls = {},
+  tailwindcss = {},
+  svelte = {},
+  templ = {},
+  marksman = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },

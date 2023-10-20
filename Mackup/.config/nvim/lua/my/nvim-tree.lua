@@ -31,7 +31,7 @@ return {
 		},
 		update_focused_file = {
 			enable = true,
-			update_cwd = true,
+			update_root = true,
 		},
 		on_attach = on_attach,
 		renderer = {
