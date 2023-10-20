@@ -42,7 +42,7 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', config = true },
       'folke/neodev.nvim',
     },
   },
@@ -55,41 +55,8 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-  { 'folke/which-key.nvim',  opts = {} },
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
-    },
-  },
+  { 'folke/which-key.nvim',  config = true },
+  require('my.gitsigns'),
   {
     'navarasu/onedark.nvim',
     priority = 1000,
@@ -113,7 +80,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- :help ibl
     main = 'ibl',
-    opts = {},
+    config = true,
   },
   { 'numToStr/Comment.nvim', opts = {} },
   {
