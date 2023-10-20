@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+featureName=""
+launchPoint=""
+initialProps=""
+stage="local"
+viewType="modal"
+cdn=""
+reset=false
+load=false
+ios=""
+android=""
+
+usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p initialProps] [-s stage] [-v viewType] [-c cdnUrl]
+    -i  ios
+    -a  android
+    -f  the ssnap feature name
+    -l  the ssnap launchpoint
+    -r  reset (equivalent to 'ssnap reset' button)
+    -L  load. automatically load the ssnap feature
+    -h  show this help text
+    -p  initial props as a JSON string. e.g. '{\"placementId\": \"shopping-videos-home\" }'
+    -s  stage. e.g. 'local' | 'beta' | 'gamma' | 'prod' | 'mbp'. defaults to local
+    -v  viewType. e.g. 'non-modal' | 'transparent-modal' | 'modal-with-chrome' | 'modal'. defaults to 'non-modal'
+    -c  cdnUrl. custom url from which to download bundle"
+
+while getopts "f:l:p:s:v:c:rLiah" opt; do
+  case "$opt" in
+    "h") echo "$usage"; exit 0 ;;
+    "f") featureName="$OPTARG" ;;
+    "l") launchPoint="$OPTARG" ;;
+    "p") initialProps="$OPTARG" ;;
+    "s") stage="$OPTARG" ;;
+    "v") viewType="$OPTARG" ;;
+    "c") cdn="$OPTARG" ;;
+    "r") reset=true ;;
+    "L") load=true ;;
+    "i") ios=true ;;
+    "a") android=true ;;
+    *) ;;
+  esac
+done
+
+shouldExit=""
+if ! test "$featureName"; then
+  echo "-f (featureName) is required"
+  shouldExit=true
+fi
+if ! test "$ios$android"; then 
+  echo "-i (ios) or -a (android) is required"
+  shouldExit=true
+fi
+test "$shouldExit" && exit 1;
+
+if [ "$stage" = "mbp" ] && ! [ "$cdn" ]; then
+  cdn="https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod"
+fi
+if [ "$stage" = "local" ] && [ "$android" ]; then
+  adb reverse tcp:8082 tcp:8082 &> /dev/null
+fi
+
+encode() {
+  node --eval "console.log(new URLSearchParams({enc: process.argv[1]}).toString().split(\"=\")[1])" "$1"
+}
+
+url="com.amazon.mobile.shopping://www.amazon.com/ssnap-debug-menu?"
+url+="feature_name=$(encode "$featureName")&"
+url+="launch_point=$(encode "$launchPoint")&"
+url+="initial_props=$(encode "$initialProps")&"
+url+="reset=$reset&"
+url+="load=$load&"
+url+="view_type=$(encode "$viewType")&"
+url+="stage=$(encode "$stage")&"
+url+="cdn=$(encode "$cdn")"
+
+echo "
+Navigating to: $url
+"
+
+if test $ios; then
+  xcrun simctl openurl booted "$url"
+else
+  if which mshop-debug &> /dev/null; then
+    mshop-debug -a navigate "$url" # prefer mshop-debug command
+  else
+    adb shell "am start -W -a android.intent.action.VIEW -d '$url'"
+  fi
+fi
+

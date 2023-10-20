@@ -163,7 +163,7 @@
   "ruby.format": "rufo",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "viceroy.config.lastVersion": "0.51.201448",
+  "viceroy.config.lastVersion": "0.52.201506",
   "files.watcherExclude": {
     "**/build/**": true,
     "**/.git/objects/**": true,
@@ -195,7 +195,7 @@
     "**/bower_components": true,
     "**/*.code-search": true
   },
-  "viceroy.config.internal.lastUpdateTime": "2023-10-11T22:33:45.329Z",
+  "viceroy.config.internal.lastUpdateTime": "2023-10-19T21:30:47.530Z",
   "viceroy.doc.welcome.showAtStartup": false,
   "gopls": {
     "experimentalWorkspaceModule": true
@@ -225,7 +225,8 @@
   "git.openRepositoryInParentFolders": "always",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "aws.suppressPrompts": {
-    "codeWhispererConnectionExpired": true
+    "codeWhispererConnectionExpired": true,
+    "codeWhispererNewWelcomeMessage": true
   },
   "editor.formatOnSave": true,
   "window.zoomLevel": 1
