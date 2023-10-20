@@ -17,61 +17,64 @@ local function on_attach(bufnr)
 end
 
 return {
-	filters = {
-		dotfiles = false,
-		exclude = {
-			"node_modules",
+	'nvim-tree/nvim-tree.lua',
+	opts = {
+		filters = {
+			dotfiles = false,
+			exclude = {
+				"node_modules",
+			},
 		},
-	},
-	git = {
-		enable = true,
-		ignore = false,
-	},
-	update_focused_file = {
-		enable = true,
-		update_cwd = true,
-	},
-	on_attach = on_attach,
-	renderer = {
-		root_folder_modifier = ":t",
-		icons = {
-			glyphs = {
-				default = "",
-				symlink = "",
-				folder = {
-					arrow_open = "",
-					arrow_closed = "",
-					default = "",
-					open = "",
-					empty = "",
-					empty_open = "",
-					symlink = "",
-					symlink_open = "",
-				},
-				git = {
-					unstaged = "",
-					staged = "S",
-					unmerged = "",
-					renamed = "➜",
-					untracked = "U",
-					deleted = "",
-					ignored = "◌",
+		git = {
+			enable = true,
+			ignore = false,
+		},
+		update_focused_file = {
+			enable = true,
+			update_cwd = true,
+		},
+		on_attach = on_attach,
+		renderer = {
+			root_folder_modifier = ":t",
+			icons = {
+				glyphs = {
+					default = "",
+					symlink = "",
+					folder = {
+						arrow_open = "",
+						arrow_closed = "",
+						default = "",
+						open = "",
+						empty = "",
+						empty_open = "",
+						symlink = "",
+						symlink_open = "",
+					},
+					git = {
+						unstaged = "",
+						staged = "S",
+						unmerged = "",
+						renamed = "➜",
+						untracked = "U",
+						deleted = "",
+						ignored = "◌",
+					},
 				},
 			},
 		},
-	},
-	diagnostics = {
-		enable = true,
-		show_on_dirs = true,
-		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
+		diagnostics = {
+			enable = true,
+			show_on_dirs = true,
+			icons = {
+				hint = "",
+				info = "",
+				warning = "",
+				error = "",
+			},
 		},
-	},
-	view = {
-		width = 45,
-		side = "left",
-	},
+		view = {
+			width = 45,
+			side = "left",
+		},
+	}
 }

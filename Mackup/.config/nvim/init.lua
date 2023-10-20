@@ -26,7 +26,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-fugitive',
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
   'tpope/vim-sleuth',
+  'mbbill/undotree',
+  'windwp/nvim-autopairs',
+  'moll/vim-bbye',
+  'RRethy/vim-illuminate',
+  'akinsho/toggleterm.nvim',
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -131,13 +138,16 @@ require('lazy').setup({
   },
   require('kickstart.plugins.autoformat'),
   require('kickstart.plugins.debug'),
-  { 'nvim-tree/nvim-tree.lua', opts = require('my.nvim-tree') },
+  require('my.nvim-tree'),
+  'akinsho/bufferline.nvim'
 }, {})
 
 require('my.keymaps')
 require('my.options')
 require('my.cmp')
--- require('my.nvim-tree')
+require('my.bufferline')
+require('my.illuminate')
+require('my.toggleterm')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
