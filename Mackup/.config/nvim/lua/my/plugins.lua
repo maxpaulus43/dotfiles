@@ -30,14 +30,15 @@ require('lazy').setup({
       require('colorizer').setup()
     end
   },
-  'ahmedkhalf/project.nvim',
+  require('my.telescope'),
+  require('my.project'),
   {
     'neovim/nvim-lspconfig',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', tag = 'legacy', config = true },
-      'folke/neodev.nvim',
+      { 'folke/neodev.nvim', config = true },
     },
   },
   {
@@ -84,20 +85,6 @@ require('lazy').setup({
     config = true,
   },
   { 'numToStr/Comment.nvim', opts = {} },
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-        build = 'make',
-      },
-    },
-  },
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
