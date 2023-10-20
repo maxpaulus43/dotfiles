@@ -14,10 +14,10 @@ keymap("", "<space>", "<Nop>", opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "<leader>w", "<cmd>wall<cr>", opts) -- write all
+keymap("n", "<leader>w", "<cmd>wall<cr>", opts)           -- write all
 keymap("n", "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
-keymap("n", "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
-keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
+keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
+keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 
 -- Normal --
@@ -57,7 +57,7 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<cr>", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Better escape
-keymap({"i", "c"}, "jk", "<esc>", opts)
+keymap({ "i", "c" }, "jk", "<esc>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -86,6 +86,14 @@ end, opts)
 keymap("n", "g*", function()
 	require("telescope.builtin").grep_string({ hidden = true, show_line = false })
 end, opts)
+keymap('n', '<leader>/', function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+		winblend = 10,
+		previewer = false,
+	})
+end)
+
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
@@ -102,7 +110,7 @@ keymap("n", "<leader>b", "<cmd> Gitsigns toggle_current_line_blame<cr>", opts)
 local function lsp_keymaps(bufnr)
 	local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
 
-    keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
+	keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 	keymap("n", "gD", vim.lsp.buf.declaration, lsp_opts)
 	keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
 	keymap("n", "K", vim.lsp.buf.hover, lsp_opts)
@@ -116,7 +124,7 @@ local function lsp_keymaps(bufnr)
 	keymap("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 	keymap("n", "<leader><Enter>", vim.lsp.buf.code_action, lsp_opts)
 
-    keymap("n", "gI", function()
+	keymap("n", "gI", function()
 		require("telescope.builtin").lsp_implementations({ show_line = false })
 	end, lsp_opts)
 	keymap("n", "gr", function()
