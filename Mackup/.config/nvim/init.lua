@@ -36,6 +36,7 @@ require('lazy').setup({
   'akinsho/toggleterm.nvim',
   'nvimtools/none-ls.nvim',
   'norcalli/nvim-colorizer.lua',
+  'ahmedkhalf/project.nvim',
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -150,6 +151,7 @@ require('my.illuminate')
 require('my.toggleterm')
 require('my.none-ls');
 require('colorizer').setup();
+require('my.project');
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
