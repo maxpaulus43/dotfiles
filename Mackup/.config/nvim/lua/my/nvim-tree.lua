@@ -24,6 +24,9 @@ return {
 			exclude = {
 				"node_modules",
 			},
+			custom = {
+				'^\\.DS_Store$'
+			}
 		},
 		git = {
 			enable = true,
