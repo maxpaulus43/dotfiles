@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+date=$(date -I)
+journalDir="${JOURNAL_DIR:-"$HOME/c/notes/journals"}"
+journalFile="$journalDir/$date.md"
+
+if [ ! -d "$journalDir" ]; then
+  echo "No Journal Directory found. exiting..."
+  exit 1
+fi
+
+if [ ! -f "$journalFile" ]; then
+  touch "$journalFile"
+  printf "# %s\n\n- " "$date" > "$journalFile"
+else
+  printf '%s ' '-' >> "$journalFile"
+fi
+
+nvim -c "$ | startinsert!" "$journalFile"

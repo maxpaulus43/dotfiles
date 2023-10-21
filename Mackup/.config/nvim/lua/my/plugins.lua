@@ -24,14 +24,19 @@ require('lazy').setup({
   'RRethy/vim-illuminate',
   'akinsho/toggleterm.nvim',
   'nvimtools/none-ls.nvim',
+  'akinsho/bufferline.nvim',
+  require('my.telescope'),
+  require('my.project'),
+  require('my.gitsigns'),
+  require('my.autoformat'),
+  require('my.debug'),
+  require('my.nvim-tree'),
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup()
     end
   },
-  require('my.telescope'),
-  require('my.project'),
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -51,7 +56,6 @@ require('lazy').setup({
     },
   },
   { 'folke/which-key.nvim',  config = true },
-  require('my.gitsigns'),
   {
     'navarasu/onedark.nvim',
     priority = 1000,
@@ -92,8 +96,13 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-  require('my.autoformat'),
-  require('my.debug'),
-  require('my.nvim-tree'),
-  'akinsho/bufferline.nvim'
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
 }, {})

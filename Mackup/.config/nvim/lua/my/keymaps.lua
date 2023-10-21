@@ -26,6 +26,11 @@ keymap("n", "<F5>", "<cmd>UndotreeToggle<cr>", opts)
 
 -- show full filename
 keymap("n", "<C-g>", "1<C-g>", opts)
+keymap("n", "<leader><C-g>", function()
+	vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
+	vim.cmd('let @* = expand("%:p")')
+end, opts)
+
 
 -- insert newline
 keymap("n", "<leader>o", "o<esc>", opts)
