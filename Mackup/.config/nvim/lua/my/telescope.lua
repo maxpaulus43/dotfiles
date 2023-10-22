@@ -68,6 +68,23 @@ return {
 					},
 				},
 			},
+			extensions = {
+				-- file_browser = {
+				-- 	hidden = { file_browser = true, folder_browser = true },
+				-- 	hijack_netrw = true,
+				-- 	initial_mode = 'normal',
+				-- 	mappings = {
+				-- 		i = {
+				-- 			["<leader>e"] = actions.close,
+				-- 		},
+				-- 		n = {
+				-- 			["<leader>e"] = actions.close,
+				-- 			["l"] = require('telescope.actions').select_default,
+				-- 			["h"] = require('telescope._extensions.file_browser.actions').goto_parent_dir,
+				-- 		}
+				-- 	},
+				-- }
+			}
 		})
 		pcall(require('telescope').load_extension, 'fzf')
 	end

@@ -25,12 +25,23 @@ require('lazy').setup({
   'akinsho/toggleterm.nvim',
   'nvimtools/none-ls.nvim',
   'akinsho/bufferline.nvim',
+  -- {
+  --   'vimwiki/vimwiki',
+  --   config = function()
+  --     -- vim.cmd("let g:vimwiki_list = [{'path': '~/c/notes/', 'syntax': 'markdown', 'ext': 'md'}]")
+  --   end
+  -- },
   require('my.telescope'),
   require('my.project'),
   require('my.gitsigns'),
   require('my.autoformat'),
   require('my.debug'),
   require('my.nvim-tree'),
+  -- {
+  --   "nvim-telescope/telescope-file-browser.nvim",
+  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  --   config = function() require("telescope").load_extension("file_browser") end,
+  -- },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()

@@ -76,6 +76,7 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 -- NvimTree
 keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
+-- keymap("n", "<leader>e", "<cmd>Telescope file_browser<cr>", opts)
 
 -- Telescope
 keymap("n", "<leader>fp", "<cmd>Telescope projects<cr>", opts)
