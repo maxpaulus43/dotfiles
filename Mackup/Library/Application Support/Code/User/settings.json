@@ -195,7 +195,7 @@
     "**/bower_components": true,
     "**/*.code-search": true
   },
-  "viceroy.config.internal.lastUpdateTime": "2023-10-19T21:30:47.530Z",
+  "viceroy.config.internal.lastUpdateTime": "2023-10-24T06:43:29.042Z",
   "viceroy.doc.welcome.showAtStartup": false,
   "gopls": {
     "experimentalWorkspaceModule": true

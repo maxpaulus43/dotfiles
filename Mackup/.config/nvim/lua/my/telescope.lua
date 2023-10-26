@@ -52,7 +52,15 @@ return {
 						["<Up>"] = actions.cycle_history_prev,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
+						["œ"] = function(p_bufnr)
+							actions.send_selected_to_qflist(p_bufnr)
+							actions.open_qflist(p_bufnr)
+						end,
 						["jk"] = actions.close,
+						["<C-o>"] = function(p_bufnr)
+							actions.send_selected_to_qflist(p_bufnr)
+							vim.cmd.cfdo("edit")
+						end,
 					},
 				},
 			},

@@ -11,9 +11,10 @@ fi
 
 if [ ! -f "$journalFile" ]; then
   touch "$journalFile"
-  printf "# %s\n\n- " "$date" > "$journalFile"
-else
-  printf '%s ' '-' >> "$journalFile"
+  printf "%s\n\n" "# $date" > "$journalFile"
+  # printf "%s\n\n" "## TODO" "- [ ]" "## Diary" > "$journalFile" # journal template
+  # printf "[modeline]: # ( vim: set wrap )" >> "$journalFile"
 fi
 
-nvim -c "$ | startinsert!" "$journalFile"
+printf '%s ' '-' >> "$journalFile"
+nvim -c "$ | set wrap | startinsert!" "$journalFile"
