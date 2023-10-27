@@ -21,7 +21,7 @@ usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p ini
     -h  show this help text
     -p  initial props as a JSON string. e.g. '{\"placementId\": \"shopping-videos-home\" }'
     -s  stage. e.g. 'local' | 'beta' | 'gamma' | 'prod' | 'mbp'. defaults to local
-    -v  viewType. e.g. 'non-modal' | 'transparent-modal' | 'modal-with-chrome' | 'modal'. defaults to 'non-modal'
+    -v  viewType. e.g. 'non-modal' | 'transparent-modal' | 'modal-with-chrome' | 'modal'. defaults to 'modal'
     -c  cdnUrl. custom url from which to download bundle"
 
 while getopts "f:l:p:s:v:c:rLiah" opt; do

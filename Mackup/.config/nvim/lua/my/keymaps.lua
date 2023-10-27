@@ -14,6 +14,9 @@ keymap("", "<space>", "<Nop>", opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
+keymap("i", "<C-.>", "<cmd>> | startinsert!<cr>", opts)
+keymap("i", "<C-,>", "<cmd>< | startinsert!<cr>", opts)
+
 keymap("n", "<leader>w", "<cmd>wall<cr>", opts)           -- write all
 keymap("n", "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
 keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
