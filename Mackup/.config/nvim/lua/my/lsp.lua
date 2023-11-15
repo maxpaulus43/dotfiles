@@ -15,7 +15,8 @@ local servers = {
   tailwindcss = {},
   svelte = {},
   templ = {},
-  marksman = {},
+  rust_analyzer = {},
+  -- marksman = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
