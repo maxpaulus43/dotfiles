@@ -58,6 +58,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install --cask shottr # better screenshots
     brew install --cask slack # instant messenger
     brew install scrcpy # android screen stream program
+    brew install --cask blackhole-2ch # reroute audio channels for recording internal computer audio
 
     brew tap homebrew/cask-fonts
     brew install --cask font-hack-nerd-font
