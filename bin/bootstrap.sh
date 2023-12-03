@@ -42,6 +42,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install tmux # terminal window manager
   brew install zoxide # better cd
   brew install scrcpy # android screen stream program
+  brew install ollama # running LLM's locally
 
   if [[ $platform == 'macos' ]]; then
     brew tap homebrew/cask-fonts
