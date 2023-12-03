@@ -17,4 +17,5 @@ if [ ! -f "$journalFile" ]; then
 fi
 
 printf '%s ' '-' >> "$journalFile"
-nvim -c "$ | set wrap | startinsert!" "$journalFile"
+# nvim -c "$ | set wrap | startinsert!" "$journalFile"
+nvim -c "$ | set wrap" "$journalFile"

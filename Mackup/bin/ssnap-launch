@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# https://w.amazon.com/bin/view/SSNAP/HowTo/FeatureDevelopment/DeeplinkingToSSNAPDebugMenu/
+
 featureName=""
 launchPoint=""
 initialProps=""

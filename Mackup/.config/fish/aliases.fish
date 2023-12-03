@@ -40,6 +40,12 @@ abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
 
+abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
+abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
+abbr live 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "2547231c-3c93-48cc-bec9-15e86c6fc062"}\' -s local -riL'
+abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab -p \'{"placementId": "inspire-feed"}\' -riL -s local -v non-modal'
+abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
+
 function lg
   set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
 
