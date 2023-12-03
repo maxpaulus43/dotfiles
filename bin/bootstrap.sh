@@ -24,6 +24,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install asdf # version manager for node,ruby, etc...
   brew install bat # better cat
   brew install btop # better top
+  brew install coreutils
   brew install dust # better du
   brew install exa # better ls
   brew install fd # better find 
@@ -32,48 +33,51 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   brew install fzf # fuzzy finder
   brew install git
   brew install git-delta # better git diffs
+  brew install jq # nice for working with json in the terminal
   brew install lazygit # git UI
   brew install neovim # better vim
+  brew install parallel # better xargs: build and execute shell command lines from standard input in parallel
   brew install ripgrep # better grep
   brew install rlwrap # needed for ~/bin/cht
-  # brew install tealdeer # community driven man pages
   brew install tmux # terminal window manager
   brew install zoxide # better cd
-  brew install parallel # better xargs: build and execute shell command lines from standard input in parallel
+  brew install scrcpy # android screen stream program
 
   if [[ $platform == 'macos' ]]; then
-    # brew install --cask alacritty # terminal emulator
+    brew tap homebrew/cask-fonts
+    brew install --cask alacritty # terminal emulator
+    # brew install --cask raycast # better version of cmd+space
+    brew install --cask android-studio # android studio
+    brew install --cask audacity # audio recorder
+    brew install --cask blackhole-2ch # reroute audio channels for recording internal computer audio
+    brew install --cask disk-inventory-x # windirstat for mac
+    brew install --cask font-hack-nerd-font
+    brew install --cask google-chrome # browser
+    brew install --cask google-drive # cloud storage (keep notes here)
+    brew install --cask intellij-idea # good IDE
     brew install --cask kitty # better terminal
     brew install --cask pixel-picker # color dropper tool
+    brew install --cask react-native-debugger # react debugging
+    brew install --cask reactotron # redux debugging
+    brew install --cask shottr # better screenshots
+    brew install --cask slack # instant messenger
     brew install --cask spotify # music
     brew install --cask telegram # messages
     brew install --cask typora # markdown editor
     brew install --cask visual-studio-code # code
-    brew install --cask android-studio # android studio
-    brew install --cask audacity # audio recorder
-    brew install --cask disk-inventory-x # windirstat for mac
-    brew install --cask google-chrome # browser
-    brew install --cask google-drive # cloud storage (keep notes here)
-    # brew install --cask raycast # better version of cmd+space
-    brew install --cask shottr # better screenshots
-    brew install --cask slack # instant messenger
-    brew install scrcpy # android screen stream program
-    brew install --cask blackhole-2ch # reroute audio channels for recording internal computer audio
 
-    brew tap homebrew/cask-fonts
-    brew install --cask font-hack-nerd-font
 
     brew install mas # mac app store cli
     mas install 441258766 # magnet (window tile manager)
     mas install 668208984 # giphy capture
     mas install 897283731 # strongbox (password manager)
     mas install 1037126344 # Apple Configurator
-    # mas install 497799835 # xcode (using xcodes cli instead)
 
     brew tap robotsandpencils/made
     brew install robotsandpencils/made/xcodes # xcode version picker
     # xcodes install --latest --select
-    echo '...You should run "xcodes install --latest --select"...'
+    # echo '...You should run "xcodes install --latest --select"...'
+    echo '...You should run "xcodes install 14.3 (14E222b)"...'
 
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 1 # how fast keys repeat normal minimum is 2 (30 ms)
