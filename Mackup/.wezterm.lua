@@ -30,7 +30,7 @@ c.initial_rows = 80
 c.initial_cols = 160
 c.scrollback_lines = 20000
 c.inactive_pane_hsb = {
-  saturation = 0.5,
+  saturation = 0.8,
   brightness = 0.5,
 }
 c.window_padding = {
