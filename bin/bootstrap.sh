@@ -46,7 +46,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
   if [[ $platform == 'macos' ]]; then
     brew tap homebrew/cask-fonts
-    brew install --cask alacritty # terminal emulator
+    # brew install --cask alacritty # terminal emulator
+    brew install --cask wezterm
     # brew install --cask raycast # better version of cmd+space
     brew install --cask android-studio # android studio
     brew install --cask audacity # audio recorder
