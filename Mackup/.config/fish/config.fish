@@ -26,8 +26,9 @@ if status is-interactive
   set -g fish_pager_color_selected_background --background=533 
   set fish_color_selection white --bold --background=blue
 
+  set fish_vi_force_cursor 1
   set fish_cursor_default block
-  set fish_cursor_insert line blink
+  set fish_cursor_insert line
   set fish_cursor_replace_one underscore
 
   zoxide init fish | source
