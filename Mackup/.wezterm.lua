@@ -15,6 +15,7 @@ end
 local my_brogrammer = wezterm.color.get_builtin_schemes()['Brogrammer']
 my_brogrammer.selection_fg = 'black'
 my_brogrammer.selection_bg = '#B164B2'
+c.front_end = "WebGpu"
 c.color_schemes = {
   ['My Brogrammer'] = my_brogrammer,
 }
@@ -26,8 +27,12 @@ c.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 -- cfg.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
 c.initial_rows = 80
-c.initial_cols = 80
+c.initial_cols = 160
 c.scrollback_lines = 20000
+c.inactive_pane_hsb = {
+  saturation = 0.5,
+  brightness = 0.5,
+}
 c.window_padding = {
   left = 0,
   right = 0,
