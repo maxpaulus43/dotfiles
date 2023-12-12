@@ -2,12 +2,12 @@
 local wezterm = require 'wezterm'
 
 -- This table will hold the configuration.
-local cfg = {}
+local c = {}
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  cfg = wezterm.config_builder()
+  c = wezterm.config_builder()
 end
 
 -- This is where you actually apply your config choices
@@ -15,26 +15,26 @@ end
 local my_brogrammer = wezterm.color.get_builtin_schemes()['Brogrammer']
 my_brogrammer.selection_fg = 'black'
 my_brogrammer.selection_bg = '#B164B2'
-cfg.color_schemes = {
+c.color_schemes = {
   ['My Brogrammer'] = my_brogrammer,
 }
-cfg.color_scheme = 'My Brogrammer'
+c.color_scheme = 'My Brogrammer'
 
-cfg.font_size = 15.0
-cfg.font = wezterm.font('Hack Nerd Font Mono')
-cfg.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-cfg.tab_bar_at_bottom = true
-cfg.use_fancy_tab_bar = false
-cfg.initial_rows = 80
-cfg.initial_cols = 80
-cfg.scrollback_lines = 20000
-cfg.window_padding = {
+c.font_size = 15.0
+c.font = wezterm.font('Hack Nerd Font Mono')
+c.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+-- cfg.tab_bar_at_bottom = true
+c.use_fancy_tab_bar = false
+c.initial_rows = 80
+c.initial_cols = 80
+c.scrollback_lines = 20000
+c.window_padding = {
   left = 0,
   right = 0,
   bottom = 0,
   top = 0,
 }
-cfg.keys = {
+c.keys = {
   {
     key = 'F1',
     mods = '',
@@ -63,4 +63,4 @@ cfg.keys = {
 }
 
 -- and finally, return the configuration to wezterm
-return cfg
+return c
