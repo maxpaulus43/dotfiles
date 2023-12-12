@@ -25,6 +25,8 @@ cfg.font = wezterm.font('Hack Nerd Font Mono')
 cfg.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 cfg.tab_bar_at_bottom = true
 cfg.use_fancy_tab_bar = false
+cfg.initial_rows = 80
+cfg.initial_cols = 80
 cfg.scrollback_lines = 20000
 cfg.window_padding = {
   left = 0,
