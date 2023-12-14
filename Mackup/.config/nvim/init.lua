@@ -13,7 +13,7 @@ require('my.cmp')
 require('my.bufferline')
 require('my.illuminate')
 require('my.toggleterm')
-require('my.none-ls');
+-- require('my.none-ls');
 require('telescope').load_extension('projects')
 require('my.lsp')
 
