@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This table will hold the configuration.
 local c = {}
@@ -13,17 +13,19 @@ end
 -- This is where you actually apply your config choices
 c.front_end = "WebGpu"
 
-local my_brogrammer = wezterm.color.get_builtin_schemes()['Brogrammer']
-my_brogrammer.selection_fg = 'black'
-my_brogrammer.selection_bg = '#B164B2'
+local my_brogrammer = wezterm.color.get_builtin_schemes()["Brogrammer"]
+my_brogrammer.selection_fg = "black"
+my_brogrammer.selection_bg = "#B164B2"
 c.color_schemes = {
-  ['My Brogrammer'] = my_brogrammer,
+  ["My Brogrammer"] = my_brogrammer,
 }
-c.color_scheme = 'My Brogrammer'
+c.color_scheme = "My Brogrammer"
 
 c.font_size = 15.0
-c.font = wezterm.font('Hack Nerd Font Mono')
-c.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+c.font = wezterm.font("Hack Nerd Font Mono")
+
+-- don't use ligatures
+c.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 c.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
@@ -42,29 +44,29 @@ c.window_padding = {
 }
 c.keys = {
   {
-    key = 'F1',
-    mods = '',
+    key = "F1",
+    mods = "",
     action = wezterm.action.TogglePaneZoomState,
   },
   {
-    key = 'Enter',
-    mods = 'CMD',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    key = "Enter",
+    mods = "CMD",
+    action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
   },
   {
-    key = 'Enter',
-    mods = 'CMD|SHIFT',
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+    key = "Enter",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
   },
   {
     key = "l",
     mods = "CTRL|ALT",
-    action = wezterm.action.ActivateTabRelative(1)
+    action = wezterm.action.ActivateTabRelative(1),
   },
   {
     key = "h",
     mods = "CTRL|ALT",
-    action = wezterm.action.ActivateTabRelative(-1)
+    action = wezterm.action.ActivateTabRelative(-1),
   },
 }
 
