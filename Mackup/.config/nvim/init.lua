@@ -2,29 +2,36 @@
 
 -- :help mapleader
 --  Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require('my.plugins')
-require('my.treesitter') -- treesitter handled separately because want to defer loading
-require('my.keymaps')
-require('my.options')
-require('my.cmp')
-require('my.bufferline')
-require('my.illuminate')
-require('my.toggleterm')
+require("my.plugins")
+require("my.treesitter") -- treesitter handled separately because want to defer loading
+require("my.keymaps")
+require("my.options")
+require("my.cmp")
+require("my.bufferline")
+require("my.illuminate")
+require("my.toggleterm")
 -- require('my.none-ls');
-require('telescope').load_extension('projects')
-require('my.lsp')
+require("telescope").load_extension("projects")
+require("my.lsp")
 
 -- :help vim.highlight.on_yank()
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
   group = highlight_group,
-  pattern = '*',
+  pattern = "*",
+})
+
+-- additional filetypes
+vim.filetype.add({
+  extension = {
+    templ = "templ",
+  },
 })
 
 vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
