@@ -12,6 +12,12 @@ local servers = {
   yamlls = {},
   gopls = {},
   bashls = {},
+  htmx = {
+    filetypes = {
+      "templ",
+      "html",
+    },
+  },
   tailwindcss = {
     filetypes = {
       "templ",
