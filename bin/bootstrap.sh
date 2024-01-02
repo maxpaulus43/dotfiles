@@ -47,7 +47,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
   if [[ $platform == 'macos' ]]; then
     brew tap homebrew/cask-fonts
     # brew install --cask alacritty # terminal emulator
-    brew install --cask wezterm
+    # brew install --cask kitty # better terminal
+    brew install --cask wezterm # terminal emulator that uses lua!
     # brew install --cask raycast # better version of cmd+space
     brew install --cask android-studio # android studio
     brew install --cask audacity # audio recorder
@@ -57,7 +58,6 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install --cask google-chrome # browser
     brew install --cask google-drive # cloud storage (keep notes here)
     brew install --cask intellij-idea # good IDE
-    brew install --cask kitty # better terminal
     brew install --cask pixel-picker # color dropper tool
     brew install --cask react-native-debugger # react debugging
     brew install --cask reactotron # redux debugging

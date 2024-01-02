@@ -22,6 +22,10 @@ keymap("n", "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't au
 keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
 keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+keymap("v", "j", "gj", opts)
+keymap("v", "k", "gk", opts)
 
 -- Normal --
 -- undotree
@@ -33,7 +37,6 @@ keymap("n", "<leader><C-g>", function()
 	vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
 	vim.cmd('let @* = expand("%:p")')
 end, opts)
-
 
 -- insert newline
 keymap("n", "<leader>o", "o<esc>", opts)
@@ -87,8 +90,8 @@ keymap("n", "<leader><space>", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
 keymap("n", "fr", "<cmd>Telescope registers<cr>", opts)
 keymap("n", "fl", "<cmd>Telescope jumplist<cr>", opts)
-keymap('n', '<leader>fh', require('telescope.builtin').help_tags, opts)
-keymap('n', '<leader>fg', require('telescope.builtin').git_status, opts)
+keymap("n", "<leader>fh", require("telescope.builtin").help_tags, opts)
+keymap("n", "<leader>fg", require("telescope.builtin").git_status, opts)
 keymap("n", "<leader>ff", function()
 	require("telescope.builtin").find_files({ hidden = true })
 end, opts)
@@ -98,14 +101,13 @@ end, opts)
 keymap("n", "g*", function()
 	require("telescope.builtin").grep_string({ hidden = true, show_line = false })
 end, opts)
-keymap('n', '<leader>/', function()
+keymap("n", "<leader>/", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
-	require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
 		previewer = false,
-	})
+	}))
 end)
-
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
@@ -162,15 +164,15 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- document existing key chains
-require('which-key').register {
-	['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-	['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-	['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-	['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-	['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-	['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-	['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+require("which-key").register({
+	["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+	["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+	["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
+	["<leader>h"] = { name = "More git", _ = "which_key_ignore" },
+	["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+	["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+	["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+})
 
 -- DAP
 -- local dap = require("dap")
