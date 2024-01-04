@@ -1,10 +1,20 @@
 #!/bin/bash
 from_file="$1"
 to_file="$2"
-shift_h=$3
-shift_m=$4
-shift_s=$5
-shift_ms=$6
+
+sign=1
+if [[ $3 =~ ^- ]]; then
+  sign=-1
+fi
+
+IFS=':,' read -ra TIME <<< "$3"
+# 10# forces base 10 instead of octal number
+# ${} is param expancsion
+# :=0 sets default value to 0
+shift_h=$(( 10#${TIME[0]:=0} * sign ))
+shift_m=$(( 10#${TIME[1]:=0} * sign ))
+shift_s=$(( 10#${TIME[2]:=0} * sign ))
+shift_ms=$(( 10#${TIME[3]:=0} * sign ))
 
 function handleTimestamp {
     # Split into hours, minutes, seconds, and milliseconds
@@ -43,7 +53,7 @@ function handleTimestamp {
     fi
 
     h=$((h + shift_h))
-    if [[ $h -lt 0 ]]; then # could only happen if we subtract time to less than 00:00:00,000
+    if [[ $h -lt 0 ]]; then # could only happen if we subtract time to something less than 00:00:00,000
       h=0
       m=0
       s=0
