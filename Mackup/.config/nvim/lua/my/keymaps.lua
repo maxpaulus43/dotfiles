@@ -27,6 +27,8 @@ keymap("n", "k", "gk", opts)
 keymap("v", "j", "gj", opts)
 keymap("v", "k", "gk", opts)
 
+keymap("n", "<leader>md", "<cmd>MarkdownPreviewToggle<cr>", opts)
+
 -- Normal --
 -- undotree
 keymap("n", "<F5>", "<cmd>UndotreeToggle<cr>", opts)
