@@ -11,10 +11,10 @@ IFS=':,' read -ra TIME <<< "$3"
 # 10# forces base 10 instead of octal number
 # ${} is param expancsion
 # :=0 sets default value to 0
-shift_h=$(( 10#${TIME[0]:=0} * sign ))
-shift_m=$(( 10#${TIME[1]:=0} * sign ))
-shift_s=$(( 10#${TIME[2]:=0} * sign ))
-shift_ms=$(( 10#${TIME[3]:=0} * sign ))
+shift_h=$(( 10#${TIME[0]:-0} * sign ))
+shift_m=$(( 10#${TIME[1]:-0} * sign ))
+shift_s=$(( 10#${TIME[2]:-0} * sign ))
+shift_ms=$(( 10#${TIME[3]:-0} * sign ))
 
 function handleTimestamp {
     # Split into hours, minutes, seconds, and milliseconds
