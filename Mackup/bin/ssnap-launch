@@ -12,7 +12,7 @@ reset=false
 load=false
 ios=""
 android=""
-deviceId="booted"
+deviceId=""
 
 usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p initialProps] [-s stage] [-v viewType] [-c cdnUrl] [-d device_id]
     -i  ios
@@ -28,16 +28,16 @@ usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p ini
     -c  cdnUrl. custom url from which to download bundle
     -d  device id of the ios device you wish to use. defaults to 'booted'" 
 
-while getopts "f:l:p:s:v:c:rLiahd" opt; do
+while getopts "f:l:p:s:v:c:d:rLiah" opt; do
   case "$opt" in
     "h") echo "$usage"; exit 0 ;;
     "f") featureName="$OPTARG" ;;
     "l") launchPoint="$OPTARG" ;;
     "p") initialProps="$OPTARG" ;;
     "s") stage="$OPTARG" ;;
-    "d") deviceId="$OPTARG" ;;
     "v") viewType="$OPTARG" ;;
     "c") cdn="$OPTARG" ;;
+    "d") deviceId="$OPTARG" ;;
     "r") reset=true ;;
     "L") load=true ;;
     "i") ios=true ;;
@@ -83,10 +83,10 @@ Navigating to: $url
 "
 
 if test $ios; then
-  xcrun simctl openurl "$deviceId" "$url"
+  xcrun simctl openurl "${deviceId:-booted}" "$url"
 else
   if which mshop-debug &> /dev/null; then
-    mshop-debug -a navigate "$url" # prefer mshop-debug command
+    mshop-debug -a -d "$deviceId" navigate  "$url" # prefer mshop-debug command
   else
     adb shell "am start -W -a android.intent.action.VIEW -d '$url'"
   fi
