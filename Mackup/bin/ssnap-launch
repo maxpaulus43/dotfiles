@@ -83,7 +83,7 @@ Navigating to: $url
 "
 
 if test $ios; then
-  xcrun simctl openurl "$deviceId' "$url"
+  xcrun simctl openurl "$deviceId" "$url"
 else
   if which mshop-debug &> /dev/null; then
     mshop-debug -a navigate "$url" # prefer mshop-debug command
