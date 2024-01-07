@@ -39,6 +39,7 @@ abbr v "nvim"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
+abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -e \'tell application "Google Chrome" to tell the active tab of its first window to reload\''
 
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
