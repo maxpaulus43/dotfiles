@@ -41,6 +41,7 @@ abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
 abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -l JavaScript -e "Application(\"chrome\").windows[0].tabs.whose({url: {_contains: \'$(pwd)\'}})[0].reload()"'
 abbr scr 'scrcpy 1>/dev/null & && disown $last_pid'
+abbr dow 'date -j -f "%Y-%m-%d" +"%A"'
 
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
