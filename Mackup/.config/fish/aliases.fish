@@ -40,12 +40,14 @@ abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
 abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -l JavaScript -e "Application(\"chrome\").windows[0].tabs.whose({url: {_contains: \'$(pwd)\'}})[0].reload()"'
+abbr scr 'scrcpy 1>/dev/null & && disown $last_pid'
 
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
 abbr live 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "2547231c-3c93-48cc-bec9-15e86c6fc062"}\' -s local -riL'
 abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab -p \'{"placementId": "inspire-feed"}\' -riL -s local -v non-modal'
-abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
+# abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
+abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "0e128266bf9a4412ad52c09905cc3352", "source": "VSE"}\' -s local -riL'
 abbr catamaran 'ssnap-launch -f amazon-live-catamaran -p \'{"placementId": "shopping-videos-home", "broadcastId": "ea65fbc8-5b39-43c2-a619-a4befb5249c9"}\' -s prod -riL'
 
 function lg

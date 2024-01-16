@@ -30,6 +30,6 @@ null_ls.setup({
     diagnostics.shellcheck,
     formatting.shfmt,
 
-    code_actions.gitsigns,
+    -- code_actions.gitsigns,
   },
 })
