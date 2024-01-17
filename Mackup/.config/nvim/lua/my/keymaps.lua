@@ -17,10 +17,10 @@ keymap("", "<space>", "<Nop>", opts)
 keymap("i", "<C-.>", "<cmd>> | startinsert!<cr>", opts)
 keymap("i", "<C-,>", "<cmd>< | startinsert!<cr>", opts)
 
-keymap("n", "<leader>w", "<cmd>wall<cr>", opts)           -- write all
-keymap("n", "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
-keymap("n", "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
-keymap("n", "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
+keymap({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts)           -- write all
+keymap({ "n", "v" }, "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
+keymap({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
+keymap({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)

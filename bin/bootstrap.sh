@@ -44,6 +44,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	brew install scrcpy    # android screen stream program
 	brew install ollama    # running LLM's locally
 	brew install fswatch   # Monitor a directory for changes and run a shell command
+	brew instal gawk       # better awk
 
 	if [[ $platform == 'macos' ]]; then
 		brew tap homebrew/cask-fonts
