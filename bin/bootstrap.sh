@@ -113,5 +113,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	fish_dir="$(which fish)"
 	echo "Adding '$fish_dir' to /etc/shells"
 	sudo sh -c "echo $fish_dir >> /etc/shells"
+
+	# shellcheck disable=2016
 	echo '...You should run chsh -s $(which fish)...'
 fi
