@@ -18,6 +18,9 @@ stdin.on("end", function () {
   for (let [k, v] of Object.entries(o.headers)) {
     output += " --header '" + k + ": " + v + "'";
   }
+  if (o.body) {
+    output += " -d '" + o.body.replace('\\"', '"') + "'";
+  }
   output += " " + o.url.replace("?", "\\?").replace("&", "\\&");
 
   console.log(output);
