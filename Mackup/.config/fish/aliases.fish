@@ -33,7 +33,7 @@ abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
 abbr tree "exa -T"
 abbr typora "open -a typora"
-abbr v. "nvim ."
+abbr vv "nvim ."
 abbr vd 'nvim ~/c/dotfiles'
 abbr v "nvim"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
