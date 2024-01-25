@@ -59,6 +59,16 @@ c.keys = {
     action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
   },
   {
+    key = "k",
+    mods = "CMD",
+    action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+  },
+  {
+    key = "k",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.ClearScrollback("ScrollbackOnly"),
+  },
+  {
     key = "l",
     mods = "CTRL|ALT",
     action = wezterm.action.ActivateTabRelative(1),
