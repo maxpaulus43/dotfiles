@@ -19,21 +19,17 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "tpope/vim-sleuth",
   "mbbill/undotree",
-  "windwp/nvim-autopairs",
   "moll/vim-bbye",
   "RRethy/vim-illuminate",
   "akinsho/toggleterm.nvim",
-  "nvimtools/none-ls.nvim",
+  require("my.none-ls"),
   "akinsho/bufferline.nvim",
-  "epwalsh/obsidian.nvim",
   {
     "David-Kunz/jester",
     opts = {
       cmd = "npx jest test -t '$result' -- $file",
     },
   },
-  -- require("my.lint"),
-  -- require("my.conform"),
   require("my.mkdnflow"),
   require("my.telescope"),
   require("my.project"),
@@ -41,11 +37,6 @@ require("lazy").setup({
   require("my.autoformat"),
   require("my.debug"),
   require("my.nvim-tree"),
-  -- {
-  --   "nvim-telescope/telescope-file-browser.nvim",
-  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  --   config = function() require("telescope").load_extension("file_browser") end,
-  -- },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -58,7 +49,7 @@ require("lazy").setup({
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { "j-hui/fidget.nvim", tag = "legacy", config = true },
-      { "folke/neodev.nvim", config = true },
+      "folke/neodev.nvim",
     },
   },
   {
@@ -70,19 +61,27 @@ require("lazy").setup({
       "rafamadriz/friendly-snippets",
     },
   },
-  { "folke/which-key.nvim",  config = true },
+  {
+    "folke/which-key.nvim",
+    config = function()
+      local wk = require("which-key")
+      wk.setup()
+      wk.register({
+        ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+        ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+        ["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
+        ["<leader>h"] = { name = "More git", _ = "which_key_ignore" },
+        ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+        ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+        ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+      })
+    end,
+  },
   {
     "navarasu/onedark.nvim",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme("onedark")
-    end,
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme 'gruvbox'
     end,
   },
   {
@@ -120,21 +119,7 @@ require("lazy").setup({
     build = "cd app && npm install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
-      -- vim.g.mkdp_markdown_css = vim.fn.expand("~/Library/Application Support/abnerworks.Typora/themes/github-dark-default.css")
     end,
     ft = { "markdown" },
   },
-  -- {
-  --   'simrat39/rust-tools.nvim',
-  --   opts = {
-  --     -- server = {
-  --     --   on_attach = function(_, bufnr)
-  --     --     -- Hover actions
-  --     --     vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-  --     --     -- Code action groups
-  --     --     vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-  --     --   end,
-  --     -- },
-  --   }
-  -- }
 }, {})

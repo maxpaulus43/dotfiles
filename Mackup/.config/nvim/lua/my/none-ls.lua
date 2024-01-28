@@ -1,35 +1,35 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  return
-end
+return {
+  "nvimtools/none-ls.nvim",
+  config = function()
+    local null_ls = require("null-ls")
+    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+    local formatting = null_ls.builtins.formatting
+    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+    local diagnostics = null_ls.builtins.diagnostics
+    -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/code_actions
+    local code_actions = null_ls.builtins.code_actions
+    null_ls.setup({
+      debug = false,
+      sources = {
+        -- javascript/typescript
+        formatting.prettierd.with({
+          extra_filetypes = { "toml" },
+        }),
+        diagnostics.eslint_d,
+        code_actions.eslint_d,
 
--- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
--- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/code_actions
-local code_actions = null_ls.builtins.code_actions
+        -- lua
+        formatting.stylua,
 
--- local hover = null_ls.builtins.hover
+        -- python
+        diagnostics.flake8,
+        formatting.black.with({ extra_args = { "--fast" } }),
 
-null_ls.setup({
-  debug = false,
-  sources = {
-    formatting.prettierd.with({
-      extra_filetypes = { "toml" },
-    }),
-    diagnostics.eslint_d,
-    code_actions.eslint_d,
-
-    formatting.stylua,
-
-    diagnostics.flake8,
-    formatting.black.with({ extra_args = { "--fast" } }),
-
-    code_actions.shellcheck,
-    diagnostics.shellcheck,
-    formatting.shfmt,
-
-    -- code_actions.gitsigns,
-  },
-})
+        -- bash
+        code_actions.shellcheck,
+        diagnostics.shellcheck,
+        formatting.shfmt,
+      },
+    })
+  end,
+}
