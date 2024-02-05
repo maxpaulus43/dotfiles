@@ -23,6 +23,14 @@ require("lazy").setup({
   "RRethy/vim-illuminate",
   "akinsho/toggleterm.nvim",
   require("my.none-ls"),
+  -- {
+  --   "sourcegraph/sg.nvim",
+  --   config = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
   "akinsho/bufferline.nvim",
   {
     "David-Kunz/jester",
@@ -49,7 +57,7 @@ require("lazy").setup({
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { "j-hui/fidget.nvim", tag = "legacy", config = true },
-      "folke/neodev.nvim",
+      { "folke/neodev.nvim", config = true },
     },
   },
   {

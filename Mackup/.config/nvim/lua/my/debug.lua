@@ -14,9 +14,17 @@ return {
     -- Creates a beautiful debugger UI
     "rcarriga/nvim-dap-ui",
 
-    -- Installs the debug adapters for you
-    "williamboman/mason.nvim",
-    -- 'jay-babu/mason-nvim-dap.nvim',
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      opts = {
+        ensure_installed = { "node2" },
+        handlers = {},
+      },
+      dependencies = {
+        -- Installs the debug adapters for you
+        { "williamboman/mason.nvim", config = true },
+      },
+    },
 
     -- Add your own debuggers here
     "leoluz/nvim-dap-go",
