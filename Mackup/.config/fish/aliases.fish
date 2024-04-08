@@ -36,6 +36,7 @@ abbr typora "open -a typora"
 abbr vv "nvim ."
 abbr vd 'nvim ~/c/dotfiles'
 abbr v "nvim"
+abbr vf "nvim (fzf)"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
@@ -46,7 +47,7 @@ abbr dow 'date -j -f "%Y-%m-%d" +"%A"'
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
 abbr live 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "2547231c-3c93-48cc-bec9-15e86c6fc062"}\' -s local -riL'
-abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab -p \'{"placementId": "inspire-feed"}\' -riL -s local -v non-modal'
+abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab -p \'{"placementId": "inspire-feed"}\' -v non-modal -s local -riL'
 # abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
 abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "0b24b6e6c5da452c821bcfbe3ac8c808", "source": "VSE"}\' -s local -riL'
 abbr catamaran 'ssnap-launch -f amazon-live-catamaran -p \'{"placementId": "shopping-videos-home", "broadcastId": "ea65fbc8-5b39-43c2-a619-a4befb5249c9"}\' -s prod -riL'

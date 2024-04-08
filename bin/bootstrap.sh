@@ -71,6 +71,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install --cask typora                # markdown editor
 		brew install --cask visual-studio-code    # code
 		brew install --cask docker
+		brew install --cask obs
 
 		brew install mas       # mac app store cli
 		mas install 441258766  # magnet (window tile manager)

@@ -7,7 +7,7 @@ launchPoint=""
 initialProps=""
 stage="local"
 viewType="modal"
-cdn=""
+cdn="http://localhost:8081"
 reset=false
 load=false
 ios=""
@@ -26,46 +26,52 @@ usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p ini
     -s  stage. e.g. 'local' | 'beta' | 'gamma' | 'prod' | 'mbp'. defaults to local
     -v  viewType. e.g. 'non-modal' | 'transparent-modal' | 'modal-with-chrome' | 'modal'. defaults to 'modal'
     -c  cdnUrl. custom url from which to download bundle
-    -d  device id of the ios device you wish to use. defaults to 'booted'" 
+    -d  device id of the ios device you wish to use. defaults to 'booted'"
 
 while getopts "f:l:p:s:v:c:d:rLiah" opt; do
-  case "$opt" in
-    "h") echo "$usage"; exit 0 ;;
-    "f") featureName="$OPTARG" ;;
-    "l") launchPoint="$OPTARG" ;;
-    "p") initialProps="$OPTARG" ;;
-    "s") stage="$OPTARG" ;;
-    "v") viewType="$OPTARG" ;;
-    "c") cdn="$OPTARG" ;;
-    "d") deviceId="$OPTARG" ;;
-    "r") reset=true ;;
-    "L") load=true ;;
-    "i") ios=true ;;
-    "a") android=true ;;
-    *) ;;
-  esac
+	case "$opt" in
+	"h")
+		echo "$usage"
+		exit 0
+		;;
+	"f") featureName="$OPTARG" ;;
+	"l") launchPoint="$OPTARG" ;;
+	"p") initialProps="$OPTARG" ;;
+	"s") stage="$OPTARG" ;;
+	"v") viewType="$OPTARG" ;;
+	"c") cdn="$OPTARG" ;;
+	"d") deviceId="$OPTARG" ;;
+	"r") reset=true ;;
+	"L") load=true ;;
+	"i") ios=true ;;
+	"a") android=true ;;
+	*) ;;
+	esac
 done
 
 shouldExit=""
 if ! test "$featureName"; then
-  echo "-f (featureName) is required"
-  shouldExit=true
+	echo "-f (featureName) is required"
+	shouldExit=true
 fi
-if ! test "$ios$android"; then 
-  echo "-i (ios) or -a (android) is required"
-  shouldExit=true
+if ! test "$ios$android"; then
+	echo "-i (ios) or -a (android) is required"
+	shouldExit=true
 fi
-test "$shouldExit" && exit 1;
+test "$shouldExit" && exit 1
 
 if [ "$stage" = "mbp" ] && ! [ "$cdn" ]; then
-  cdn="https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod"
+	cdn="https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod"
 fi
 if [ "$stage" = "local" ] && [ "$android" ]; then
-  adb reverse tcp:8082 tcp:8082 &> /dev/null
+	adb reverse tcp:8082 tcp:8082 &>/dev/null
+	adb reverse tcp:8081 tcp:8081 &>/dev/null
+	adb reverse tcp:8097 tcp:8097 &>/dev/null
+	adb reverse tcp:9090 tcp:9090 &>/dev/null
 fi
 
 encode() {
-  node --eval "console.log(new URLSearchParams({enc: process.argv[1]}).toString().split(\"=\")[1])" "$1"
+	node --eval "console.log(new URLSearchParams({enc: process.argv[1]}).toString().split(\"=\")[1])" "$1"
 }
 
 url="com.amazon.mobile.shopping://www.amazon.com/ssnap-debug-menu?"
@@ -83,12 +89,11 @@ Navigating to: $url
 "
 
 if test $ios; then
-  xcrun simctl openurl "${deviceId:-booted}" "$url"
+	xcrun simctl openurl "${deviceId:-booted}" "$url"
 else
-  if which mshop-debug &> /dev/null; then
-    mshop-debug -a -d "$deviceId" navigate  "$url" # prefer mshop-debug command
-  else
-    adb shell "am start -W -a android.intent.action.VIEW -d '$url'"
-  fi
+	if which mshop-debug &>/dev/null; then
+		mshop-debug -a -d "$deviceId" navigate "$url" # prefer mshop-debug command
+	else
+		adb shell "am start -W -a android.intent.action.VIEW -d '$url'"
+	fi
 fi
-

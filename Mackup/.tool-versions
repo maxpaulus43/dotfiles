@@ -1,5 +1,5 @@
 nodejs lts
-ruby 2.7.2
+ruby 2.7.7
 golang 1.21.4
 java corretto-11.0.17.8.1
 rust stable

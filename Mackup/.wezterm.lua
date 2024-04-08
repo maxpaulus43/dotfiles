@@ -29,8 +29,8 @@ c.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 c.tab_bar_at_bottom = true
 c.use_fancy_tab_bar = false
-c.initial_rows = 80
-c.initial_cols = 160
+-- c.initial_rows = 80
+-- c.initial_cols = 160
 c.scrollback_lines = 20000
 c.inactive_pane_hsb = {
   saturation = 0.8,
@@ -79,6 +79,14 @@ c.keys = {
     action = wezterm.action.ActivateTabRelative(-1),
   },
 }
+
+-- c.ssh_domains = {
+--   {
+--     name = "clouddsk",
+--     remote_address = "dev-dsk-maxpaulu-2a-9968300e.us-west-2.amazon.com",
+--     username = "maxpaulu",
+--   },
+-- }
 
 -- and finally, return the configuration to wezterm
 return c
