@@ -7,7 +7,7 @@ launchPoint=""
 initialProps=""
 stage="local"
 viewType="modal"
-cdn="http://localhost:8081"
+cdn=""
 reset=false
 load=false
 ios=""
@@ -50,19 +50,24 @@ while getopts "f:l:p:s:v:c:d:rLiah" opt; do
 done
 
 shouldExit=""
-if ! test "$featureName"; then
+if [ -z "$featureName" ]; then
 	echo "-f (featureName) is required"
 	shouldExit=true
 fi
-if ! test "$ios$android"; then
+if [ -z "$ios$android" ]; then
 	echo "-i (ios) or -a (android) is required"
 	shouldExit=true
 fi
 test "$shouldExit" && exit 1
 
-if [ "$stage" = "mbp" ] && ! [ "$cdn" ]; then
-	cdn="https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod"
+if [ -z "$cdn" ]; then
+	case "$stage" in
+	"mbp") cdn="https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod" ;;
+	"local") cdn="http://localhost:8081" ;;
+	*) ;;
+	esac
 fi
+
 if [ "$stage" = "local" ] && [ "$android" ]; then
 	adb reverse tcp:8082 tcp:8082 &>/dev/null
 	adb reverse tcp:8081 tcp:8081 &>/dev/null
