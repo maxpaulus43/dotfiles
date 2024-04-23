@@ -51,6 +51,8 @@ abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab 
 # abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
 abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "0b24b6e6c5da452c821bcfbe3ac8c808", "source": "VSE"}\' -s local -riL'
 abbr catamaran 'ssnap-launch -f amazon-live-catamaran -p \'{"placementId": "shopping-videos-home", "broadcastId": "ea65fbc8-5b39-43c2-a619-a4befb5249c9"}\' -s prod -riL'
+abbr dpmb 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId":"dp-media-block","initialSeekTime":"20","ingressMediaId":"0f40c3e27cdf443c8c68552d8c733c04","metadata":"%7B%22mediaUrl%22:%22https://m.media-amazon.com/images/S/vse-vms-transcoding-artifact-us-east-1-prod/bc4deb86-8d9a-4b2c-a815-4400e5bc0cbe/default.jobtemplate.mp4.480.mp4%22,%22slateImageUrl%22:%22https://m.media-amazon.com/images/I/51IOnzQKDRL._SY350_PKmb-play-button-overlay_.jpg%22,%22asin%22:%22B0B1G5M31V%22%7D"}\' -s local -riL'
+abbr fif 'echo "https://m.media-amazon.com/images/S/mbp-ssnap-msa/prod/featureInteg/ios/v7/MBPFeatureIntegrationIOS.json" | pbcopy'
 
 function lg
   set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
