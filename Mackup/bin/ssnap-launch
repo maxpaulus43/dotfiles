@@ -13,12 +13,13 @@ load=false
 ios=""
 android=""
 deviceId=""
+domain="com"
 
-usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p initialProps] [-s stage] [-v viewType] [-c cdnUrl] [-d device_id]
+usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p initialProps] [-s stage] [-v viewType] [-c cdnUrl] [-d device_id] [-u url_domain]
     -i  ios
     -a  android
     -f  the ssnap feature name
-    -l  the ssnap launchpoint
+    -l  the ssnap launchpoint. defaults to feature name
     -r  reset (equivalent to 'ssnap reset' button)
     -L  load. automatically load the ssnap feature
     -h  show this help text
@@ -26,9 +27,10 @@ usage="$(basename "$0") (-i | -a) -f featureName [-l launchPoint] [-roh] [-p ini
     -s  stage. e.g. 'local' | 'beta' | 'gamma' | 'prod' | 'mbp'. defaults to local
     -v  viewType. e.g. 'non-modal' | 'transparent-modal' | 'modal-with-chrome' | 'modal'. defaults to 'modal'
     -c  cdnUrl. custom url from which to download bundle
-    -d  device id of the ios device you wish to use. defaults to 'booted'"
+    -d  device id of the ios device you wish to use. defaults to 'booted'
+    -u  the url domain (for testing in other marketplaces). e.g. com, co.uk, co.jp"
 
-while getopts "f:l:p:s:v:c:d:rLiah" opt; do
+while getopts "f:l:p:s:v:c:d:u:rLiah" opt; do
 	case "$opt" in
 	"h")
 		echo "$usage"
@@ -41,6 +43,7 @@ while getopts "f:l:p:s:v:c:d:rLiah" opt; do
 	"v") viewType="$OPTARG" ;;
 	"c") cdn="$OPTARG" ;;
 	"d") deviceId="$OPTARG" ;;
+	"u") domain="$OPTARG" ;;
 	"r") reset=true ;;
 	"L") load=true ;;
 	"i") ios=true ;;
@@ -79,7 +82,7 @@ encode() {
 	node --eval "console.log(new URLSearchParams({enc: process.argv[1]}).toString().split(\"=\")[1])" "$1"
 }
 
-url="com.amazon.mobile.shopping://www.amazon.com/ssnap-debug-menu?"
+url="com.amazon.mobile.shopping://www.amazon.$domain/ssnap-debug-menu?"
 url+="feature_name=$(encode "$featureName")&"
 url+="launch_point=$(encode "$launchPoint")&"
 url+="initial_props=$(encode "$initialProps")&"

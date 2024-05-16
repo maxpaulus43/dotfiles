@@ -99,7 +99,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install robotsandpencils/made/xcodes # xcode version picker
 		# xcodes install --latest --select
 		# echo '...You should run "xcodes install --latest --select"...'
-		echo '...You should run "xcodes install 14.3 (14E222b)"...'
+		echo '...You should run "xcodes install <xcode-version>"...'
 
 		defaults write -g InitialKeyRepeat -int 15                               # normal minimum is 15 (225 ms)
 		defaults write -g KeyRepeat -int 1                                       # how fast keys repeat normal minimum is 2 (30 ms)
