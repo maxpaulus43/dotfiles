@@ -26,12 +26,12 @@ abbr gstaa 'git stash apply'
 abbr gstp 'git stash pop'
 abbr icat "kitten icat"
 abbr jtc 'eval "$(pbpaste | jsonToCurl)" | jq | code -'
-abbr la 'exa -1la'
-abbr ls 'exa --icons'
+abbr la 'eza -1la'
+abbr ls 'eza --icons'
 abbr nds "ninja-dev-sync"
 abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
-abbr tree "exa -T"
+abbr tree "eza -T"
 abbr typora "open -a typora"
 abbr vv "nvim ."
 abbr vd 'nvim ~/c/dotfiles'

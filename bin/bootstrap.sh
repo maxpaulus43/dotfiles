@@ -26,7 +26,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	brew install btop # better top
 	brew install coreutils
 	brew install dust   # better du
-	brew install exa    # better ls
+	brew install eza    # better ls
 	brew install fd     # better find
 	brew install ffmpeg # image/video manipulations
 	brew install fish   # better shell
