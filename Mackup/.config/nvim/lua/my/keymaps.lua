@@ -86,31 +86,6 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>e", "<cmd>Telescope file_browser<cr>", opts)
 
--- Telescope
-keymap("n", "<leader>fp", "<cmd>Telescope projects<cr>", opts)
-keymap("n", "<leader><space>", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
-keymap("n", "<leader>fl", "<cmd>Telescope jumplist<cr>", opts)
-keymap("n", "<leader>fh", require("telescope.builtin").help_tags, opts)
-keymap("n", "<leader>fg", require("telescope.builtin").git_status, opts)
-keymap("n", "<leader>ff", function()
-	require("telescope.builtin").find_files({ hidden = true })
-end, opts)
-keymap("n", "<leader>ft", function()
-	require("telescope.builtin").live_grep({ hidden = true, show_line = false })
-end, opts)
-keymap("n", "g*", function()
-	require("telescope.builtin").grep_string({ hidden = true, show_line = false })
-end, opts)
-keymap("n", "<leader>/", function()
-	-- You can pass additional configuration to telescope to change theme, layout, etc.
-	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-		previewer = false,
-	}))
-end)
-
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
 -- keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
@@ -128,7 +103,7 @@ local function lsp_keymaps(bufnr)
 
 	keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 	keymap("n", "gD", vim.lsp.buf.declaration, lsp_opts)
-	keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
+	-- keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
 	keymap("n", "K", vim.lsp.buf.hover, lsp_opts)
 	keymap("n", "gl", vim.diagnostic.open_float, lsp_opts)
 	keymap("n", "<leader>gr", vim.lsp.buf.references, lsp_opts)
@@ -136,16 +111,20 @@ local function lsp_keymaps(bufnr)
 	keymap("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
 	keymap("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
 	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
-	keymap("n", "<leader>dd", require("telescope.builtin").diagnostics, lsp_opts)
+	-- keymap("n", "<leader>dd", require("telescope.builtin").diagnostics, lsp_opts)
 	keymap("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 	keymap("n", "<leader><Enter>", vim.lsp.buf.code_action, lsp_opts)
 
-	keymap("n", "gI", function()
-		require("telescope.builtin").lsp_implementations({ show_line = false })
-	end, lsp_opts)
-	keymap("n", "gr", function()
-		require("telescope.builtin").lsp_references({ show_line = false })
-	end, lsp_opts)
+	local has_builtin, builtin = pcall(require, "telescope.builtin")
+	if has_builtin then
+		keymap("n", "gI", function()
+			builtin.lsp_implementations({ show_line = false })
+		end, lsp_opts)
+		keymap("n", "gr", function()
+			builtin.lsp_references({ show_line = false })
+		end, lsp_opts)
+	end
+
 	keymap("n", "<leader>lf", function()
 		vim.lsp.buf.format({ async = true })
 	end, lsp_opts)

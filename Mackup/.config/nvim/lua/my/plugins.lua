@@ -1,7 +1,7 @@
 -- https://github.com/folke/lazy.nvim
 -- :help lazy.nvim.txt
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -22,6 +22,7 @@ require("lazy").setup({
   "moll/vim-bbye",
   "RRethy/vim-illuminate",
   "akinsho/toggleterm.nvim",
+  require("my.telescope"),
   require("my.none-ls"),
   -- {
   --   "sourcegraph/sg.nvim",
@@ -39,7 +40,6 @@ require("lazy").setup({
     },
   },
   require("my.mkdnflow"),
-  require("my.telescope"),
   require("my.project"),
   require("my.gitsigns"),
   require("my.autoformat"),

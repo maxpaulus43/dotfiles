@@ -7,7 +7,6 @@ vim.g.maplocalleader = " "
 
 require("my.keymaps")
 require("my.options")
-
 require("my.plugins")
 require("my.treesitter") -- treesitter handled separately because want to defer loading
 require("my.cmp")
@@ -20,18 +19,18 @@ require("my.lsp")
 -- :help vim.highlight.on_yank()
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- additional filetypes
 vim.filetype.add({
-  extension = {
-    templ = "templ",
-  },
+	extension = {
+		templ = "templ",
+	},
 })
 
 vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
