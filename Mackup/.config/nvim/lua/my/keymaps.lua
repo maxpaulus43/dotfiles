@@ -103,7 +103,7 @@ local function lsp_keymaps(bufnr)
 
 	keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 	keymap("n", "gD", vim.lsp.buf.declaration, lsp_opts)
-	-- keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
+	keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
 	keymap("n", "K", vim.lsp.buf.hover, lsp_opts)
 	keymap("n", "gl", vim.diagnostic.open_float, lsp_opts)
 	keymap("n", "<leader>gr", vim.lsp.buf.references, lsp_opts)

@@ -16,6 +16,8 @@ set -gx LESS "-R -M --mouse --wheel-lines 3"
 set -gx PAGER "less -R -M --mouse --wheel-lines 3"
 set -gx EDITOR "nvim"
 
+set -gx NODE_OPTIONS "--openssl-legacy-provider"
+
 # -p == "prepend"
 fish_add_path -p $HOME/.toolbox/bin
 fish_add_path -p $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
