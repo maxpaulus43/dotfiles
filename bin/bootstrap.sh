@@ -5,6 +5,7 @@ cd "$HOME" && mkdir c && cd c && git clone https://github.com/maxpaulus43/dotfil
 platform='unknown'
 unamestr=$(uname)
 
+
 if [[ "$unamestr" == 'Linux' ]]; then
 	platform='linux'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
