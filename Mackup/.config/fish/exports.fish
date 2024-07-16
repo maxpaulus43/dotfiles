@@ -18,6 +18,8 @@ set -gx EDITOR "nvim"
 
 set -gx NODE_OPTIONS "--openssl-legacy-provider"
 
+set -gx JOURNAL_DIR $HOME/Google\ Drive/My\ Drive/notes/journals
+
 # -p == "prepend"
 fish_add_path -p $HOME/.toolbox/bin
 fish_add_path -p $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin

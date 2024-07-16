@@ -14,6 +14,7 @@ require("my.bufferline")
 require("my.illuminate")
 require("my.toggleterm")
 require("telescope").load_extension("projects")
+require("telescope").load_extension("fzf")
 require("my.lsp")
 
 -- :help vim.highlight.on_yank()

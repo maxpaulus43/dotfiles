@@ -43,6 +43,7 @@ abbr cfg 'kitty +kitten config.py | less'
 abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -l JavaScript -e "Application(\"chrome\").windows[0].tabs.whose({url: {_contains: \'$(pwd)\'}})[0].reload()"'
 abbr scr 'scrcpy 1>/dev/null & && disown $last_pid'
 abbr dow 'date -j -f "%Y-%m-%d" +"%A"'
+abbr vgf 'git diff --name-only HEAD | xargs nvim' # vim git files
 
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr home 'mshop-debug -i navigate "com.amazon.mobile.shopping://www.amazon.com"'
@@ -50,6 +51,7 @@ abbr live 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": 
 abbr inspire 'ssnap-launch -f immersivevisualexperience-nonmodal -l inspire_tab -p \'{"placementId": "inspire-feed"}\' -v non-modal -s local -riL'
 # abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "08841a86ef1b4acc8cfb6a3ef2e1e8c2", "source": "VSE"}\' -s local -riL'
 abbr vse 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "0b24b6e6c5da452c821bcfbe3ac8c808", "source": "VSE"}\' -s local -riL'
+abbr vse2 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId": "shopping-videos-home", "broadcastId": "0e69be87386c4aeb91ea2a8986cce049", "source": "VSE"}\' -s local -riL'
 abbr catamaran 'ssnap-launch -f amazon-live-catamaran -p \'{"placementId": "shopping-videos-home", "broadcastId": "ea65fbc8-5b39-43c2-a619-a4befb5249c9"}\' -s prod -riL'
 abbr dpmb 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId":"dp-media-block","initialSeekTime":"20","ingressMediaId":"0f40c3e27cdf443c8c68552d8c733c04","metadata":"%7B%22mediaUrl%22:%22https://m.media-amazon.com/images/S/vse-vms-transcoding-artifact-us-east-1-prod/bc4deb86-8d9a-4b2c-a815-4400e5bc0cbe/default.jobtemplate.mp4.480.mp4%22,%22slateImageUrl%22:%22https://m.media-amazon.com/images/I/51IOnzQKDRL._SY350_PKmb-play-button-overlay_.jpg%22,%22asin%22:%22B0B1G5M31V%22%7D"}\' -s local -riL'
 abbr dpmb2 'ssnap-launch -f immersivevisualexperience-modal -p \'{"placementId":"dp-media-block","initialSeekTime":"20","ingressMediaId":"00065f4aac0242d0881b65f4343bf303","metadata":"%7B%22mediaUrl%22:%22https://m.media-amazon.com/images/S/vse-vms-transcoding-artifact-us-east-1-prod/e2f28b92-dc19-42ce-baf3-4727960f16e3/noresize.jobtemplate.mp4.mp4%22,%22slateImageUrl%22:%22https://m.media-amazon.com/images/I/51IOnzQKDRL._SY350_PKmb-play-button-overlay_.jpg%22,%22asin%22:%22B0B1G5M31V%22%7D"}\' -s local -riL'
