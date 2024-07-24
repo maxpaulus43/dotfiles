@@ -135,6 +135,11 @@ h6 {
   font-weight: bold;
 }
 
+.file-tree-node .active {
+  color: var(--text-highlight-color);
+  font-weight: bold;
+}
+
 h1:hover a.anchor,
 h2:hover a.anchor,
 h3:hover a.anchor,
