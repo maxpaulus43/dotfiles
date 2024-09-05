@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+function unescapeString(str) {
+  return str.replace(/&amp;/g, '&')
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&quot;/g, '"')
+              .replace(/&#039;/g, "'")
+              .replace(/\\t/g, '\t')
+              .replace(/\\v/g, '\v')
+              .replace(/\\0/g, '\0')
+              .replace(/\\b/g, '\b')
+              .replace(/\\f/g, '\f')
+              .replace(/\\n/g, '\n')
+              .replace(/\\r/g, '\r')
+              .replace(/\\'/g, '\'')
+              .replace(/\\"/g, '"')
+              .replace(/\\\\/g, '\\');
+}
+
+let inputStr = '';
+
+if (process.argv.length > 2) {
+  // Input provided as a command-line argument
+  inputStr = process.argv[2];
+  console.log(unescapeString(inputStr));
+} else {
+  // Input provided via standard input
+  process.stdin.on('data', (chunk) => {
+    inputStr += chunk.toString();
+  });
+
+  process.stdin.on('end', () => {
+    console.log(unescapeString(inputStr));
+  });
+}
