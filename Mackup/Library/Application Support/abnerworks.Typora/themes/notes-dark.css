@@ -63,6 +63,9 @@
   --focus-ring-color: transparent;
   --table-bg-darker-color: var(--bg-color-dark);
   --table-bg-color: var(--bg-color);
+
+  --mermaid-theme: dark;
+  --mermaid-sequence-numbers: on;
 }
 
 html {

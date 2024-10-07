@@ -5,7 +5,6 @@ cd "$HOME" && mkdir c && cd c && git clone https://github.com/maxpaulus43/dotfil
 platform='unknown'
 unamestr=$(uname)
 
-
 if [[ "$unamestr" == 'Linux' ]]; then
 	platform='linux'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
@@ -48,6 +47,12 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	brew instal gawk       # better awk
 
 	if [[ $platform == 'macos' ]]; then
+		# brew install koekeishiya/formulae/skhd
+		# skhd --install-service
+		#
+		# brew install koekeishiya/formulae/yabai
+		# yabai --install-service
+
 		brew tap homebrew/cask-fonts
 		# brew install --cask alacritty # terminal emulator
 		# brew install --cask kitty # better terminal

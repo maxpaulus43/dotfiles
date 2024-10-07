@@ -12,18 +12,23 @@ stdin.on("data", function (chunk) {
 
 stdin.on("end", function () {
   const o = JSON.parse(data);
-
-  let output = "curl --request ";
-  output += o.method;
-  for (let [k, v] of Object.entries(o.headers)) {
-    output += " --header '" + k + ": " + v + "'";
-  }
-  if (o.body) {
-    output += " -d '" + o.body.replace('\\"', '"') + "'";
-  }
-  output += " " + o.url.replace("?", "\\?").replace("&", "\\&");
-
-  console.log(output);
+  transformFetchObjectToCurl(o.url, o);
 });
 
 stdin.on("error", console.error);
+
+function transformFetchObjectToCurl(url, params) {
+  let output = "curl --request ";
+  output += params.method + " \\\n";
+  for (let [k, v] of Object.entries(params.headers)) {
+    output += " --header '" + k + ": " + v + "' \\\n";
+  }
+  if (params.body) {
+    output += " -d '" + params.body.replace('\\"', '"') + "' \\\n";
+  }
+  output += " " + url.replace("?", "\\?").replace("&", "\\&");
+
+  console.log("\n\n\n");
+  console.log(output);
+  console.log("\n\n\n");
+}
