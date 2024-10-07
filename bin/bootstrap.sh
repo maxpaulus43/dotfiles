@@ -79,6 +79,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install --cask typora                # markdown editor
 		brew install --cask visual-studio-code    # code
 		brew install --cask wezterm               # terminal emulator that uses lua!
+		brew install --cask amethyst              # window tiling manager
 
 		# other fun apps:
 		# appium-inspector # ui automation
@@ -95,8 +96,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		# steam # games
 		# vnc-viewer # remote desktop
 
-		brew install mas       # mac app store cli
-		mas install 441258766  # magnet (window tile manager)
+		brew install mas # mac app store cli
+		# mas install 441258766  # magnet (window tile manager)
 		mas install 668208984  # giphy capture
 		mas install 897283731  # strongbox (password manager)
 		mas install 1037126344 # Apple Configurator
