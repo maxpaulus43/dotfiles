@@ -79,7 +79,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install --cask typora                # markdown editor
 		brew install --cask visual-studio-code    # code
 		brew install --cask wezterm               # terminal emulator that uses lua!
-		brew install --cask amethyst              # window tiling manager
+		# brew install --cask amethyst              # window tiling manager
+		brew install --cask nikitabobko/tap/aerospace # window tiling manager
 
 		# other fun apps:
 		# appium-inspector # ui automation
