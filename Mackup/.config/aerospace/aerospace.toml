@@ -13,8 +13,7 @@ after-login-command = []
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    # 'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
-
+    'exec-and-forget borders active_color=0xff3aff33 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -27,7 +26,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 15
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -49,6 +48,11 @@ key-mapping.preset = 'qwerty'
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center'] # Mouse lazily follows any focus (window or workspace)
 
+[[on-window-detected]]
+if.app-id = 'com.cisco.anyconnect.gui'
+check-further-callbacks = true
+run = ['layout floating']  # The callback itself
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -57,12 +61,12 @@ on-focus-changed = ['move-mouse window-lazy-center'] # Mouse lazily follows any 
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 0
-inner.vertical =   0
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.horizontal = 5
+inner.vertical =   5
+outer.left =       5
+outer.bottom =     5
+outer.top =        5
+outer.right =      5
 
 [workspace-to-monitor-force-assignment]
 'I' = ['main', 'LF32TU87']
@@ -115,11 +119,11 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-# alt-shift-minus = 'resize smart -50'
-# alt-shift-equal = 'resize smart +50'
-alt-right = 'resize smart +50' 
-alt-left = 'resize smart -50' 
-alt-equal = 'balance-sizes'
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+# alt-right = 'resize smart +50' 
+# alt-left = 'resize smart -50' 
+alt-0 = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # alt-1 = 'workspace 1'
@@ -141,7 +145,7 @@ alt-equal = 'balance-sizes'
 alt-i = 'workspace I'
 # alt-m = 'workspace M'
 # alt-n = 'workspace N'
-a-lt-o = 'workspace O'
+alt-o = 'workspace O'
 # alt-p = 'workspace P'
 # alt-q = 'workspace Q'
 # alt-r = 'workspace R'
