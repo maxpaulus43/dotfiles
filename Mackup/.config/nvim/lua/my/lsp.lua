@@ -36,6 +36,7 @@ local servers = {
 	svelte = {},
 	templ = {},
 	rust_analyzer = {},
+	jdtls = {},
 	-- marksman = {},
 	-- lua_ls = {
 	--   Lua = {
@@ -69,6 +70,9 @@ mason_lspconfig.setup({
 })
 mason_lspconfig.setup_handlers({
 	function(server_name)
+		if server_name == "jdtls" then
+			return
+		end
 		require("lspconfig")[server_name].setup({
 			capabilities = capabilities,
 			on_attach = function()
@@ -80,58 +84,3 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
-
-function bemol()
-	local bemol_dir = vim.fs.find({ ".bemol" }, { upward = true, type = "directory" })[1]
-	local ws_folders_lsp = {}
-	if bemol_dir then
-		local file = io.open(bemol_dir .. "/ws_root_folders", "r")
-		if file then
-			for line in file:lines() do
-				table.insert(ws_folders_lsp, line)
-			end
-			file:close()
-		end
-	end
-
-	for _, line in ipairs(ws_folders_lsp) do
-		vim.lsp.buf.add_workspace_folder(line)
-	end
-end
--- local lspconfig = require("lspconfig")
--- local configs = require("lspconfig.configs")
--- if not configs.codewhisperer then
--- 	configs.codewhisperer = {
--- 		default_config = {
--- 			-- Add the codewhisperer to our PATH or BIN folder
--- 			cmd = { "cwls" },
--- 			root_dir = lspconfig.util.root_pattern(
--- 				"packageInfo",
--- 				"package.json",
--- 				"tsconfig.json",
--- 				"jsconfig.json",
--- 				".git"
--- 			),
--- 			filetypes = {
--- 				"java",
--- 				"python",
--- 				"typescript",
--- 				"tsx",
--- 				"jsx",
--- 				"javascript",
--- 				"csharp",
--- 				"ruby",
--- 				"kotlin",
--- 				"shell",
--- 				"sql",
--- 				"c",
--- 				"cpp",
--- 				"go",
--- 				"rust",
--- 				"lua",
--- 			},
--- 		},
--- 	}
--- end
---
--- lspconfig.codewhisperer.setup({ capabilities = capabilities })

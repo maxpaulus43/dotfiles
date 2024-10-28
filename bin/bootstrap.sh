@@ -110,16 +110,16 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		# echo '...You should run "xcodes install --latest --select"...'
 		echo '...You should run "xcodes install <xcode-version>"...'
 
-		defaults write -g InitialKeyRepeat -int 15                               # normal minimum is 15 (225 ms)
-		defaults write -g KeyRepeat -int 1                                       # how fast keys repeat normal minimum is 2 (30 ms)
-		defaults write com.apple.dock autohide-delay -float 0                    # removes the animation of dock hide/show
-		defaults write com.apple.dock autohide-time-modifier -int 0              # immediately hides/show dock with no delay
-		defaults write com.apple.dock showhidden -bool TRUE                      # hides the dock
-		defaults write com.apple.screencapture showClicks -int 1                 # show screen capture clicks
-		defaults write com.apple.screencapture showsCursor -int 1                # show cursor when capturing screen
-		defaults write com.apple.screencapture type jpg                          # save screen caps as jpg (smaller file size)
-		defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false # allow press and hold keys in vscode
-		killall Dock                                                             # restart dock to pick up new settings
+		defaults write -g InitialKeyRepeat -int 15                  # normal minimum is 15 (225 ms)
+		defaults write -g KeyRepeat -int 1                          # how fast keys repeat normal minimum is 2 (30 ms)
+		defaults write com.apple.dock autohide-delay -float 0       # removes the animation of dock hide/show
+		defaults write com.apple.dock autohide-time-modifier -int 0 # immediately hides/show dock with no delay
+		defaults write com.apple.dock showhidden -bool TRUE         # hides the dock
+		defaults write com.apple.screencapture showClicks -int 1    # show screen capture clicks
+		defaults write com.apple.screencapture showsCursor -int 1   # show cursor when capturing screen
+		defaults write com.apple.screencapture type jpg             # save screen caps as jpg (smaller file size)
+		defaults write -g ApplePressAndHoldEnabled -bool false      # allow press and hold keys to repeat
+		killall Dock                                                # restart dock to pick up new settings
 	fi
 
 	brew install mackup # tool for working with multiple dotfiles
