@@ -5,6 +5,8 @@
 -- https://github.com/gbprod/none-ls-psalm.nvim
 -- https://github.com/gbprod/none-ls-ecs.nvim
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
@@ -24,6 +26,7 @@ return {
 		null_ls.setup({
 			debug = false,
 			sources = {
+				formatting.google_java_format,
 				-- javascript/typescript
 				formatting.prettierd.with({
 					extra_filetypes = { "toml" },
@@ -43,6 +46,18 @@ return {
 				require("none-ls-shellcheck.code_actions"),
 				formatting.shfmt,
 			},
+			on_attach = function(client, bufnr)
+				if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.format({ async = false })
+						end,
+					})
+				end
+			end,
 		})
 	end,
 }
