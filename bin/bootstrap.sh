@@ -58,29 +58,30 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		# brew install --cask kitty # better terminal
 		# brew install --cask raycast # better version of cmd+space
 		# brew install --cask pixel-picker          # color dropper tool
-		brew install --cask alfred                # better version of cmd+space
-		brew install --cask android-studio        # android studio
-		brew install --cask audacity              # audio recorder
-		brew install --cask blackhole-2ch         # reroute audio channels for recording internal computer audio
-		brew install --cask charles               # proxy and traffic inspector
-		brew install --cask disk-inventory-x      # windirstat for mac
-		brew install --cask docker                # virtual environments
-		brew install --cask font-hack-nerd-font   # better terminal font with symbols
-		brew install --cask google-chrome         # browser
-		brew install --cask google-drive          # cloud storage (keep notes here)
-		brew install --cask intellij-idea         # good IDE
-		brew install --cask obs                   # screen recorder
-		brew install --cask react-native-debugger # react debugging
-		brew install --cask reactotron            # redux debugging
-		brew install --cask shottr                # better screenshots
-		brew install --cask slack                 # instant messenger
-		brew install --cask spotify               # music
-		brew install --cask telegram              # messages
-		brew install --cask typora                # markdown editor
-		brew install --cask visual-studio-code    # code
-		brew install --cask wezterm               # terminal emulator that uses lua!
-		# brew install --cask amethyst              # window tiling manager
+
+		brew install --cask alfred                    # better version of cmd+space
+		brew install --cask android-studio            # android studio
+		brew install --cask audacity                  # audio recorder
+		brew install --cask blackhole-2ch             # reroute audio channels for recording internal computer audio
+		brew install --cask charles                   # proxy and traffic inspector
+		brew install --cask disk-inventory-x          # windirstat for mac
+		brew install --cask docker                    # virtual environments
+		brew install --cask font-hack-nerd-font       # better terminal font with symbols
+		brew install --cask google-chrome             # browser
+		brew install --cask google-drive              # cloud storage (keep notes here)
+		brew install --cask intellij-idea             # good IDE
+		brew install --cask obs                       # screen recorder
+		brew install --cask react-native-debugger     # react debugging
+		brew install --cask reactotron                # redux debugging
+		brew install --cask shottr                    # better screenshots
+		brew install --cask slack                     # instant messenger
+		brew install --cask spotify                   # music
+		brew install --cask telegram                  # messages
+		brew install --cask typora                    # markdown editor
+		brew install --cask visual-studio-code        # code
+		brew install --cask wezterm                   # terminal emulator that uses lua!
 		brew install --cask nikitabobko/tap/aerospace # window tiling manager
+		brew install --cask maccy                     # pasteboard manager
 
 		# other fun apps:
 		# appium-inspector # ui automation
