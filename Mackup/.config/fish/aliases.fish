@@ -38,6 +38,7 @@ abbr vd 'nvim ~/c/dotfiles'
 abbr v "nvim"
 abbr vf "nvim (fzf)"
 abbr vn 'nvim ~/c/dotfiles/Mackup/.config/nvim/init.lua'
+abbr vs 'brazil ws show --format "json" | jq .version_set.name -r | pbcopy && pbpaste'
 abbr vz "nvim $__fish_config_dir/config.fish"
 abbr cfg 'kitty +kitten config.py | less'
 abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -l JavaScript -e "Application(\"chrome\").windows[0].tabs.whose({url: {_contains: \'$(pwd)\'}})[0].reload()"'

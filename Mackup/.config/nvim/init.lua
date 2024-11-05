@@ -28,11 +28,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- additional filetypes
-vim.filetype.add({
-	extension = {
-		templ = "templ",
-	},
-})
+vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ filename = { Config = "brazil-config" } })
 
 vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })

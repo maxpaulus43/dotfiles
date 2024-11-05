@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if all required arguments are provided
+if [ "$#" -ne 4 ]; then
+    echo "Usage: $0 <WATCH_DIR> <REMOTE_USER> <REMOTE_HOST> <REMOTE_DIR>"
+    echo "Example: $0 /path/to/local/directory username my.remote.local.corp.com /path/to/remote/directory"
+    exit 1
+fi
+
+# Assign command-line arguments to variables
+WATCH_DIR="$1"
+REMOTE_USER="$2"
+REMOTE_HOST="$3"
+REMOTE_DIR="$4"
+
+# Check if WATCH_DIR exists
+if [ ! -d "$WATCH_DIR" ]; then
+    echo "Error: $WATCH_DIR is not a valid directory"
+    exit 1
+fi
+
+echo "Watching $WATCH_DIR for changes..."
+echo "Remote: $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
+
+fswatch -o "$WATCH_DIR" | while read -r f; do
+    echo "Change detected in $f"
+    rsync -avz --delete "$WATCH_DIR" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
+done

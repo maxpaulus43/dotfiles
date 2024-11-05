@@ -26,6 +26,7 @@ return {
 		null_ls.setup({
 			debug = false,
 			sources = {
+				diagnostics.checkstyle,
 				formatting.google_java_format,
 				-- javascript/typescript
 				formatting.prettierd.with({

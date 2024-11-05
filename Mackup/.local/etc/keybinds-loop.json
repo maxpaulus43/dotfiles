@@ -1,0 +1,141 @@
+[
+  {
+    "direction" : "Undo",
+    "keybind" : [
+      51
+    ]
+  },
+  {
+    "direction" : "Smaller",
+    "keybind" : [
+      27
+    ]
+  },
+  {
+    "direction" : "Larger",
+    "keybind" : [
+      24
+    ]
+  },
+  {
+    "direction" : "Maximize",
+    "keybind" : [
+      36
+    ]
+  },
+  {
+    "direction" : "Center",
+    "keybind" : [
+      125
+    ]
+  },
+  {
+    "cycle" : [
+      {
+        "direction" : "BottomHalf",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "BottomThird",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "BottomTwoThirds",
+        "keybind" : [
+
+        ]
+      }
+    ],
+    "direction" : "NextScreen",
+    "keybind" : [
+      126
+    ],
+    "name" : "Bottom Cycle"
+  },
+  {
+    "cycle" : [
+      {
+        "direction" : "RightHalf",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "RightTwoThirds",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "RightThird",
+        "keybind" : [
+
+        ]
+      }
+    ],
+    "direction" : "Cycle",
+    "keybind" : [
+      124
+    ],
+    "name" : "Right Cycle"
+  },
+  {
+    "cycle" : [
+      {
+        "direction" : "LeftHalf",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "LeftTwoThirds",
+        "keybind" : [
+
+        ]
+      },
+      {
+        "direction" : "LeftThird",
+        "keybind" : [
+
+        ]
+      }
+    ],
+    "direction" : "Cycle",
+    "keybind" : [
+      123
+    ],
+    "name" : "Left Cycle"
+  },
+  {
+    "direction" : "TopLeftQuarter",
+    "keybind" : [
+      126,
+      123
+    ]
+  },
+  {
+    "direction" : "TopRightQuarter",
+    "keybind" : [
+      124,
+      126
+    ]
+  },
+  {
+    "direction" : "BottomRightQuarter",
+    "keybind" : [
+      124,
+      125
+    ]
+  },
+  {
+    "direction" : "BottomLeftQuarter",
+    "keybind" : [
+      125,
+      123
+    ]
+  }
+]

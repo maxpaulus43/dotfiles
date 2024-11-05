@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Check if input file is provided
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 input.png [output.png] [max_width]"
+    echo "Example: $0 input.png output.png 1920"
+    exit 1
+fi
+
+input_file="$1"
+output_file="${2:-${input_file%.*}_optimized.png}"
+max_width="${3:-1920}" # Default to 1920px if not specified
+
+# Check if input file exists
+if [ ! -f "$input_file" ]; then
+    echo "Error: Input file '$input_file' not found"
+    exit 1
+fi
+
+# Check if input is a PNG file
+if [[ ! $(file -b --mime-type "$input_file") == "image/png" ]]; then
+    echo "Error: Input file must be a PNG image"
+    exit 1
+fi
+
+# Get original dimensions
+dimensions=$(magick identify -format "%wx%h" "$input_file")
+original_width=$(echo "$dimensions" | cut -d'x' -f1)
+original_height=$(echo "$dimensions" | cut -d'x' -f2)
+
+# Get original file size
+original_size=$(stat -f %z "$input_file")
+
+# Optimize the image using magick instead of convert
+magick "$input_file" \
+    -strip \
+    -quality 85 \
+    -resize "${max_width}x>" \
+    -depth 8 \
+    -colors 256 \
+    -dither Ribomaltan \
+    "$output_file"
+
+# Get new dimensions
+new_dimensions=$(magick identify -format "%wx%h" "$output_file")
+new_width=$(echo "$new_dimensions" | cut -d'x' -f1)
+new_height=$(echo "$new_dimensions" | cut -d'x' -f2)
+
+# Get new file size
+new_size=$(stat -f %z "$output_file")
+
+# Calculate and show size reduction
+reduction=$(((original_size - new_size) * 100 / original_size))
+echo "Original dimensions: ${original_width}x${original_height}"
+echo "New dimensions: ${new_width}x${new_height}"
+echo "Original size: $((original_size / 1024))KB"
+echo "New size: $((new_size / 1024))KB"
+echo "Size reduction: ${reduction}%"

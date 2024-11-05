@@ -2,6 +2,7 @@
 -- before setting up the servers.
 require("mason").setup()
 require("mason-lspconfig").setup()
+local lspconfig = require("lspconfig")
 
 local servers = {
 	cssls = {},
@@ -73,7 +74,7 @@ mason_lspconfig.setup_handlers({
 		if server_name == "jdtls" then
 			return
 		end
-		require("lspconfig")[server_name].setup({
+		lspconfig[server_name].setup({
 			capabilities = capabilities,
 			on_attach = function()
 				vim.api.nvim_exec_autocmds("User", { pattern = "LSPKeymaps" })
@@ -84,3 +85,19 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+local configs = require("lspconfig.configs")
+configs.barium = {
+	default_config = {
+		cmd = { "barium" },
+		filetypes = { "brazil-config" },
+		root_dir = function(fname)
+			return lspconfig.util.find_git_ancestor(fname)
+		end,
+		on_attach = function()
+			vim.api.nvim_exec_autocmds("User", { pattern = "LSPKeymaps" })
+		end,
+		settings = {},
+	},
+}
+lspconfig.barium.setup({})
