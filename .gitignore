@@ -7,3 +7,6 @@ Mackup/.config/fish/functions/fzf_key_bindings.fish
 Mackup/.config/fish/fish_variables
 # Mackup/.config/fish/functions
 .DS_Store
+**/*/db.zo
+com.trusourcelabs.NoMAD.plist
+com.valvesoftware.steamclean.plist
