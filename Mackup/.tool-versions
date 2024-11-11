@@ -3,6 +3,6 @@ ruby 2.7.7
 golang 1.21.4
 java corretto-17.0.13.11.1 
 rust stable
-deno 1.39.4
+deno 2.0.5
 bun 1.0.25
 python 3.10.14
