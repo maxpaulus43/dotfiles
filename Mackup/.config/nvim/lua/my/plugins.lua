@@ -44,12 +44,59 @@ require("lazy").setup({
 	require("my.gitsigns"),
 	require("my.autoformat"),
 	require("my.debug"),
-	require("my.nvim-tree"),
+	-- require("my.nvim-tree"),
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
+	},
+	{
+		-- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-files.md
+		"echasnovski/mini.files",
+		version = "*",
+		opts = {
+			mappings = {
+				go_in = "",
+				go_in_plus = "L",
+				go_out = "",
+				go_out_plus = "H",
+			},
+			windows = {
+				preview = true,
+				width_preview = 50,
+			},
+		},
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {
+			default_file_explorer = false,
+			delete_to_trash = true,
+			keymaps = {
+				["gd"] = {
+					desc = "Toggle file detail view",
+					callback = function()
+						detail = not detail
+						if detail then
+							require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+						else
+							require("oil").set_columns({ "icon" })
+						end
+					end,
+				},
+			},
+			float = {
+				padding = 15,
+			},
+			view_options = {
+				-- Show files and directories that start with "."
+				show_hidden = true,
+				is_always_hidden = function(name, bufnr)
+					return vim.startswith(name, ".DS_Store")
+				end,
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",

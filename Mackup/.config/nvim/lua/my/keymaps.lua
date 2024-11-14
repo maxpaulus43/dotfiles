@@ -17,10 +17,10 @@ keymap("", "<space>", "<Nop>", opts)
 keymap("i", "<C-.>", "<cmd>> | startinsert!<cr>", opts)
 keymap("i", "<C-,>", "<cmd>< | startinsert!<cr>", opts)
 
-keymap({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts)           -- write all
+keymap({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts) -- write all
 keymap({ "n", "v" }, "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
-keymap({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
-keymap({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
+keymap({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
+keymap({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
@@ -82,8 +82,15 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 -- Plugins --
 
+-- local minifiles_toggle = function(...)
+-- 	if not MiniFiles.close() then MiniFiles.open(...) end
+-- end
+
 -- NvimTree
-keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd> lua	if not MiniFiles.close() then MiniFiles.open(...) end <cr>", opts)
+-- keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
+-- keymap("n", "<leader>e", "<cmd>Oil<cr>", opts)
+-- keymap("n", "<leader>e", '<cmd> lua require("oil").toggle_float()<cr>', opts)
 -- keymap("n", "<leader>e", "<cmd>Telescope file_browser<cr>", opts)
 
 -- Git
