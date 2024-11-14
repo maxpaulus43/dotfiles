@@ -1,17 +1,23 @@
 #!/bin/bash
+# shellcheck disable=2046
+
+if ! which fswatch >/dev/null 2>&1; then
+    echo "fswatch command required"
+    echo "run 'brew install fswatch'"
+    exit 1
+fi
 
 # Check if all required arguments are provided
-if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 <WATCH_DIR> <REMOTE_USER> <REMOTE_HOST> <REMOTE_DIR>"
-    echo "Example: $0 /path/to/local/directory username my.remote.local.corp.com /path/to/remote/directory"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <WATCH_DIR> <REMOTE_HOST> <REMOTE_DIR>"
+    echo "Example: $0 /path/to/local/directory my.remote.local.corp.com /path/to/remote/directory"
     exit 1
 fi
 
 # Assign command-line arguments to variables
 WATCH_DIR="$1"
-REMOTE_USER="$2"
-REMOTE_HOST="$3"
-REMOTE_DIR="$4"
+REMOTE_HOST="$2"
+REMOTE_DIR="$3"
 
 # Check if WATCH_DIR exists
 if [ ! -d "$WATCH_DIR" ]; then
@@ -19,10 +25,62 @@ if [ ! -d "$WATCH_DIR" ]; then
     exit 1
 fi
 
-echo "Watching $WATCH_DIR for changes..."
-echo "Remote: $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
+# Function to process ignore files
+process_ignore_file() {
+    local file="$1"
+    # shellcheck disable=2155
+    local dir=$(dirname "$file")
+    local rel_path="${dir#"$WATCH_DIR"}"
+    rel_path=${rel_path#/} # Remove leading slash if present
 
-fswatch -o "$WATCH_DIR" | while read -r f; do
-    echo "Change detected in $f"
-    rsync -avz --delete "$WATCH_DIR" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
+    while IFS= read -r pattern || [[ -n "$pattern" ]]; do
+        # Trim leading and trailing whitespace
+        pattern=$(echo "$pattern" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        # Ignore empty lines and comments
+        if [[ -n "$pattern" && ! "$pattern" =~ ^# ]]; then
+            if [ -n "$rel_path" ]; then
+                EXCLUDE_OPTS="$EXCLUDE_OPTS --exclude='$rel_path/$pattern'"
+            else
+                EXCLUDE_OPTS="$EXCLUDE_OPTS --exclude='$pattern'"
+            fi
+        fi
+    done <"$file"
+}
+
+# exclude some files and directories by default
+EXCLUDE_OPTS="--exclude='**/*.git' --exclude='**/*.DS_Store'"
+
+# Find and process all .rsync-ignore and .gitignore files
+while IFS= read -r -d '' ignore_file; do
+    echo "Processing ignore file: $ignore_file"
+    process_ignore_file "$ignore_file"
+done < <(find "$WATCH_DIR" \( -name ".rsync-ignore" -o -name ".gitignore" \) -print0)
+
+if [ -z "$EXCLUDE_OPTS" ]; then
+    echo "No .rsync-ignore or .gitignore files found in $WATCH_DIR or its subdirectories"
+else
+    echo "======"
+    echo ""
+    echo "Excludes:"
+    echo "$EXCLUDE_OPTS" | tr ' ' '\n'
+    echo ""
+    echo "======"
+    echo ""
+fi
+
+echo "========="
+echo ""
+echo "Watching Local: $WATCH_DIR"
+echo "Syncing To Remote: $REMOTE_HOST:$REMOTE_DIR"
+echo ""
+echo "========="
+echo ""
+
+fswatch --batch-marker=batch "$WATCH_DIR" | while read -r line; do
+    if [[ "$line" = "batch" ]]; then
+        eval "rsync -avz --delete $EXCLUDE_OPTS \"$WATCH_DIR/\" \"$REMOTE_HOST:$REMOTE_DIR\""
+        echo ""
+        echo "========="
+        echo ""
+    fi
 done
