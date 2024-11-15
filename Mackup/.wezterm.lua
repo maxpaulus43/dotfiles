@@ -90,13 +90,5 @@ c.keys = {
 	},
 }
 
--- c.ssh_domains = {
---   {
---     name = "clouddsk",
---     remote_address = "dev-dsk-maxpaulu-2a-9968300e.us-west-2.amazon.com",
---     username = "maxpaulu",
---   },
--- }
-
 -- and finally, return the configuration to wezterm
 return c
