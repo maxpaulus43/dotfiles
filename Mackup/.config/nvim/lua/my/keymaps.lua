@@ -87,7 +87,12 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 -- end
 
 -- NvimTree
-keymap("n", "<leader>e", "<cmd> lua	if not MiniFiles.close() then MiniFiles.open(...) end <cr>", opts)
+keymap(
+	"n",
+	"<leader>e",
+	"<cmd> lua	if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end <cr>",
+	opts
+)
 -- keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>e", "<cmd>Oil<cr>", opts)
 -- keymap("n", "<leader>e", '<cmd> lua require("oil").toggle_float()<cr>', opts)

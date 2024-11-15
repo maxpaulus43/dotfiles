@@ -50,6 +50,16 @@ c.keys = {
 	},
 	{
 		key = "Enter",
+		mods = "CMD|ALT",
+		action = wezterm.action.SplitPane({
+			direction = "Up",
+			top_level = true,
+			command = { domain = "CurrentPaneDomain" },
+		}),
+	},
+
+	{
+		key = "Enter",
 		mods = "CMD",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},

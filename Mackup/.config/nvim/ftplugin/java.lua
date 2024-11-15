@@ -11,8 +11,6 @@ local function contains(table, value)
 	return false
 end
 
-print("HELLO")
-
 -- helper function for finding a filename in a directory which matches
 -- the specified pattern
 local function find_file(directory, pattern)

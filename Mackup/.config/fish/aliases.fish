@@ -24,7 +24,7 @@ abbr gst 'git status'
 abbr gsta 'git stash push'
 abbr gstaa 'git stash apply'
 abbr gstp 'git stash pop'
-abbr icat "kitten icat"
+abbr icat "wezterm imgcat"
 abbr jtc 'eval "$(pbpaste | jsonToCurl)" | jq | code -'
 abbr la 'eza -1la'
 abbr ls 'eza --icons'
