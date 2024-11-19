@@ -35,11 +35,12 @@ process_ignore_file() {
 
     while IFS= read -r pattern || [[ -n "$pattern" ]]; do
         # Trim leading and trailing whitespace
-        pattern=$(echo "$pattern" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        pattern=$(echo "$pattern" | sed -r -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
         # Ignore empty lines and comments
         if [[ -n "$pattern" && ! "$pattern" =~ ^# ]]; then
             if [ -n "$rel_path" ]; then
-                EXCLUDE_OPTS="$EXCLUDE_OPTS --exclude='$rel_path/$pattern'"
+                local relPattern=$(echo "$rel_path/$pattern" | sed -e 's/\/\//\//')
+                EXCLUDE_OPTS="$EXCLUDE_OPTS --exclude='$relPattern'"
             else
                 EXCLUDE_OPTS="$EXCLUDE_OPTS --exclude='$pattern'"
             fi

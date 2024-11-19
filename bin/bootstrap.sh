@@ -50,11 +50,6 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
 	if [[ $platform == 'macos' ]]; then
 		brew tap homebrew/cask-fonts
-		# brew install --cask alacritty # terminal emulator
-		# brew install --cask kitty # better terminal
-		# brew install --cask raycast # better version of cmd+space
-		# brew install --cask pixel-picker          # color dropper tool
-		# brew install --cask alfred                # better version of cmd+space
 		brew install --cask android-studio      # android studio
 		brew install --cask audacity            # audio recorder
 		brew install --cask blackhole-2ch       # reroute audio channels for recording internal computer audio
@@ -66,18 +61,24 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install --cask google-drive        # cloud storage (keep notes here)
 		brew install --cask intellij-idea       # good IDE
 		brew install --cask obs                 # screen recorder
+		brew install --cask shottr              # better screenshots
+		brew install --cask slack               # instant messenger
+		brew install --cask spotify             # music
+		brew install --cask typora              # markdown editor
+		brew install --cask visual-studio-code  # code
+		brew install --cask wezterm             # terminal emulator that uses lua!
+		brew install --cask raycast             # window/pasteboard/other manager
+		# brew install --cask alacritty # terminal emulator
+		# brew install --cask kitty # better terminal
+		# brew install --cask raycast # better version of cmd+space
+		# brew install --cask pixel-picker          # color dropper tool
+		# brew install --cask alfred                # better version of cmd+space
 		# brew install --cask react-native-debugger # react debugging
 		# brew install --cask reactotron            # redux debugging
-		brew install --cask shottr  # better screenshots
-		brew install --cask slack   # instant messenger
-		brew install --cask spotify # music
 		# brew install --cask telegram              # messages
-		brew install --cask typora             # markdown editor
-		brew install --cask visual-studio-code # code
-		brew install --cask wezterm            # terminal emulator that uses lua!
-		brew install --cask maccy              # pasteboard manager
-		brew install --cask loop               # window tiling manager
-		brew install --cask alt-tab            # better alt tab
+		# brew install --cask maccy              # pasteboard manager
+		# brew install --cask loop               # window tiling manager
+		# brew install --cask alt-tab            # better alt tab
 		# brew install --cask nikitabobko/tap/aerospace # window tiling manager
 
 		# other fun apps:
