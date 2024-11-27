@@ -49,7 +49,7 @@ process_ignore_file() {
 }
 
 # exclude some files and directories by default
-EXCLUDE_OPTS="--exclude='**/*.git' --exclude='**/*.DS_Store'"
+EXCLUDE_OPTS="--exclude='**/*.DS_Store'"
 
 # Find and process all .rsync-ignore and .gitignore files
 while IFS= read -r -d '' ignore_file; do

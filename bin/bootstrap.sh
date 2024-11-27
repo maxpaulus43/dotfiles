@@ -60,6 +60,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install --cask google-chrome       # browser
 		brew install --cask google-drive        # cloud storage (keep notes here)
 		brew install --cask intellij-idea       # good IDE
+		brew install --cask mac-mouse-fix       # better mouse shortcuts
 		brew install --cask obs                 # screen recorder
 		brew install --cask shottr              # better screenshots
 		brew install --cask slack               # instant messenger
