@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=2046
+# shellcheck disable=2046,2155
 
 if ! which fswatch >/dev/null 2>&1; then
     echo "fswatch command required"
@@ -28,7 +28,6 @@ fi
 # Function to process ignore files
 process_ignore_file() {
     local file="$1"
-    # shellcheck disable=2155
     local dir=$(dirname "$file")
     local rel_path="${dir#"$WATCH_DIR"}"
     rel_path=${rel_path#/} # Remove leading slash if present
