@@ -24,14 +24,6 @@ require("lazy").setup({
 	"akinsho/toggleterm.nvim",
 	require("my.telescope"),
 	require("my.none-ls"),
-	-- {
-	--   "sourcegraph/sg.nvim",
-	--   config = true,
-	--   dependencies = {
-	--     "nvim-lua/plenary.nvim",
-	--     "nvim-telescope/telescope.nvim",
-	--   },
-	-- },
 	"akinsho/bufferline.nvim",
 	{
 		"David-Kunz/jester",
@@ -70,42 +62,22 @@ require("lazy").setup({
 		},
 	},
 	{
-		"stevearc/oil.nvim",
-		opts = {
-			default_file_explorer = false,
-			delete_to_trash = true,
-			keymaps = {
-				["gd"] = {
-					desc = "Toggle file detail view",
-					callback = function()
-						detail = not detail
-						if detail then
-							require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
-						else
-							require("oil").set_columns({ "icon" })
-						end
-					end,
-				},
-			},
-			float = {
-				padding = 15,
-			},
-			view_options = {
-				-- Show files and directories that start with "."
-				show_hidden = true,
-				is_always_hidden = function(name, bufnr)
-					return vim.startswith(name, ".DS_Store")
-				end,
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", dependencies = { "mfussenegger/nvim-jdtls" } },
-			{ "j-hui/fidget.nvim", tag = "legacy", config = true },
-			{ "folke/neodev.nvim", config = true },
+			{ "j-hui/fidget.nvim",                 tag = "legacy",                              config = true },
+			{
+				"folke/lazydev.nvim",
+				ft = "lua", -- only load on lua files
+				opts = {
+					library = {
+						-- See the configuration section for more details
+						-- Load luvit types when the `vim.uv` word is found
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
 		},
 	},
 	{
@@ -115,23 +87,22 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"rafamadriz/friendly-snippets",
+			{
+				url = "ssh://git.amazon.com/pkg/AmazonQNVim",
+				-- dir = "/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim",
+				opts = {
+					ssoStartUrl = "https://amzn.awsapps.com/start",
+					lsp_server_cmd = {
+						"node",
+						-- "/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js",
+						vim.fn.stdpath("data")
+						.. "/lazy/AmazonQNVim"
+						.. "/language-server/build/aws-lsp-codewhisperer-token-binary.js",
+						"--stdio",
+					},
+				},
+			},
 		},
-	},
-	{
-		"folke/which-key.nvim",
-		config = function()
-			local wk = require("which-key")
-			wk.setup()
-			wk.register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
-				["<leader>h"] = { name = "More git", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-			})
-		end,
 	},
 	{
 		"navarasu/onedark.nvim",
@@ -168,14 +139,5 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && npm install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
 	},
 }, {})

@@ -7,7 +7,7 @@ local lspconfig = require("lspconfig")
 local servers = {
 	cssls = {},
 	html = {},
-	tsserver = {},
+	ts_ls = {},
 	pyright = {},
 	jsonls = {},
 	yamlls = {},
@@ -39,12 +39,12 @@ local servers = {
 	rust_analyzer = {},
 	jdtls = {},
 	-- marksman = {},
-	-- lua_ls = {
-	--   Lua = {
-	--     workspace = { checkThirdParty = false },
-	--     telemetry = { enable = false },
-	--   },
-	-- },
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
 }
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -68,6 +68,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup({
 	ensure_installed = vim.tbl_keys(servers),
+	automatic_installation = true,
 })
 mason_lspconfig.setup_handlers({
 	function(server_name)

@@ -14,20 +14,15 @@ keymap("", "<space>", "<Nop>", opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("i", "<C-.>", "<cmd>> | startinsert!<cr>", opts)
-keymap("i", "<C-,>", "<cmd>< | startinsert!<cr>", opts)
-
-keymap({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts) -- write all
+keymap({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts)           -- write all
 keymap({ "n", "v" }, "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
-keymap({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
-keymap({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
+keymap({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
+keymap({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
 keymap("n", "gq", "<cmd>quit<cr>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 keymap("v", "j", "gj", opts)
 keymap("v", "k", "gk", opts)
-
-keymap("n", "<leader>md", "<cmd>MarkdownPreviewToggle<cr>", opts)
 
 -- Normal --
 -- undotree
@@ -39,10 +34,6 @@ keymap("n", "<leader><C-g>", function()
 	vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
 	vim.cmd('let @* = expand("%:p")')
 end, opts)
-
--- insert newline
-keymap("n", "<leader>o", "o<esc>", opts)
-keymap("n", "<leader>O", "O<esc>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -82,10 +73,6 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 -- Plugins --
 
--- local minifiles_toggle = function(...)
--- 	if not MiniFiles.close() then MiniFiles.open(...) end
--- end
-
 -- NvimTree
 keymap(
 	"n",
@@ -93,6 +80,7 @@ keymap(
 	"<cmd> lua	if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end <cr>",
 	opts
 )
+
 -- keymap("n", "<leader>e", "<cmd> NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>e", "<cmd>Oil<cr>", opts)
 -- keymap("n", "<leader>e", '<cmd> lua require("oil").toggle_float()<cr>', opts)
@@ -100,14 +88,13 @@ keymap(
 
 -- Git
 keymap("n", "<leader>gg", "<cmd> lua _LAZYGIT_TOGGLE()<cr>", opts)
--- keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
 keymap("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
 keymap("n", "<leader>rh", "<cmd> Gitsigns reset_hunk<cr>", opts)
 keymap("n", "<leader>rb", "<cmd> Gitsigns reset_buffer<cr>", opts)
 keymap("n", "<leader>nh", "<cmd> Gitsigns next_hunk<cr>", opts)
 keymap("n", "<leader>ph", "<cmd> Gitsigns prev_hunk<cr>", opts)
-keymap("n", "<leader>b", "<cmd> Gitsigns toggle_current_line_blame<cr>", opts)
+-- keymap("n", "<leader>b", "<cmd> Gitsigns toggle_current_line_blame<cr>", opts)
 
 -- LSP
 local function lsp_keymaps(bufnr)
