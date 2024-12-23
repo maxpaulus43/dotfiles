@@ -77,7 +77,7 @@ keymap("v", "K", ":m '<-2<cr>gv=gv", opts)
 keymap(
 	"n",
 	"<leader>e",
-	"<cmd> lua	if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end <cr>",
+	"<cmd> lua if not MiniFiles.close() then MiniFiles.open(vim.api.nvim_buf_get_name(0)) end <cr>",
 	opts
 )
 
@@ -100,19 +100,16 @@ keymap("n", "<leader>ph", "<cmd> Gitsigns prev_hunk<cr>", opts)
 local function lsp_keymaps(bufnr)
 	local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
 
-	keymap("n", "<leader>L", vim.diagnostic.setloclist, opts)
 	keymap("n", "gD", vim.lsp.buf.declaration, lsp_opts)
 	keymap("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
 	keymap("n", "K", vim.lsp.buf.hover, lsp_opts)
 	keymap("n", "gl", vim.diagnostic.open_float, lsp_opts)
-	keymap("n", "<leader>gr", vim.lsp.buf.references, lsp_opts)
 	keymap("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
 	keymap("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
 	keymap("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
 	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
-	-- keymap("n", "<leader>dd", require("telescope.builtin").diagnostics, lsp_opts)
 	keymap("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
-	keymap("n", "<leader><Enter>", vim.lsp.buf.code_action, lsp_opts)
+	keymap("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
 
 	local has_builtin, builtin = pcall(require, "telescope.builtin")
 	if has_builtin then
@@ -122,6 +119,8 @@ local function lsp_keymaps(bufnr)
 		keymap("n", "gr", function()
 			builtin.lsp_references({ show_line = false })
 		end, lsp_opts)
+	else
+		keymap("n", "gr", vim.lsp.buf.references, lsp_opts)
 	end
 
 	keymap("n", "<leader>lf", function()

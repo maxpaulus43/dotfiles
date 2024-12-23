@@ -65,20 +65,18 @@ cmp.setup({
 		}),
 	}),
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		expandable_indicator = true,
+		fields = { "kind", "abbr" },
 		format = function(entry, vim_item)
-			-- vim_item.kind = kind_icons[vim_item.kind]
-			vim_item.menu = ({
-				nvim_lsp = "lsp",
-				nvim_lua = "",
-				luasnip = "",
-				buffer = "buf",
-				path = "",
-				emoji = "",
-				amazonq = "Q",
-			})[entry.source.name]
+			if entry.source.name == "amazonq" then
+				vim_item.kind = "AmznQ"
+			end
 			return vim_item
 		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	sources = {
 		{ name = "amazonq" },
@@ -92,10 +90,6 @@ cmp.setup({
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
 	},
 	experimental = {
 		ghost_text = false,

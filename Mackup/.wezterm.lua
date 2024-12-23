@@ -57,7 +57,7 @@ c.keys = {
 			command = { domain = "CurrentPaneDomain" },
 		}),
 	},
-
+	{ key = "Enter", mods = "ALT", action = wezterm.action.DisableDefaultAssignment },
 	{
 		key = "Enter",
 		mods = "CMD",
