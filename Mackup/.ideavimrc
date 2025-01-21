@@ -1,0 +1,159 @@
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'preservim/nerdtree'
+Plugin 'tpope/vim-surround'
+
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+set nobackup
+set noswapfile
+set clipboard+=unnamed
+set cmdheight=1
+set completeopt=menuone,noselect
+set conceallevel=0
+set fileencoding=utf-8
+set hlsearch
+set ignorecase
+set smartcase
+set mouse=a
+set pumheight=10
+set noshowmode
+set showtabline=0
+set smartindent
+set splitbelow
+set splitright
+set termguicolors
+set timeoutlen=1000
+set undofile
+set updatetime=300
+set writebackup
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set cursorline
+set number
+set norelativenumber
+set laststatus=3
+set showcmd
+set ruler
+set numberwidth=4
+set signcolumn=yes
+set nowrap
+set scrolloff=8
+set sidescrolloff=8
+set guifont=monospace:h17
+set fillchars=eob:\ 
+set shortmess+=c
+set whichwrap+=<,>,[,],h,l
+set iskeyword+=-
+set autowriteall
+set autoread
+set foldmethod=expr
+set incsearch
+set ideajoin
+set surround
+
+
+nnoremap <silent> <space> <Nop>
+let mapleader = " "
+
+" Modes
+"   normal_mode = "n",
+"   insert_mode = "i",
+"   visual_mode = "v",
+"   visual_block_mode = "x",
+"   term_mode = "t",
+"   command_mode = "c",
+"
+nnoremap <leader>si :source ~/.ideavimrc
+
+nnoremap <leader>w :wall<cr>
+nnoremap <leader>q :quitall<cr>
+nnoremap <leader>x :confirm xall<cr>
+nnoremap gq :quit<cr>
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Comment Lines
+nmap gcc <Action>(CommentByLineComment)
+" vmap gc <Action>(CommentByLineComment)
+
+" Nerdtree
+noremap <leader>e :NERDTreeToggle<cr>
+
+" Folding
+nnoremap <leader>zc <Action> CollapseAllRegions<CR>
+nnoremap <leader>zo <Action> ExpandAllRegions<CR>
+
+" File navigation
+map <leader>ff <Action>(GotoFile)
+map <leader>fr <Action>(RecentFiles)
+map <leader>fc <Action>(FindInPath)
+map <leader>ft <Action>(SearchEverywhere)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fo <Action>(RecentLocations)
+map <leader>fs <Action>(NewScratchFile)
+
+" LSP-ish
+map gd <Action>(GotoDeclaration)
+map gy <Action>(GotoTypeDeclaration)
+map gI <Action>(GotoImplementation)
+map gr <Action>(ShowUsages)
+map gt <Action>(GotoTest)
+map gb <Action>(Forward)
+map gf <Action>(Back)
+map K <Action>(ShowHoverInfo)
+map <leader>j <Action>(GotoNextError)
+map <leader>k <Action>(GotoPreviousError)
+
+" show full filename
+nnoremap <C-g> 1<C-g>
+
+" Git
+map <leader>gg <Action>(ActivateVersionControlToolWindow)
+
+" insert newline
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+
+" Tab manipulation
+map Q <Action>(CloseContent)
+nnoremap L :tabnext<cr>
+nnoremap H :tabprev<cr>
+
+" Better window/pane navigation
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+
+" Resize with arrows
+nnoremap <S-Up> :resize -2<cr>
+nnoremap <S-Down> :resize +2<cr>
+nnoremap <S-Left> :vertical resize -2<cr>
+nnoremap <S-Right> :vertical resize +2<cr>
+
+" Clear highlights
+nnoremap <leader>h :nohlsearch<cr>
+
+" Better paste
+vnoremap p "_dP
+
+" Better escape
+inoremap jk <esc>
+cnoremap jk <esc>
+
+" Stay in indent mode
+vnoremap < <gv
+vnoremap > >gv
+
+" Move Test up and down --
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+
+" Popup navigation
+imap <C-j> <Action>(EditorDown)
+imap <C-k> <Action>(EditorUp)
+
