@@ -1,5 +1,8 @@
 # alias brca="brazil-recursive-cmd --matches '^(?!MShopAndroidPhoneApp).*$' -- 'brazil-build'"
 
+abbr "..." "cd ../.."
+abbr "...." "cd ../../.."
+abbr "....." "cd ../../../.."
 abbr bb "brazil-build"
 abbr bbx "brazil-build xcode-env"
 abbr brc "brazil-recursive-cmd --all"
