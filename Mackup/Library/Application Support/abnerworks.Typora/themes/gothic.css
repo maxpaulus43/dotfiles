@@ -63,14 +63,14 @@
 }
 
 html,
-body,
-#write{
+body {
 	background: #fcfcfc;
 	background: var(--bg-color);
 	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", "Yu Gothic", 'Segoe UI Emoji', sans-serif;
 	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
 }
+
 h1,
 h2,
 h3,
@@ -377,7 +377,7 @@ p.mathjax-block,
 	top: 14px;
 }
 
-#md-notification {
+#md-notification-container {
 	background: #eee;
 }
 

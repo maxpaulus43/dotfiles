@@ -99,8 +99,9 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
 		brew install mas # mac app store cli
 		# mas install 441258766  # magnet (window tile manager)
+		# mas install 897283731  # strongbox (password manager)
 		mas install 668208984  # giphy capture
-		mas install 897283731  # strongbox (password manager)
+		mas install 1481853033 # strongbox pro (password manager)
 		mas install 1037126344 # Apple Configurator
 
 		brew tap robotsandpencils/made

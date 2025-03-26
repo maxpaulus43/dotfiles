@@ -114,7 +114,9 @@
     "*.md": "default",
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "terminal.integrated.env.osx": {},
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

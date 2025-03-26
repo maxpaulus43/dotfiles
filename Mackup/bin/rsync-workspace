@@ -76,11 +76,13 @@ echo ""
 echo "========="
 echo ""
 
-eval "rsync -avz --delete $EXCLUDE_OPTS \"$WATCH_DIR/\" \"$REMOTE_HOST:$REMOTE_DIR\""
+sync() {
+    eval "rsync -avz --delete $EXCLUDE_OPTS \"$WATCH_DIR/\" \"$REMOTE_HOST:$REMOTE_DIR\""
+}
 
 fswatch --batch-marker=batch "$WATCH_DIR" | while read -r line; do
     if [[ "$line" = "batch" ]]; then
-        eval "rsync -avz --delete $EXCLUDE_OPTS \"$WATCH_DIR/\" \"$REMOTE_HOST:$REMOTE_DIR\""
+        sync
         echo ""
         echo "========="
         echo ""
