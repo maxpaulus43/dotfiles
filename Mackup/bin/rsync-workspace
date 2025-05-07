@@ -80,6 +80,8 @@ sync() {
     eval "rsync -avz --delete $EXCLUDE_OPTS \"$WATCH_DIR/\" \"$REMOTE_HOST:$REMOTE_DIR\""
 }
 
+sync
+
 fswatch --batch-marker=batch "$WATCH_DIR" | while read -r line; do
     if [[ "$line" = "batch" ]]; then
         sync

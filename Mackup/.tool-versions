@@ -1,5 +1,5 @@
 nodejs 19.9.0 
-ruby 2.7.7
+ruby 3.4.0-preview1
 golang 1.21.4
 java corretto-17.0.13.11.1 
 rust stable

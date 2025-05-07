@@ -165,13 +165,13 @@
   "ruby.format": "rufo",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "viceroy.config.lastVersion": "0.52.201506",
+  "viceroy.config.lastVersion": "0.53.202074",
   "files.watcherExclude": {
     "**/build/**": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
-    "**/node_modules/*/**": true,
-    "**/.hg/store/**": true
+    "**/.hg/store/**": true,
+    "**/node_modules/*/**": true
   },
   "files.exclude": {
     ".viceroy": true,
@@ -185,9 +185,9 @@
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
-    "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    "**/CVS": true
   },
   "search.exclude": {
     "env": true,
@@ -197,7 +197,7 @@
     "**/bower_components": true,
     "**/*.code-search": true
   },
-  "viceroy.config.internal.lastUpdateTime": "2023-10-24T06:43:29.042Z",
+  "viceroy.config.internal.lastUpdateTime": "2025-05-07T14:44:35.971Z",
   "viceroy.doc.welcome.showAtStartup": false,
   "gopls": {
     "experimentalWorkspaceModule": true
@@ -217,7 +217,7 @@
   "diffEditor.renderSideBySide": false,
   "terminal.integrated.macOptionClickForcesSelection": true,
   "vscode-neovim.logLevel": "warn",
-  "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "vscode-neovim.mouseSelectionStartVisualMode": false,
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
   "auto-build.defaultEnv.name": "STM32F103RE_creality",
@@ -246,5 +246,127 @@
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*"
   },
-  "notebook.output.wordWrap": true
+  "notebook.output.wordWrap": true,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+  "viceroy.config.notifyMarch25AL2Support": false,
+  "viceroy.marketplace.extensionUpdateChannels": {
+    "asbx.amzn-cline": "stable",
+    "amzn.amzn-pippin": "stable",
+    "amazon.controls-dsl": "stable",
+    "amzn.vscode-isengard-tooltip": "stable",
+    "amzn.AWSGuruQLinter": "stable",
+    "mchpatr.datapath-vscode": "stable",
+    "kaze.vscode-plugin-contribution-model": "stable",
+    "marklel.vscode-brazil": "stable",
+    "mchpatr.datapath-language-server": "stable"
+  },
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.enableNeovim": true,
+  "vim.highlightedyank.enable": true,
+  "vim.history": 1000,
+  "vim.hlsearch": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
+  },
+  "vim.leader": "<space>",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["selectNextSuggestion"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["selectPrevSuggestion"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<S-h>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":wall"]
+    },
+    {
+      "before": ["<leader>", "W"],
+      "commands": [":noautocmd wall"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":qall"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": [":confirm xall"]
+    },
+    {
+      "before": ["<S-q>"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "t"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "k"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["<leader>", "l", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<S-k>"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":wall"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":qall"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": [":confirm xall"]
+    }
+  ],
+  "amazonQ.suppressPrompts": {
+    "amazonQChatDisclaimer": true
+  }
 }
