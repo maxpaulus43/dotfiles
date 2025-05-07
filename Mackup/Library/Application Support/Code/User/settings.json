@@ -269,10 +269,15 @@
   "vim.highlightedyank.enable": true,
   "vim.history": 1000,
   "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
   "vim.handleKeys": {
     "<C-d>": true,
     "<C-s>": false,
-    "<C-z>": false
+    "<C-z>": false,
+    "<C-h>": false,
+    "<C-j>": false,
+    "<C-k>": false,
+    "<C-l>": false
   },
   "vim.leader": "<space>",
   "vim.insertModeKeyBindings": [
@@ -324,10 +329,7 @@
     },
     {
       "before": ["<leader>", "e"],
-      "commands": [
-        "workbench.action.toggleSidebarVisibility",
-        "workbench.action.focusActiveEditorGroup"
-      ]
+      "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     {
       "before": ["<leader>", "f", "f"],
