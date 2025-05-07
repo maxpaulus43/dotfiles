@@ -114,6 +114,8 @@
     "*.md": "default",
     "*.ipynb": "jupyter.notebook.ipynb"
   },
+  "workbench.editor.labelFormat": "short",
+  "breadcrumbs.enabled": true,
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
   },
@@ -309,6 +311,10 @@
       "commands": [":qall"]
     },
     {
+      "before": ["<leader>", "h"],
+      "commands": [":nohlsearch"]
+    },
+    {
       "before": ["<leader>", "x"],
       "commands": [":confirm xall"]
     },
@@ -368,5 +374,6 @@
   ],
   "amazonQ.suppressPrompts": {
     "amazonQChatDisclaimer": true
-  }
+  },
+  "workbench.colorTheme": "Best Themes - One Dark Pro"
 }
