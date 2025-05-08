@@ -377,5 +377,16 @@
   "amazonQ.suppressPrompts": {
     "amazonQChatDisclaimer": true
   },
-  "workbench.colorTheme": "Best Themes - One Dark Pro"
+  "workbench.colorTheme": "Best Themes - One Dark Pro",
+  "workbench.colorCustomizations": {
+    "tab.activeBackground": "#462424",
+  },
+  "viceroy.config.setup.amazonQ": false,
+  "java.configuration.runtimes": [
+  {
+    "name": "JavaSE-17",
+    "path": "/Users/maxpaulu/.asdf/installs/java/corretto-17.0.13.11.1",
+    "default": true
+  },
+  ]
 }

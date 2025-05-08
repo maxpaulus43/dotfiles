@@ -3,6 +3,7 @@
 abbr "..." "cd ../.."
 abbr "...." "cd ../../.."
 abbr "....." "cd ../../../.."
+abbr aws "PAGER=\"\" aws"
 abbr bb "brazil-build"
 abbr bbx "brazil-build xcode-env"
 abbr brc "brazil-recursive-cmd --all"
