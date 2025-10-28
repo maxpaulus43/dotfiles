@@ -25,7 +25,7 @@
 	template = /Users/maxpaulu/.stCommitMsg
 
 [core]
-  pager = delta
+	pager = delta
     excludesfile = /Users/maxpaulu/.gitignore_global
 
 [interactive]
@@ -34,7 +34,8 @@
   useBuiltin = false # required for git 2.37.0
 
 [delta]
-  navigate = true    # use n and N to move between diff sections
+  navigate = false    # use n and N to move between diff sections
+  paging = never
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
   minus-style = syntax auto
   plus-style = syntax darkgreen

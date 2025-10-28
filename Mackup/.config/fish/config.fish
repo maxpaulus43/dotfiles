@@ -31,6 +31,12 @@ if status is-interactive
   set fish_cursor_insert line
   set fish_cursor_replace_one underscore
 
+  if test "$TERM_PROGRAM" = "vscode"
+    source (code --locate-shell-integration-path fish)
+  else if test "$TERM_PROGRAM" = "kiro"
+    source (code --locate-shell-integration-path fish)
+  end
+
   zoxide init fish | source
 
   if which tmux &> /dev/null \
@@ -48,3 +54,5 @@ if status is-interactive
 end
 
 
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)

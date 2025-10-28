@@ -23,9 +23,11 @@ alias gstaa='git stash apply'
 alias gstp='git stash pop'
 alias grhh='git reset HEAD --hard'
 alias jtc='eval "$(pbpaste | jsonToCurl)" | jq | code -'
+alias head='ghead'
+alias tail='gtail'
 # alias la='ls -lAh --color=tty'
-alias la='exa -1la'
-alias ls='exa --icons'
+# alias la='exa -1la'
+# alias ls='exa --icons'
 alias nds="ninja-dev-sync"
 alias studio="open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 alias sz="source $ZDOTDIR/.zshrc"

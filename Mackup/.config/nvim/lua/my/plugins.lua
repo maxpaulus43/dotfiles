@@ -87,22 +87,22 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"rafamadriz/friendly-snippets",
-			{
-				-- url = "ssh://git.amazon.com/pkg/AmazonQNVim",
-				dir = "/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim",
-				opts = {
-					wrap = true,
-					ssoStartUrl = "https://amzn.awsapps.com/start",
-					lsp_server_cmd = {
-						"node",
-						"/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js",
-						-- vim.fn.stdpath("data")
-						-- .. "/lazy/AmazonQNVim"
-						-- .. "/language-server/build/aws-lsp-codewhisperer-token-binary.js",
-						"--stdio",
-					},
-				},
-			},
+			-- {
+			-- 	-- url = "ssh://git.amazon.com/pkg/AmazonQNVim",
+			-- 	dir = "/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim",
+			-- 	opts = {
+			-- 		wrap = true,
+			-- 		ssoStartUrl = "https://amzn.awsapps.com/start",
+			-- 		lsp_server_cmd = {
+			-- 			"node",
+			-- 			"/Users/maxpaulu/workplace/q-nvim/src/AmazonQNVim/language-server/build/aws-lsp-codewhisperer-token-binary.js",
+			-- 			-- vim.fn.stdpath("data")
+			-- 			-- .. "/lazy/AmazonQNVim"
+			-- 			-- .. "/language-server/build/aws-lsp-codewhisperer-token-binary.js",
+			-- 			"--stdio",
+			-- 		},
+			-- 	},
+			-- },
 		},
 	},
 	{

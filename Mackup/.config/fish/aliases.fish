@@ -3,7 +3,6 @@
 abbr "..." "cd ../.."
 abbr "...." "cd ../../.."
 abbr "....." "cd ../../../.."
-abbr aws "PAGER=\"\" aws"
 abbr bb "brazil-build"
 abbr bbx "brazil-build xcode-env"
 abbr brc "brazil-recursive-cmd --all"
@@ -32,9 +31,11 @@ abbr gstp 'git stash pop'
 abbr icat "wezterm imgcat"
 abbr imgcat "wezterm imgcat"
 abbr jtc 'eval "$(pbpaste | jsonToCurl)" | jq | code -'
-abbr la 'eza -1la'
-abbr ls 'eza --icons'
+# abbr la 'eza -1la'
+# abbr ls 'eza --icons'
+abbr mcp-inspector "npx @modelcontextprotocol/inspector npm start"
 abbr nds "ninja-dev-sync"
+abbr pbjq "pbpaste | jq"
 abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
 abbr tree "eza -T"
