@@ -22,7 +22,7 @@ require("lazy").setup({
 	"moll/vim-bbye",
 	"RRethy/vim-illuminate",
 	"akinsho/toggleterm.nvim",
-	require("my.telescope"),
+	require("telescope"),
 	require("my.none-ls"),
 	"akinsho/bufferline.nvim",
 	{

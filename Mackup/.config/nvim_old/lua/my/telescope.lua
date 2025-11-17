@@ -3,6 +3,7 @@ local opts = { silent = true, noremap = true }
 
 local set_telescope_keymaps = function()
 	local builtin = require("telescope.builtin")
+	keymap("n", "<leader>fp", "<cmd>Telescope projects<cr>", opts)
 	keymap("n", "<leader><space>", "<cmd>Telescope buffers<cr>", opts)
 	keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
 	keymap("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)

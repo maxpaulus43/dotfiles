@@ -23,17 +23,17 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 		brew install wezterm
 	fi
 
-	brew install asdf # version manager for node,ruby, etc...
-	brew install bat  # better cat
-	brew install btop # better top
 	brew install coreutils
-	brew install dust   # better du
-	brew install eza    # better ls
-	brew install fd     # better find
-	brew install ffmpeg # image/video manipulations
-	brew install fish   # better shell
-	brew install fzf    # fuzzy finder
 	brew install git
+	brew install asdf      # version manager for node,ruby, etc...
+	brew install bat       # better cat
+	brew install btop      # better top
+	brew install dust      # better du
+	brew install eza       # better ls
+	brew install fd        # better find
+	brew install ffmpeg    # image/video manipulations
+	brew install fish      # better shell
+	brew install fzf       # fuzzy finder
 	brew install git-delta # better git diffs
 	brew install jq        # nice for working with json in the terminal
 	brew install lazygit   # git UI
@@ -41,12 +41,14 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	brew install parallel  # better xargs: build and execute shell command lines from standard input in parallel
 	brew install ripgrep   # better grep
 	brew install rlwrap    # needed for ~/bin/cht
-	# brew install tmux      # terminal window manager
-	brew install zoxide  # better cd
-	brew install scrcpy  # android screen stream program
-	brew install ollama  # running LLM's locally
-	brew install fswatch # Monitor a directory for changes and run a shell command
-	brew instal gawk     # better awk
+	brew install zoxide    # better cd
+	brew install ollama    # running LLM's locally
+	brew install fswatch   # Monitor a directory for changes and run a shell command
+	brew instal gawk       # better awk
+	brew install 7zip      # zip files
+	brew install yazi      # terminal file manager
+	# brew install tmux    # terminal window manager
+	# brew install scrcpy  # android screen stream program
 
 	if [[ $platform == 'macos' ]]; then
 		brew tap homebrew/cask-fonts
