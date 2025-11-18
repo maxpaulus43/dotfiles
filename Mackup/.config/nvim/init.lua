@@ -56,6 +56,12 @@ map("n", "<leader><C-g>", function()
 	vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
 	vim.cmd('let @* = expand("%:p")')
 end, opts)
+map("n", "<leader>gh", "<cmd> Gitsigns preview_hunk<cr>", opts)
+map("n", "<leader>gb", "<cmd> Git blame<cr>", opts)
+map("n", "<leader>rh", "<cmd> Gitsigns reset_hunk<cr>", opts)
+map("n", "<leader>rb", "<cmd> Gitsigns reset_buffer<cr>", opts)
+map("n", "<leader>nh", "<cmd> Gitsigns next_hunk<cr>", opts)
+map("n", "<leader>ph", "<cmd> Gitsigns prev_hunk<cr>", opts)
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
@@ -91,8 +97,9 @@ local plugins = {
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{ "nvim-telescope/telescope.nvim", opts = {} },
+	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	require("my.telescope"),
+	require("plugins.telescope"),
 	{
 		"akinsho/bufferline.nvim",
 		opts = {},
@@ -122,6 +129,18 @@ local plugins = {
 		},
 	},
 	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				opts = { render = "wrapped-compact", timeout = 1000, stages = "static" },
+			},
+		},
+	},
+	{
 		"navarasu/onedark.nvim",
 		init = function()
 			vim.cmd.colorscheme("onedark")
@@ -132,12 +151,7 @@ local plugins = {
 		version = "*", -- use the latest stable version
 		event = "VeryLazy",
 		keys = {
-			{
-				"<leader>e",
-				mode = { "n", "v" },
-				"<cmd>Yazi<cr>",
-				desc = "Open yazi at the current file",
-			},
+			{ "<leader>e", mode = { "n", "v" }, "<cmd>Yazi<cr>" },
 		},
 		opts = {
 			-- open yazi instead of netrw
@@ -278,6 +292,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 	end,
 })
+
+vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
