@@ -37,7 +37,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 	brew install git-delta # better git diffs
 	brew install jq        # nice for working with json in the terminal
 	brew install lazygit   # git UI
-	brew install neovim    # better vim
+	brew install --HEAD neovim    # better vim
 	brew install parallel  # better xargs: build and execute shell command lines from standard input in parallel
 	brew install ripgrep   # better grep
 	brew install rlwrap    # needed for ~/bin/cht
