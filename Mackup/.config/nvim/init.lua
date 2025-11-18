@@ -129,18 +129,6 @@ local plugins = {
 		},
 	},
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				opts = { render = "wrapped-compact", timeout = 1000, stages = "static" },
-			},
-		},
-	},
-	{
 		"navarasu/onedark.nvim",
 		init = function()
 			vim.cmd.colorscheme("onedark")

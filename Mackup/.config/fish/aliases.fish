@@ -31,8 +31,8 @@ abbr gstp 'git stash pop'
 abbr icat "wezterm imgcat"
 abbr imgcat "wezterm imgcat"
 abbr jtc 'eval "$(pbpaste | jsonToCurl)" | jq | code -'
-# abbr la 'eza -1la'
-# abbr ls 'eza --icons'
+abbr la 'eza -1la'
+abbr ls 'eza --icons'
 abbr mcp-inspector "npx @modelcontextprotocol/inspector npm start"
 abbr nds "ninja-dev-sync"
 abbr pbjq "pbpaste | jq"
