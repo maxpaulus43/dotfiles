@@ -1,49 +1,49 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.o.backup = false            -- creates a backup file
+vim.o.backup = false -- creates a backup file
 vim.o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.o.fileencoding = "utf-8"    -- the encoding written to a file
-vim.o.hlsearch = true           -- highlight all matches on previous search pattern
-vim.o.ignorecase = true         -- ignore case in search patterns
-vim.o.mouse = "a"               -- allow the mouse to be used in neovim
-vim.o.pumheight = 10            -- pop up menu height
-vim.o.smartcase = true          -- smart case
-vim.o.smartindent = true        -- make indenting smarter again
-vim.o.splitbelow = true         -- force all horizontal splits to go below current window
-vim.o.splitright = true         -- force all vertical splits to go to the right of current window
-vim.o.swapfile = false          -- creates a swapfile
-vim.o.termguicolors = true      -- set term gui colors (most terminals support this)
-vim.o.timeoutlen = 1000         -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.o.undofile = true           -- enable persistent undo
-vim.o.writebackup = false       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.o.expandtab = true          -- convert tabs to spaces
-vim.o.shiftwidth = 4            -- the number of spaces inserted for each indentation
-vim.o.tabstop = 4               -- insert 2 spaces for a tab
-vim.o.cursorline = true         -- highlight the current line
-vim.o.number = true             -- set numbered lines
-vim.o.laststatus = 3            -- only the last window will always have a status line
-vim.o.showcmd = false           -- hide (partial) command in the last line of the screen (for performance)
-vim.o.numberwidth = 4           -- minimal number of columns to use for the line number {default 4}
-vim.o.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
-vim.o.wrap = false              -- display lines as one long line
-vim.o.scrolloff = 8             -- minimal number of screen lines to keep above and below the cursor
-vim.o.sidescrolloff = 8         -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
+vim.o.fileencoding = "utf-8" -- the encoding written to a file
+vim.o.hlsearch = true -- highlight all matches on previous search pattern
+vim.o.ignorecase = true -- ignore case in search patterns
+vim.o.mouse = "a" -- allow the mouse to be used in neovim
+vim.o.pumheight = 10 -- pop up menu height
+vim.o.smartcase = true -- smart case
+vim.o.smartindent = true -- make indenting smarter again
+vim.o.splitbelow = true -- force all horizontal splits to go below current window
+vim.o.splitright = true -- force all vertical splits to go to the right of current window
+vim.o.swapfile = false -- creates a swapfile
+vim.o.termguicolors = true -- set term gui colors (most terminals support this)
+vim.o.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.o.undofile = true -- enable persistent undo
+vim.o.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.o.expandtab = true -- convert tabs to spaces
+vim.o.shiftwidth = 4 -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4 -- insert 2 spaces for a tab
+vim.o.cursorline = true -- highlight the current line
+vim.o.number = true -- set numbered lines
+vim.o.laststatus = 3 -- only the last window will always have a status line
+vim.o.showcmd = false -- hide (partial) command in the last line of the screen (for performance)
+vim.o.numberwidth = 4 -- minimal number of columns to use for the line number {default 4}
+vim.o.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+vim.o.wrap = false -- display lines as one long line
+vim.o.scrolloff = 8 -- minimal number of screen lines to keep above and below the cursor
+vim.o.sidescrolloff = 8 -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.o.autowriteall = true
 vim.o.autoread = true
 vim.o.winborder = "rounded"
 vim.opt.whichwrap:append("<,>,[,],h,l") -- keys allowed to move to the previous/next line when the beginning/end of line is reached
-vim.opt.iskeyword:append("-")           -- treats words with `-` as single words
+vim.opt.iskeyword:append("-") -- treats words with `-` as single words
 
 local map = vim.keymap.set
 local opts = { silent = true, noremap = true }
 --Remap space as leader key
 map("", "<space>", "<Nop>", opts)
 
-map({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts)           -- write all
+map({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts) -- write all
 map({ "n", "v" }, "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
-map({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts)        -- quit all
-map({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts)   -- write quit all
+map({ "n", "v" }, "<leader>q", "<cmd>quitall<cr>", opts) -- quit all
+map({ "n", "v" }, "<leader>x", "<cmd>confirm xall<cr>", opts) -- write quit all
 map("n", "gq", "<cmd>quit<cr>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
@@ -53,8 +53,8 @@ map("v", "k", "gk", opts)
 -- show full filename
 map("n", "<C-g>", "1<C-g>", opts)
 map("n", "<leader><C-g>", function()
-    vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
-    vim.cmd('let @* = expand("%:p")')
+	vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
+	vim.cmd('let @* = expand("%:p")')
 end, opts)
 
 -- Better window navigation
@@ -86,201 +86,201 @@ map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 local plugins = {
-    { "nvim-lua/plenary.nvim" },
-    { "moll/vim-bbye" },
-    { "nvim-tree/nvim-web-devicons" },
-    { "nvim-lualine/lualine.nvim",                opts = {} },
-    { "nvim-telescope/telescope.nvim",            opts = {} },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    require("my.telescope"),
-    {
-        "akinsho/bufferline.nvim",
-        opts = {},
-        version = "*",
-        dependencies = "nvim-tree/nvim-web-devicons"
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-            { "mason-org/mason.nvim", opts = {} },
-            "neovim/nvim-lspconfig",
-        },
-        opts = {
-            ensure_installed = {
-                "html",
-                "ts_ls",
-                "eslint",
-                "pyright",
-                "jsonls",
-                "yamlls",
-                "gopls",
-                "bashls",
-                "tailwindcss",
-                "svelte",
-                "rust_analyzer",
-            },
-
-        },
-    },
-    {
-        "navarasu/onedark.nvim",
-        init = function()
-            vim.cmd.colorscheme("onedark")
-        end
-    },
-    {
-        "mikavilpas/yazi.nvim",
-        version = "*", -- use the latest stable version
-        event = "VeryLazy",
-        keys = {
-            {
-                "<leader>e",
-                mode = { "n", "v" },
-                "<cmd>Yazi<cr>",
-                desc = "Open yazi at the current file",
-            },
-        },
-        opts = {
-            -- open yazi instead of netrw
-            open_for_directories = true,
-            keymaps = { show_help = "<f1>" },
-        },
-        init = function()
-            -- mark netrw as loaded so it's not loaded at all.
-            -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-            vim.g.loaded_netrwPlugin = 1
-        end,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        init = function()
-            vim.opt.foldmethod = "expr"
-            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-            vim.opt.foldlevel = 99
-        end,
-        opts = {
-            ensure_installed = "all",
-            sync_install = false,
-            auto_install = true,
-            highlight = { enable = true, },
-        }
-    },
-    {
-        "stevearc/conform.nvim", -- file formatter
-        opts = {
-            default_format_opts = { timeout_ms = 500, lsp_format = "fallback" },
-            format_on_save = {},
-            formatters_by_ft = {
-                typescript = { "prettier" },
-                typescriptreact = { "prettier" },
-                json = { "prettier" },
-                python = { "black" },
-                go = { "gofmt" },
-                lua = { "stylua" },
-            },
-        }
-    },
-    {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-            library = {
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
-        },
-    },
-    {
-        'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-        version = '1.*',
-        opts = {
-            -- :h blink-cmp-config-keymap
-            keymap = {
-                preset = "enter",
-                ['<C-k>'] = { 'select_prev', 'fallback' },
-                ['<C-j>'] = { 'select_next', 'fallback' },
-            },
-            appearance = { nerd_font_variant = "mono" },
-            completion = { documentation = { auto_show = true } },
-            sources = { default = { "lsp", "path", "snippets", "buffer" } },
-            fuzzy = { implementation = "prefer_rust_with_warning" },
-        },
-        opts_extend = { "sources.default" }
-    },
+	{ "nvim-lua/plenary.nvim" },
+	{ "moll/vim-bbye" },
+	{ "nvim-tree/nvim-web-devicons" },
+	{ "nvim-lualine/lualine.nvim", opts = {} },
+	{ "nvim-telescope/telescope.nvim", opts = {} },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	require("my.telescope"),
+	{
+		"akinsho/bufferline.nvim",
+		opts = {},
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
+		opts = {
+			ensure_installed = {
+				"html",
+				"ts_ls",
+				"eslint",
+				"pyright",
+				"jsonls",
+				"yamlls",
+				"gopls",
+				"bashls",
+				"tailwindcss",
+				"svelte",
+				"rust_analyzer",
+			},
+		},
+	},
+	{
+		"navarasu/onedark.nvim",
+		init = function()
+			vim.cmd.colorscheme("onedark")
+		end,
+	},
+	{
+		"mikavilpas/yazi.nvim",
+		version = "*", -- use the latest stable version
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>e",
+				mode = { "n", "v" },
+				"<cmd>Yazi<cr>",
+				desc = "Open yazi at the current file",
+			},
+		},
+		opts = {
+			-- open yazi instead of netrw
+			open_for_directories = true,
+			keymaps = { show_help = "<f1>" },
+		},
+		init = function()
+			-- mark netrw as loaded so it's not loaded at all.
+			-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+			vim.g.loaded_netrwPlugin = 1
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		init = function()
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.opt.foldlevel = 99
+		end,
+		opts = {
+			ensure_installed = "all",
+			sync_install = false,
+			auto_install = true,
+			highlight = { enable = true },
+		},
+	},
+	{
+		"stevearc/conform.nvim", -- file formatter
+		opts = {
+			default_format_opts = { timeout_ms = 500, lsp_format = "fallback" },
+			format_on_save = {},
+			formatters_by_ft = {
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+				json = { "prettier" },
+				python = { "black" },
+				go = { "gofmt" },
+				lua = { "stylua" },
+			},
+		},
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		opts = {
+			-- :h blink-cmp-config-keymap
+			keymap = {
+				preset = "enter",
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+			},
+			appearance = { nerd_font_variant = "mono" },
+			completion = { documentation = { auto_show = true } },
+			sources = { default = { "lsp", "path", "snippets", "buffer" } },
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
+	},
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
+
 require("lazy").setup(plugins)
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local lsp_opts = { buffer = args.buf, silent = true, noremap = true }
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local lsp_opts = { buffer = args.buf, silent = true, noremap = true }
 
-        map("n", "gD", vim.lsp.buf.declaration, lsp_opts)
-        map("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
-        map("n", "K", vim.lsp.buf.hover, lsp_opts)
-        map("n", "gl", vim.diagnostic.open_float, lsp_opts)
-        map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
-        map("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
-        map("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
-        map("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
-        map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
-        map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
+		map("n", "gD", vim.lsp.buf.declaration, lsp_opts)
+		map("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
+		map("n", "K", vim.lsp.buf.hover, lsp_opts)
+		map("n", "gl", vim.diagnostic.open_float, lsp_opts)
+		map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
+		map("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
+		map("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
+		map("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
+		map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
+		map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
 
-        local has_builtin, builtin = pcall(require, "telescope.builtin")
-        if has_builtin then
-            map("n", "gI", function()
-                builtin.lsp_implementations({ show_line = false })
-            end, lsp_opts)
-            map("n", "gr", function()
-                builtin.lsp_references({ show_line = false })
-            end, lsp_opts)
-        else
-            map("n", "gr", vim.lsp.buf.references, lsp_opts)
-        end
+		local has_builtin, builtin = pcall(require, "telescope.builtin")
+		if has_builtin then
+			map("n", "gI", function()
+				builtin.lsp_implementations({ show_line = false })
+			end, lsp_opts)
+			map("n", "gr", function()
+				builtin.lsp_references({ show_line = false })
+			end, lsp_opts)
+		else
+			map("n", "gr", vim.lsp.buf.references, lsp_opts)
+		end
 
-        map("n", "<leader>lf", function()
-            vim.lsp.buf.format({ async = true })
-        end, lsp_opts)
-        map("n", "<leader>j", function()
-            vim.diagnostic.jump({
-                count = 1,
-                on_jump = vim.diagnostic.open_float
-            })
-        end, lsp_opts)
-        map("n", "<leader>k", function()
-            vim.diagnostic.jump({
-                count = -1,
-                on_jump = vim.diagnostic.open_float
-            })
-        end, lsp_opts)
+		map("n", "<leader>lf", function()
+			vim.lsp.buf.format({ async = true })
+		end, lsp_opts)
+		map("n", "<leader>j", function()
+			vim.diagnostic.jump({
+				count = 1,
+				on_jump = vim.diagnostic.open_float,
+			})
+		end, lsp_opts)
+		map("n", "<leader>k", function()
+			vim.diagnostic.jump({
+				count = -1,
+				on_jump = vim.diagnostic.open_float,
+			})
+		end, lsp_opts)
 
-        map('n', 'gd', vim.lsp.buf.definition, opts)
-        map('n', 'K', vim.lsp.buf.hover, opts)
-        map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        map('n', '<leader>lr', vim.lsp.buf.rename, opts)
-        map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        map('n', 'gr', vim.lsp.buf.references, opts)
-        map('n', '<leader>f', function()
-            vim.lsp.buf.format({ async = true })
-        end, opts)
-    end,
+		map("n", "gd", vim.lsp.buf.definition, opts)
+		map("n", "K", vim.lsp.buf.hover, opts)
+		map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		map("n", "<leader>lr", vim.lsp.buf.rename, opts)
+		map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		map("n", "gr", vim.lsp.buf.references, opts)
+		map("n", "<leader>f", function()
+			vim.lsp.buf.format({ async = true })
+		end, opts)
+	end,
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
