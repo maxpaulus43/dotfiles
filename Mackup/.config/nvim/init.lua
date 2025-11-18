@@ -1,63 +1,44 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- OPTIONS
-
-vim.opt.backup = false                  -- creates a backup file
-vim.opt.clipboard = "unnamedplus"       -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1                   -- more space in the neovim command line for displaying messages
-vim.opt.conceallevel = 0                -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8"          -- the encoding written to a file
-vim.opt.hlsearch = true                 -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true               -- ignore case in search patterns
-vim.opt.mouse = "a"                     -- allow the mouse to be used in neovim
-vim.opt.pumheight = 10                  -- pop up menu height
-vim.opt.showmode = true                 -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 0                 -- always show tabs
-vim.opt.smartcase = true                -- smart case
-vim.opt.smartindent = true              -- make indenting smarter again
-vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
-vim.opt.splitright = true               -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false                -- creates a swapfile
-vim.opt.termguicolors = true            -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 1000               -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.undofile = true                 -- enable persistent undo
-vim.opt.writebackup = false             -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.opt.expandtab = true                -- convert tabs to spaces
-vim.opt.shiftwidth = 2                  -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 2                     -- insert 2 spaces for a tab
-vim.opt.cursorline = true               -- highlight the current line
-vim.opt.number = true                   -- set numbered lines
-vim.opt.relativenumber = false
-vim.opt.laststatus = 3                  -- only the last window will always have a status line
-vim.opt.showcmd = false                 -- hide (partial) command in the last line of the screen (for performance)
-vim.opt.ruler = false                   -- hide the line and column number of the cursor position
-vim.opt.numberwidth = 4                 -- minimal number of columns to use for the line number {default 4}
-vim.opt.signcolumn = "yes"              -- always show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = false                    -- display lines as one long line
-vim.opt.scrolloff = 8                   -- minimal number of screen lines to keep above and below the cursor
-vim.opt.sidescrolloff = 8               -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
-vim.opt.shortmess:append("c")           -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
+vim.o.backup = false            -- creates a backup file
+vim.o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+vim.o.fileencoding = "utf-8"    -- the encoding written to a file
+vim.o.hlsearch = true           -- highlight all matches on previous search pattern
+vim.o.ignorecase = true         -- ignore case in search patterns
+vim.o.mouse = "a"               -- allow the mouse to be used in neovim
+vim.o.pumheight = 10            -- pop up menu height
+vim.o.smartcase = true          -- smart case
+vim.o.smartindent = true        -- make indenting smarter again
+vim.o.splitbelow = true         -- force all horizontal splits to go below current window
+vim.o.splitright = true         -- force all vertical splits to go to the right of current window
+vim.o.swapfile = false          -- creates a swapfile
+vim.o.termguicolors = true      -- set term gui colors (most terminals support this)
+vim.o.timeoutlen = 1000         -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.o.undofile = true           -- enable persistent undo
+vim.o.writebackup = false       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.o.expandtab = true          -- convert tabs to spaces
+vim.o.shiftwidth = 4            -- the number of spaces inserted for each indentation
+vim.o.tabstop = 4               -- insert 2 spaces for a tab
+vim.o.cursorline = true         -- highlight the current line
+vim.o.number = true             -- set numbered lines
+vim.o.laststatus = 3            -- only the last window will always have a status line
+vim.o.showcmd = false           -- hide (partial) command in the last line of the screen (for performance)
+vim.o.numberwidth = 4           -- minimal number of columns to use for the line number {default 4}
+vim.o.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
+vim.o.wrap = false              -- display lines as one long line
+vim.o.scrolloff = 8             -- minimal number of screen lines to keep above and below the cursor
+vim.o.sidescrolloff = 8         -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
+vim.o.autowriteall = true
+vim.o.autoread = true
+vim.o.winborder = "rounded"
 vim.opt.whichwrap:append("<,>,[,],h,l") -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-")           -- treats words with `-` as single words
-vim.opt.autowriteall = true
-vim.opt.autoread = true
-vim.o.winborder = "rounded"
 
--- Shorten function name
 local map = vim.keymap.set
--- Silent keymap option
 local opts = { silent = true, noremap = true }
 --Remap space as leader key
 map("", "<space>", "<Nop>", opts)
-
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
 
 map({ "n", "v" }, "<leader>w", "<cmd>wall<cr>", opts)           -- write all
 map({ "n", "v" }, "<leader>W", "<cmd>noautocmd wall<cr>", opts) -- write all (don't auto format)
@@ -68,15 +49,14 @@ map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 map("v", "j", "gj", opts)
 map("v", "k", "gk", opts)
--- Normal --
--- undotree
-map("n", "<F5>", "<cmd>UndotreeToggle<cr>", opts)
+
 -- show full filename
 map("n", "<C-g>", "1<C-g>", opts)
 map("n", "<leader><C-g>", function()
     vim.cmd('echo "Copying path to clipboard: " .. expand("%:p")')
     vim.cmd('let @* = expand("%:p")')
 end, opts)
+
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
@@ -105,13 +85,11 @@ map("v", ">", ">gv", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
-
 local plugins = {
-    { "nvim-lua/plenary.nvim" },                               -- used by other plugins
-    { "nvim-tree/nvim-web-devicons" },                         -- used by other plugins
+    { "nvim-lua/plenary.nvim" },
     { "moll/vim-bbye" },
-    { "nvim-lualine/lualine.nvim",                opts = {} }, -- status line
-    { "nvim-tree/nvim-tree.lua" },                             -- file browser
+    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-lualine/lualine.nvim",                opts = {} },
     { "nvim-telescope/telescope.nvim",            opts = {} },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     require("my.telescope"),
@@ -139,7 +117,6 @@ local plugins = {
                 "bashls",
                 "tailwindcss",
                 "svelte",
-                "lua_ls",
                 "rust_analyzer",
             },
 
@@ -192,13 +169,26 @@ local plugins = {
     {
         "stevearc/conform.nvim", -- file formatter
         opts = {
-            default_format_opts = { lsp_format = "fallback" },
+            default_format_opts = { timeout_ms = 500, lsp_format = "fallback" },
+            format_on_save = {},
             formatters_by_ft = {
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
                 json = { "prettier" },
+                python = { "black" },
+                go = { "gofmt" },
+                lua = { "stylua" },
             },
         }
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     {
         'saghen/blink.cmp',
@@ -214,10 +204,11 @@ local plugins = {
             appearance = { nerd_font_variant = "mono" },
             completion = { documentation = { auto_show = true } },
             sources = { default = { "lsp", "path", "snippets", "buffer" } },
-            fuzzy = { implementation = "prefer_rust_with_warning" }
+            fuzzy = { implementation = "prefer_rust_with_warning" },
         },
         opts_extend = { "sources.default" }
-    } }
+    },
+}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -264,19 +255,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.buf.format({ async = true })
         end, lsp_opts)
         map("n", "<leader>j", function()
-            vim.diagnostic.goto_next({ buffer = args.buf })
+            vim.diagnostic.jump({
+                count = 1,
+                on_jump = vim.diagnostic.open_float
+            })
         end, lsp_opts)
         map("n", "<leader>k", function()
-            vim.diagnostic.goto_prev({ buffer = args.buf })
+            vim.diagnostic.jump({
+                count = -1,
+                on_jump = vim.diagnostic.open_float
+            })
         end, lsp_opts)
 
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<leader>f', function()
+        map('n', 'gd', vim.lsp.buf.definition, opts)
+        map('n', 'K', vim.lsp.buf.hover, opts)
+        map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        map('n', '<leader>lr', vim.lsp.buf.rename, opts)
+        map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        map('n', 'gr', vim.lsp.buf.references, opts)
+        map('n', '<leader>f', function()
             vim.lsp.buf.format({ async = true })
         end, opts)
     end,

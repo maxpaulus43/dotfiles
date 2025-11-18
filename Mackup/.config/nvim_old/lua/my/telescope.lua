@@ -1,25 +1,25 @@
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 local set_telescope_keymaps = function()
 	local builtin = require("telescope.builtin")
-	keymap("n", "<leader>fp", "<cmd>Telescope projects<cr>", opts)
-	keymap("n", "<leader><space>", "<cmd>Telescope buffers<cr>", opts)
-	keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
-	keymap("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
-	keymap("n", "<leader>fl", "<cmd>Telescope jumplist<cr>", opts)
-	keymap("n", "<leader>fh", builtin.help_tags, opts)
-	keymap("n", "<leader>fg", builtin.git_status, opts)
-	keymap("n", "<leader>ff", function()
+	map("n", "<leader>fp", "<cmd>Telescope projects<cr>", opts)
+	map("n", "<leader><space>", "<cmd>Telescope buffers<cr>", opts)
+	map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
+	map("n", "<leader>fr", "<cmd>Telescope registers<cr>", opts)
+	map("n", "<leader>fl", "<cmd>Telescope jumplist<cr>", opts)
+	map("n", "<leader>fh", builtin.help_tags, opts)
+	map("n", "<leader>fg", builtin.git_status, opts)
+	map("n", "<leader>ff", function()
 		builtin.find_files({ hidden = true })
 	end, opts)
-	keymap("n", "<leader>ft", function()
+	map("n", "<leader>ft", function()
 		builtin.live_grep({ hidden = true, show_line = false })
 	end, opts)
-	keymap("n", "g*", function()
+	map("n", "g*", function()
 		builtin.grep_string({ hidden = true, show_line = false })
 	end, opts)
-	keymap("n", "<leader>/", function()
+	map("n", "<leader>/", function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
 		builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 			winblend = 10,
@@ -57,7 +57,7 @@ return {
 							"--line-number",
 							"--column",
 							"--smart-case",
-							"-uu", -- thats the new thing. this helps with dotfiles
+							"-uu",
 						},
 						prompt_prefix = " ",
 						selection_caret = " ",
