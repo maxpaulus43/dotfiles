@@ -99,7 +99,7 @@ local plugins = {
 	{
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		opts = { keymap = { builtin = { ["jk"] = "hide" } } },
 	},
 	{
 		"akinsho/bufferline.nvim",
