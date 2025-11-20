@@ -112,7 +112,14 @@ local plugins = {
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
 		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
 		opts = {
+			input = {
+				win = {
+					keys = { ni_esc = { "jk", { "cancel" }, mode = "i" } },
+				},
+			},
 			words = {},
 			lazygit = {},
 			explorer = { replace_netrw = true, trash = true },
