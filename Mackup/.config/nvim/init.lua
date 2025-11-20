@@ -96,8 +96,14 @@ map("v", "K", ":m '<-2<cr>gv=gv", opts)
 map({ "n", "i", "v" }, "<leader>gg", function()
 	Snacks.lazygit.open()
 end, opts)
-map({ "n", "i", "v" }, "<leader>e", function()
+map({ "n", "v" }, "<leader>e", function()
 	Snacks.explorer()
+end, opts)
+map({ "n", "i", "v" }, "<M-j>", function()
+	Snacks.words.jump(1, true)
+end, opts)
+map({ "n", "i", "v" }, "<M-k>", function()
+	Snacks.words.jump(-1, true)
 end, opts)
 
 local plugins = {
@@ -107,9 +113,10 @@ local plugins = {
 	{
 		"folke/snacks.nvim",
 		opts = {
-			explorer = { replace_netrw = true, trash = true },
+			words = {},
 			lazygit = {},
-			indent = { enabled = true, animate = { enabled = false } },
+			explorer = { replace_netrw = true, trash = true },
+			indent = { animate = { enabled = false } },
 			picker = {
 				ui_select = true,
 				win = { input = { keys = { ["jk"] = { "cancel", mode = "i" } } } },
@@ -247,13 +254,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)
 		map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 		map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
-
-		-- LSP pickers
 		map("n", "gI", Snacks.picker.lsp_implementations, lsp_opts)
 		map("n", "gr", Snacks.picker.lsp_references, lsp_opts)
 		map("n", "gd", Snacks.picker.lsp_definitions, lsp_opts)
-
-		-- File and search pickers
 		map("n", "<leader><space>", Snacks.picker.lines, opts)
 		map("n", "<leader>fo", Snacks.picker.recent, opts)
 		map("n", "<leader>fr", Snacks.picker.registers, opts)
@@ -283,8 +286,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
 
-vim.api.nvim_create_autocmd("TextYankPost", { callback = vim.highlight.on_yank })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
