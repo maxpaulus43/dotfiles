@@ -93,19 +93,6 @@ map("v", ">", ">gv", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
-map({ "n", "i", "v" }, "<leader>gg", function()
-	Snacks.lazygit.open()
-end, opts)
-map({ "n", "v" }, "<leader>e", function()
-	Snacks.explorer()
-end, opts)
-map({ "n", "i", "v" }, "<M-j>", function()
-	Snacks.words.jump(1, true)
-end, opts)
-map({ "n", "i", "v" }, "<M-k>", function()
-	Snacks.words.jump(-1, true)
-end, opts)
-
 local plugins = {
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
@@ -147,7 +134,32 @@ local plugins = {
 			},
 		},
 		init = function()
-			Snacks = Snacks
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VeryLazy",
+				callback = function()
+					Snacks = Snacks
+					map({ "n", "i", "v" }, "<leader>gg", Snacks.lazygit.open, opts)
+					map("n", "<leader><space>", Snacks.picker.smart, opts)
+					map("n", "<leader>fo", Snacks.picker.recent, opts)
+					map("n", "<leader>fr", Snacks.picker.registers, opts)
+					map("n", "<leader>fl", Snacks.picker.jumps, opts)
+					map("n", "<leader>fh", Snacks.picker.help, opts)
+					map("n", "<leader>fg", Snacks.picker.git_status, opts)
+					map("n", "<leader>ff", Snacks.picker.files, opts)
+					map("n", "<leader>ft", Snacks.picker.grep, opts)
+					map("n", "g*", Snacks.picker.grep_word, opts)
+					map("n", "<leader>/", Snacks.picker.lines, opts)
+					map({ "n", "v" }, "<leader>e", function()
+						Snacks.explorer()
+					end, opts)
+					map({ "n", "i", "v" }, "<M-j>", function()
+						Snacks.words.jump(1, true)
+					end, opts)
+					map({ "n", "i", "v" }, "<M-k>", function()
+						Snacks.words.jump(-1, true)
+					end, opts)
+				end,
+			})
 		end,
 	},
 	{
@@ -274,16 +286,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "gI", Snacks.picker.lsp_implementations, lsp_opts)
 		map("n", "gr", Snacks.picker.lsp_references, lsp_opts)
 		map("n", "gd", Snacks.picker.lsp_definitions, lsp_opts)
-		map("n", "<leader><space>", Snacks.picker.lines, opts)
-		map("n", "<leader>fo", Snacks.picker.recent, opts)
-		map("n", "<leader>fr", Snacks.picker.registers, opts)
-		map("n", "<leader>fl", Snacks.picker.jumps, opts)
-		map("n", "<leader>fh", Snacks.picker.help, opts)
-		map("n", "<leader>fg", Snacks.picker.git_status, opts)
-		map("n", "<leader>ff", Snacks.picker.files, opts)
-		map("n", "<leader>ft", Snacks.picker.grep, opts)
-		map("n", "g*", Snacks.picker.grep_word, opts)
-		map("n", "<leader>/", Snacks.picker.lines, opts)
 
 		map("n", "<leader>lf", function()
 			vim.lsp.buf.format({ async = true })
