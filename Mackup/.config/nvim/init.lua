@@ -92,14 +92,15 @@ map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 local plugins = {
-	{ "nvim-lua/plenary.nvim" },
 	{ "moll/vim-bbye" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
-	{ "nvim-telescope/telescope.nvim", opts = {} },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	require("plugins.telescope"),
+	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 	{
 		"akinsho/bufferline.nvim",
 		opts = {},
@@ -231,7 +232,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local lsp_opts = { buffer = args.buf, silent = true, noremap = true }
 
 		map("n", "gD", vim.lsp.buf.declaration, lsp_opts)
-		map("n", "gd", require("telescope.builtin").lsp_definitions, lsp_opts)
 		map("n", "K", vim.lsp.buf.hover, lsp_opts)
 		map("n", "gl", vim.diagnostic.open_float, lsp_opts)
 		map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
@@ -241,14 +241,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 		map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
 
-		local has_builtin, builtin = pcall(require, "telescope.builtin")
-		if has_builtin then
-			map("n", "gI", function()
-				builtin.lsp_implementations({ show_line = false })
-			end, lsp_opts)
-			map("n", "gr", function()
-				builtin.lsp_references({ show_line = false })
-			end, lsp_opts)
+		local has_fzf, fzf = pcall(require, "fzf-lua")
+		if has_fzf then
+			map("n", "gI", fzf.lsp_implementations, lsp_opts)
+			map("n", "gr", fzf.lsp_references, lsp_opts)
+			map("n", "gd", fzf.lsp_definitions, lsp_opts)
+			map("n", "<leader><space>", fzf.lines, opts)
+			map("n", "<leader>fo", fzf.oldfiles, opts)
+			map("n", "<leader>fr", fzf.registers, opts)
+			map("n", "<leader>fl", "<cmd>Telescope jumplist<cr>", opts)
+			map("n", "<leader>fh", fzf.helptags, opts)
+			map("n", "<leader>fg", fzf.git_status, opts)
+			map("n", "<leader>ff", fzf.files, opts)
+			map("n", "<leader>ft", fzf.live_grep, opts)
+			map("n", "g*", fzf.grep_cword, opts)
+			map("n", "<leader>/", fzf.blines, opts)
 		else
 			map("n", "gr", vim.lsp.buf.references, lsp_opts)
 		end
@@ -268,16 +275,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				on_jump = vim.diagnostic.open_float,
 			})
 		end, lsp_opts)
-
-		map("n", "gd", vim.lsp.buf.definition, opts)
-		map("n", "K", vim.lsp.buf.hover, opts)
-		map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-		map("n", "<leader>lr", vim.lsp.buf.rename, opts)
-		map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-		map("n", "gr", vim.lsp.buf.references, opts)
-		map("n", "<leader>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
 	end,
 })
 
@@ -285,8 +282,4 @@ vim.api.nvim_set_hl(0, "TelescopePreviewLine", { bg = "#615e3b" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
+vim.api.nvim_create_autocmd("TextYankPost", { callback = vim.highlight.on_yank })
