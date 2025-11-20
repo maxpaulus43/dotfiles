@@ -79,9 +79,6 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", opts)
 -- Clear highlights
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 -- Close buffers
-map("n", "<S-q>", function()
-	Snacks.bufdelete({ force = true })
-end, opts)
 -- Better paste
 map("v", "p", '"_dP', opts)
 -- Better escape
@@ -157,6 +154,9 @@ local plugins = {
 					end, opts)
 					map({ "n", "i", "v" }, "<M-k>", function()
 						Snacks.words.jump(-1, true)
+					end, opts)
+					map("n", "<S-q>", function()
+						Snacks.bufdelete({ force = true })
 					end, opts)
 				end,
 			})
