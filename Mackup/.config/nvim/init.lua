@@ -79,7 +79,9 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", opts)
 -- Clear highlights
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 -- Close buffers
-map("n", "<S-q>", "<cmd>Bdelete!<cr>", opts)
+map("n", "<S-q>", function()
+	Snacks.bufdelete({ force = true })
+end, opts)
 -- Better paste
 map("v", "p", '"_dP', opts)
 -- Better escape
@@ -91,15 +93,31 @@ map("v", ">", ">gv", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
+map({ "n", "i", "v" }, "<leader>gg", function()
+	Snacks.lazygit.open()
+end, opts)
+map({ "n", "i", "v" }, "<leader>e", function()
+	Snacks.explorer.reveal(opts)
+end, opts)
+
 local plugins = {
-	{ "moll/vim-bbye" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
-		"ibhagwan/fzf-lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = { keymap = { builtin = { ["jk"] = "hide" } } },
+		"folke/snacks.nvim",
+		opts = {
+			explorer = { replace_netrw = true, trash = true },
+			lazygit = {},
+			indent = { enabled = true, animate = { enabled = false } },
+			picker = {
+				ui_select = true,
+				win = { input = { keys = { ["jk"] = { "cancel", mode = "i" } } } },
+			},
+		},
+		init = function()
+			Snacks = Snacks
+		end,
 	},
 	{
 		"akinsho/bufferline.nvim",
@@ -135,24 +153,24 @@ local plugins = {
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
-	{
-		"mikavilpas/yazi.nvim",
-		version = "*", -- use the latest stable version
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>e", mode = { "n", "v" }, "<cmd>Yazi<cr>" },
-		},
-		opts = {
-			-- open yazi instead of netrw
-			open_for_directories = true,
-			keymaps = { show_help = "<f1>" },
-		},
-		init = function()
-			-- mark netrw as loaded so it's not loaded at all.
-			-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-			vim.g.loaded_netrwPlugin = 1
-		end,
-	},
+	-- {
+	-- 	"mikavilpas/yazi.nvim",
+	-- 	version = "*", -- use the latest stable version
+	-- 	event = "VeryLazy",
+	-- 	keys = {
+	-- 		{ "<leader>e", mode = { "n", "v" }, "<cmd>Yazi<cr>" },
+	-- 	},
+	-- 	opts = {
+	-- 		-- open yazi instead of netrw
+	-- 		open_for_directories = true,
+	-- 		keymaps = { show_help = "<f1>" },
+	-- 	},
+	-- 	init = function()
+	-- 		-- mark netrw as loaded so it's not loaded at all.
+	-- 		-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+	-- 		vim.g.loaded_netrwPlugin = 1
+	-- 	end,
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -241,24 +259,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
 		map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
 
-		local has_fzf, fzf = pcall(require, "fzf-lua")
-		if has_fzf then
-			map("n", "gI", fzf.lsp_implementations, lsp_opts)
-			map("n", "gr", fzf.lsp_references, lsp_opts)
-			map("n", "gd", fzf.lsp_definitions, lsp_opts)
-			map("n", "<leader><space>", fzf.lines, opts)
-			map("n", "<leader>fo", fzf.oldfiles, opts)
-			map("n", "<leader>fr", fzf.registers, opts)
-			map("n", "<leader>fl", "<cmd>Telescope jumplist<cr>", opts)
-			map("n", "<leader>fh", fzf.helptags, opts)
-			map("n", "<leader>fg", fzf.git_status, opts)
-			map("n", "<leader>ff", fzf.files, opts)
-			map("n", "<leader>ft", fzf.live_grep, opts)
-			map("n", "g*", fzf.grep_cword, opts)
-			map("n", "<leader>/", fzf.blines, opts)
-		else
-			map("n", "gr", vim.lsp.buf.references, lsp_opts)
-		end
+		-- LSP pickers
+		map("n", "gI", Snacks.picker.lsp_implementations, lsp_opts)
+		map("n", "gr", Snacks.picker.lsp_references, lsp_opts)
+		map("n", "gd", Snacks.picker.lsp_definitions, lsp_opts)
+
+		-- File and search pickers
+		map("n", "<leader><space>", Snacks.picker.lines, opts)
+		map("n", "<leader>fo", Snacks.picker.recent, opts)
+		map("n", "<leader>fr", Snacks.picker.registers, opts)
+		map("n", "<leader>fl", Snacks.picker.jumps, opts)
+		map("n", "<leader>fh", Snacks.picker.help, opts)
+		map("n", "<leader>fg", Snacks.picker.git_status, opts)
+		map("n", "<leader>ff", Snacks.picker.files, opts)
+		map("n", "<leader>ft", Snacks.picker.grep, opts)
+		map("n", "g*", Snacks.picker.grep_word, opts)
+		map("n", "<leader>/", Snacks.picker.lines, opts)
 
 		map("n", "<leader>lf", function()
 			vim.lsp.buf.format({ async = true })
