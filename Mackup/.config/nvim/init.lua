@@ -115,15 +115,17 @@ local plugins = {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			input = {
-				win = {
-					keys = { ni_esc = { "jk", { "cancel" }, mode = "i" } },
-				},
-			},
 			words = {},
 			lazygit = {},
 			explorer = { replace_netrw = true, trash = true },
 			indent = { animate = { enabled = false } },
+			input = {
+				win = {
+					relative = "cursor",
+					row = -3,
+					keys = { ["jk"] = { "cancel", mode = { "i", "n" } } },
+				},
+			},
 			picker = {
 				ui_select = true,
 				win = { input = { keys = { ["jk"] = { "cancel", mode = "i" } } } },
