@@ -123,12 +123,20 @@ local plugins = {
 				win = {
 					relative = "cursor",
 					row = -3,
-					keys = { ["jk"] = { "cancel", mode = { "i", "n" } } },
+					keys = { ["jk"] = { "close", mode = { "i", "n" } } },
 				},
 			},
 			picker = {
 				ui_select = true,
-				win = { input = { keys = { ["jk"] = { "cancel", mode = "i" } } } },
+				win = {
+					input = { keys = { ["jk"] = { "close", mode = "i" } } },
+					list = {
+						keys = {
+							["J"] = { "preview_scroll_down", mode = "n" },
+							["K"] = { "preview_scroll_up", mode = "n" },
+						},
+					},
+				},
 				sources = {
 					explorer = {
 						hidden = true,
