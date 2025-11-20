@@ -97,7 +97,7 @@ map({ "n", "i", "v" }, "<leader>gg", function()
 	Snacks.lazygit.open()
 end, opts)
 map({ "n", "i", "v" }, "<leader>e", function()
-	Snacks.explorer.reveal(opts)
+	Snacks.explorer()
 end, opts)
 
 local plugins = {
@@ -113,6 +113,13 @@ local plugins = {
 			picker = {
 				ui_select = true,
 				win = { input = { keys = { ["jk"] = { "cancel", mode = "i" } } } },
+				sources = {
+					explorer = {
+						hidden = true,
+						auto_close = true,
+						layout = { preset = "default", preview = true },
+					},
+				},
 			},
 		},
 		init = function()
@@ -153,24 +160,6 @@ local plugins = {
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
-	-- {
-	-- 	"mikavilpas/yazi.nvim",
-	-- 	version = "*", -- use the latest stable version
-	-- 	event = "VeryLazy",
-	-- 	keys = {
-	-- 		{ "<leader>e", mode = { "n", "v" }, "<cmd>Yazi<cr>" },
-	-- 	},
-	-- 	opts = {
-	-- 		-- open yazi instead of netrw
-	-- 		open_for_directories = true,
-	-- 		keymaps = { show_help = "<f1>" },
-	-- 	},
-	-- 	init = function()
-	-- 		-- mark netrw as loaded so it's not loaded at all.
-	-- 		-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-	-- 		vim.g.loaded_netrwPlugin = 1
-	-- 	end,
-	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
