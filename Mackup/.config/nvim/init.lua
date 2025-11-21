@@ -96,11 +96,6 @@ local plugins = {
 	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
-		"ahmedkhalf/project.nvim",
-		main = "project_nvim",
-		opts = {},
-	},
-	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
@@ -324,5 +319,26 @@ vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
+	end,
+})
+
+-- change the cwd of nvim to be the .git root when I open a file 
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		local buftype = vim.bo[0].buftype
+		if buftype ~= "" and buftype ~= "acwrite" then
+			return
+		end
+		local current_file = vim.api.nvim_buf_get_name(0)
+		if current_file == "" then
+			return
+		end
+		local git_root = vim.fs.dirname(vim.fs.find(".git", {
+			path = vim.fs.dirname(current_file),
+			upward = true,
+		})[1])
+		if git_root and vim.fn.getcwd() ~= git_root then
+			vim.cmd.cd(git_root)
+		end
 	end,
 })
