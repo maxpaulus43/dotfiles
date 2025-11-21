@@ -1,3 +1,4 @@
+vim = vim
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -94,6 +95,11 @@ local plugins = {
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
+	{
+		"ahmedkhalf/project.nvim",
+		main = "project_nvim",
+		opts = {},
+	},
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -192,6 +198,7 @@ local plugins = {
 	},
 	{
 		"navarasu/onedark.nvim",
+		lazy = true,
 		init = function()
 			vim.cmd.colorscheme("onedark")
 		end,
@@ -223,6 +230,7 @@ local plugins = {
 				python = { "black" },
 				go = { "gofmt" },
 				lua = { "stylua" },
+				bash = { "shfmt" },
 			},
 		},
 	},
@@ -240,6 +248,9 @@ local plugins = {
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
 		opts = {
+			enabled = function()
+				return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+			end,
 			-- :h blink-cmp-config-keymap
 			keymap = {
 				preset = "enter",
@@ -248,7 +259,9 @@ local plugins = {
 			},
 			appearance = { nerd_font_variant = "mono" },
 			completion = { documentation = { auto_show = true } },
-			sources = { default = { "lsp", "path", "snippets", "buffer" } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
