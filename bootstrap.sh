@@ -133,11 +133,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
     chmod +x "$HOME"/c/dotfiles/Mackup/bin/*
 
-    bat ~/.tool-versions |
-        awk '{print $1}' |
-        parallel 'asdf plugin-add {}' # add plugins .tool-versions
-
-    asdf install # install tools from /~/.tool-versions file
+    mise install # install tools from /~/.tool-versions file
 
     fish_dir="$(which fish)"
     echo "Adding '$fish_dir' to /etc/shells"

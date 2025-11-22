@@ -13,7 +13,7 @@ if status is-interactive
 
     source "$__fish_config_dir/exports.fish"
     source "$__fish_config_dir/aliases.fish"
-    source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
+    # source "$(brew --prefix)/opt/asdf/libexec/asdf.fish"
 
     fish_add_plugin decors/fish-colored-man # colorful man pages
     fish_add_plugin "jorgebucaran/autopair.fish" # auto pair brackets
