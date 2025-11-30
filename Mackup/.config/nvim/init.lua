@@ -301,12 +301,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<leader>j", function()
 			vim.diagnostic.jump({
 				count = 1,
+				float = true,
 				on_jump = vim.diagnostic.open_float,
 			})
 		end, lsp_opts)
 		map("n", "<leader>k", function()
 			vim.diagnostic.jump({
 				count = -1,
+				float = true,
 				on_jump = vim.diagnostic.open_float,
 			})
 		end, lsp_opts)
