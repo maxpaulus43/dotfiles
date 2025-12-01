@@ -96,6 +96,15 @@ local plugins = {
 	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		init = function()
+			vim.cmd.colorscheme("tokyonight")
+		end,
+	},
+	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
@@ -191,13 +200,13 @@ local plugins = {
 			},
 		},
 	},
-	{
-		"navarasu/onedark.nvim",
-		lazy = true,
-		init = function()
-			vim.cmd.colorscheme("onedark")
-		end,
-	},
+	-- {
+	-- 	"navarasu/onedark.nvim",
+	-- 	lazy = true,
+	-- 	init = function()
+	-- 		vim.cmd.colorscheme("onedark")
+	-- 	end,
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
