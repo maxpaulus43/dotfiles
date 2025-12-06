@@ -1,6 +1,0 @@
-{
-    "diagnostics.globals": [
-        "pcall",
-        "os"
-    ]
-}

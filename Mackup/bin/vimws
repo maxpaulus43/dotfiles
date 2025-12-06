@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-directory=$1
-
-tmux new-window \
-  -c $directory ';' \
-  send-keys "nvim $directory -c 'Telescope find_files hidden=true'" "Enter" ';' \
-  split-window -c $directory -l 20% ';' \
-  last-pane
