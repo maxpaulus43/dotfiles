@@ -1,30 +1,15 @@
-set -gx ANDROID_HOME $HOME/Library/Android/sdk
-set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk/
-set -gx BRAZIL_BUILD_HOME $HOME/.toolbox
-set -gx CHTSH_CONF $HOME/.config/cht.sh/cht.sh.conf
-set -gx DEFAULT_USER maxpaulu
 set -gx EDITOR nvim
 set -gx FZF_DEFAULT_COMMAND "rg --files --no-ignore-vcs --hidden"
-set -gx FZF_DEFAULT_OPTS "--height 50% --layout=reverse"
+set -gx FZF_DEFAULT_OPTS "--height 50% --layout=reverse --preview-window right:wrap --preview 'test -f {} && bat --style=numbers --color=always --line-range :500 {} || echo {}'"
 set -gx GOPATH $HOME/go
 set -gx JOURNAL_DIR $HOME/Google\ Drive/My\ Drive/notes/journals
 set -gx LESS "-R -M --mouse --wheel-lines 3"
-set -gx NODE_OPTIONS --openssl-legacy-provider
 set -gx PAGER "less -R -M --mouse --wheel-lines 3"
+set -gx MANPAGER 'nvim +Man!'
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 # -p == "prepend"
-fish_add_path -p $HOME/.toolbox/bin
-fish_add_path -p $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
 fish_add_path -p $HOME/bin
-fish_add_path -p /Users/maxpaulu/.local/bin
-fish_add_path -p /Users/maxpaulu/Library/Python/3.7/bin
-fish_add_path -p /usr/local/bin
-fish_add_path -p /usr/local/opt/protobuf@3.1/bin
 
 # -a == "append"
-fish_add_path -a $ANDROID_HOME/emulator
-fish_add_path -a $ANDROID_HOME/tools
-fish_add_path -a $ANDROID_HOME/tools/bin
-fish_add_path -a $ANDROID_HOME/platform-tools
 fish_add_path -a $GOPATH/bin

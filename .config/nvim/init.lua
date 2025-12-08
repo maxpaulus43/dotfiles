@@ -91,9 +91,12 @@ map("v", ">", ">gv", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
+vim.cmd([[autocmd FileType markdown setlocal wrap linebreak]])
+
 local plugins = {
 	{ "nvim-tree/nvim-web-devicons" },
-	{ "nvim-lualine/lualine.nvim", opts = {} },
+	{ "github/copilot.vim" },
+	{ "nvim-lualine/lualine.nvim", opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
 		"folke/tokyonight.nvim",
@@ -121,6 +124,7 @@ local plugins = {
 		priority = 1000,
 		lazy = false,
 		opts = {
+			gh = {},
 			terminal = {},
 			words = {},
 			lazygit = {},
@@ -134,6 +138,7 @@ local plugins = {
 				},
 			},
 			picker = {
+				matcher = { ignorecase = true },
 				ui_select = true,
 				win = {
 					input = { keys = { ["jk"] = { "close", mode = "i" } } },
@@ -170,7 +175,7 @@ local plugins = {
 					map("n", "g*", Snacks.picker.grep_word, opts)
 					map("n", "<leader>/", Snacks.picker.lines, opts)
 					map({ "n", "v" }, "<leader>e", function()
-						Snacks.explorer({ layout = { fullscreen = false } })
+						Snacks.explorer()
 					end, opts)
 					map({ "n", "i", "v" }, "<M-j>", function()
 						Snacks.words.jump(1, true)
@@ -336,9 +341,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, lsp_opts)
 	end,
 })
-
-vim.api.nvim_set_hl(0, "Visual", { bg = "#615e3b" })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#203d32" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()

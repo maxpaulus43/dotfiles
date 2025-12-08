@@ -3,11 +3,6 @@
 abbr "..." "cd ../.."
 abbr "...." "cd ../../.."
 abbr "....." "cd ../../../.."
-abbr bb brazil-build
-abbr brc "brazil-recursive-cmd --all"
-abbr brcp "BRAZIL_VERBOSE=true brazil-recursive-cmd-parallel --allPackages"
-abbr brx brazil-runtime-exec
-abbr bz brazil
 abbr cat bat
 abbr ding "afplay /System/Library/Sounds/Glass.aiff"
 abbr gaa 'git add --all'
@@ -35,15 +30,16 @@ abbr scr 'scrcpy 1>/dev/null & && disown $last_pid'
 abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
 abbr tree "eza -T"
-abbr typora "open -a typora"
 abbr v nvim
 abbr vd 'nvim ~/c/dotfiles'
 abbr vf "nvim (fzf)"
-abbr vgf 'git diff --name-only HEAD | xargs nvim' # vim git files
 abbr vn 'nvim ~/.config/nvim/init.lua'
 abbr vv "nvim ."
 abbr vz "nvim $__fish_config_dir/config.fish"
-abbr watch-cwd 'fswatch -o . | xargs -n1 -I {} osascript -l JavaScript -e "Application(\"chrome\").windows[0].tabs.whose({url: {_contains: \'$(pwd)\'}})[0].reload()"'
+
+function typora
+    open -a typora $argv
+end
 
 function lg
     set -gx LAZYGIT_NEW_DIR_FILE ~/.lazygit/newdir
