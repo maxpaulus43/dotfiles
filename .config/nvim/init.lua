@@ -152,9 +152,11 @@ local plugins = {
 				sources = {
 					explorer = {
 						hidden = true,
+						ignored = true,
 						auto_close = true,
 						layout = { preset = "default", preview = true, fullscreen = true },
 					},
+					lazygit = { layout = { fullscreen = true } },
 				},
 			},
 		},
@@ -163,7 +165,7 @@ local plugins = {
 				pattern = "VeryLazy",
 				callback = function()
 					Snacks = Snacks
-					map({ "n", "i", "v" }, "<leader>gg", Snacks.lazygit.open, opts)
+					map({ "n", "v" }, "<leader>gg", Snacks.lazygit.open, opts)
 					map("n", "<leader><space>", Snacks.picker.smart, opts)
 					map("n", "<leader>fo", Snacks.picker.recent, opts)
 					map("n", "<leader>fr", Snacks.picker.registers, opts)
