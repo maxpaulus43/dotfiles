@@ -17,6 +17,8 @@ if status is-interactive
 
     fish_add_plugin "jorgebucaran/autopair.fish" # auto pair brackets
 
+    mise activate fish | source
+
     set -g man_blink -o red
     set -g man_bold -o green
     set -g man_standout -b b40bd6 white

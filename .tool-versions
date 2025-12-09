@@ -1,7 +1,7 @@
-nodejs 24.1.0 
+nodejs 24
 golang 1.25.3
-java corretto-17.0.13.11.1 
-rust stable
-deno 2.5.4
-bun 1.0.25
+java   corretto-17.0.13.11.1
+rust   stable
+deno   2.5.4
+bun    1.0.25
 python 3.10.14

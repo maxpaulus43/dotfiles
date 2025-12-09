@@ -36,6 +36,7 @@ abbr vf "nvim (fzf)"
 abbr vn 'nvim ~/.config/nvim/init.lua'
 abbr vv "nvim ."
 abbr vz "nvim $__fish_config_dir/config.fish"
+abbr vclog "nvim ~/.cline/logs/(cline log list | rg cline-core | sed 's/\x1b\[[0-9;]*m//g' | awk \"END{print \\\$1}\")"
 
 function typora
     open -a typora $argv
