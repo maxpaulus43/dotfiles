@@ -235,13 +235,6 @@ local plugins = {
 			},
 		},
 	},
-	-- {
-	-- 	"navarasu/onedark.nvim",
-	-- 	lazy = true,
-	-- 	init = function()
-	-- 		vim.cmd.colorscheme("onedark")
-	-- 	end,
-	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -327,7 +320,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local lsp_opts = { buffer = args.buf, silent = true, noremap = true }
 
 		map("n", "gD", vim.lsp.buf.declaration, lsp_opts)
-		map("n", "K", vim.lsp.buf.hover, lsp_opts)
+		-- only map K if not already mapped by snacks explorer
+		if vim.fn.mapcheck("K", "n") == "" then
+			map("n", "K", vim.lsp.buf.hover, lsp_opts)
+		end
 		map("n", "gl", vim.diagnostic.open_float, lsp_opts)
 		map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
 		map("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
