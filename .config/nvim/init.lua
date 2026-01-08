@@ -131,7 +131,14 @@ local plugins = {
 			terminal = {},
 			words = {},
 			lazygit = { win = { style = "lazygit" } },
-			zen = { toggles = { dim = false } },
+			zen = {
+				toggles = {
+					dim = false,
+					git_signs = true,
+				},
+				show = { statusline = true, tabline = true },
+				win = { backdrop = { transparent = false } },
+			},
 			explorer = { replace_netrw = true, trash = true },
 			indent = { animate = { enabled = false } },
 			styles = {
@@ -188,12 +195,13 @@ local plugins = {
 					map("n", "<leader>ft", Snacks.picker.grep, opts)
 					map("n", "g*", Snacks.picker.grep_word, opts)
 					map("n", "<leader>/", Snacks.picker.lines, opts)
-					map("n", "<leader>z", function()
-						Snacks.zen()
-					end, opts)
 					map({ "n", "v" }, "<leader>e", function()
 						Snacks.explorer()
 					end, opts)
+					map("n", "<leader>z", function()
+						Snacks.zen()
+					end, opts)
+
 					map({ "n", "i", "v" }, "<M-j>", function()
 						Snacks.words.jump(1, true)
 					end, opts)
