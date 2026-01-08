@@ -1,5 +1,3 @@
-# alias brca="brazil-recursive-cmd --matches '^(?!MShopAndroidPhoneApp).*$' -- 'brazil-build'"
-
 abbr "..." "cd ../.."
 abbr "...." "cd ../../.."
 abbr "....." "cd ../../../.."
@@ -36,7 +34,8 @@ abbr vf "nvim (fzf)"
 abbr vn 'nvim ~/.config/nvim/init.lua'
 abbr vv "nvim ."
 abbr vz "nvim $__fish_config_dir/config.fish"
-abbr vclog "nvim ~/.cline/logs/(cline log list | rg cline-core | sed 's/\x1b\[[0-9;]*m//g' | awk \"END{print \\\$1}\")"
+abbr vclog "nvim ~/.cline/logs/(eza ~/.cline/logs | rg cline-core | sed 's/\x1b\[[0-9;]*m//g' | awk \"END{print \\\$1}\")"
+abbr oc "opencode"
 
 function typora
     open -a typora $argv

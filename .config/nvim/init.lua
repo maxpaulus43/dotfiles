@@ -91,6 +91,8 @@ map("v", ">", ">gv", opts)
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
+map({ "n", "v" }, "<leader>E", "<cmd>e %:h<cr>", opts)
+
 vim.cmd([[autocmd FileType markdown setlocal wrap linebreak]])
 
 local plugins = {
@@ -98,6 +100,7 @@ local plugins = {
 	{ "github/copilot.vim" },
 	{ "nvim-lualine/lualine.nvim", opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
+	{ "tpope/vim-surround", config = function() end },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -111,12 +114,12 @@ local plugins = {
 		"NickvanDyke/opencode.nvim",
 		config = function()
 			vim.o.autoread = true
-			map({ "n", "x" }, "<leader>o", function()
+			map({ "n", "v" }, "<leader>o", function()
 				require("opencode").select()
 			end, { desc = "Execute opencode action…" })
-			map({ "n", "t" }, "<leader>;", function()
+			map({ "n", "t" }, "<C-/>", function()
 				require("opencode").toggle()
-			end, { desc = "Toggle opencode" })
+			end, { desc = "Opencode: Toggle terminal" })
 		end,
 	},
 	{
@@ -127,9 +130,16 @@ local plugins = {
 			gh = {},
 			terminal = {},
 			words = {},
-			lazygit = {},
+			lazygit = { win = { style = "lazygit" } },
+			zen = { toggles = { dim = false } },
 			explorer = { replace_netrw = true, trash = true },
 			indent = { animate = { enabled = false } },
+			styles = {
+				lazygit = {
+					height = 0,
+					width = 0,
+				},
+			},
 			input = {
 				win = {
 					relative = "cursor",
@@ -140,6 +150,9 @@ local plugins = {
 			picker = {
 				matcher = { ignorecase = true },
 				ui_select = true,
+				exclude = { -- add folder names here to exclude
+					"node_modules",
+				},
 				win = {
 					input = { keys = { ["jk"] = { "close", mode = "i" } } },
 					list = {
@@ -156,7 +169,6 @@ local plugins = {
 						auto_close = true,
 						layout = { preset = "default", preview = true, fullscreen = true },
 					},
-					lazygit = { layout = { fullscreen = true } },
 				},
 			},
 		},
@@ -176,6 +188,9 @@ local plugins = {
 					map("n", "<leader>ft", Snacks.picker.grep, opts)
 					map("n", "g*", Snacks.picker.grep_word, opts)
 					map("n", "<leader>/", Snacks.picker.lines, opts)
+					map("n", "<leader>z", function()
+						Snacks.zen()
+					end, opts)
 					map({ "n", "v" }, "<leader>e", function()
 						Snacks.explorer()
 					end, opts)
@@ -248,9 +263,9 @@ local plugins = {
 			default_format_opts = { timeout_ms = 500, lsp_format = "fallback" },
 			format_on_save = {},
 			formatters_by_ft = {
-				typescript = { "prettier" },
-				typescriptreact = { "prettier" },
-				json = { "prettier" },
+				typescript = { "biome" },
+				typescriptreact = { "biome" },
+				json = { "biome" },
 				python = { "black" },
 				go = { "gofmt" },
 				lua = { "stylua" },

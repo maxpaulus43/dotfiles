@@ -1,4 +1,5 @@
 git:
+
   pagers:
     - colorArg: always
       # useConfig: true
