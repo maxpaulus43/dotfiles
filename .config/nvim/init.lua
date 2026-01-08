@@ -324,6 +324,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if vim.fn.mapcheck("K", "n") == "" then
 			map("n", "K", vim.lsp.buf.hover, lsp_opts)
 		end
+
+		for _, key in ipairs({ "grr", "grn", "gra", "grp", "gri", "grt" }) do
+			pcall(vim.keymap.del, "n", key)
+		end
+
 		map("n", "gl", vim.diagnostic.open_float, lsp_opts)
 		map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
 		map("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
