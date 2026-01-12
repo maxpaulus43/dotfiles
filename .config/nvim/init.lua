@@ -137,7 +137,7 @@ local plugins = {
 					git_signs = true,
 				},
 				show = { statusline = true, tabline = true },
-				win = { backdrop = { transparent = false } },
+				win = { backdrop = { transparent = false }, width = 170 },
 			},
 			explorer = { replace_netrw = true, trash = true },
 			indent = { animate = { enabled = false } },
@@ -161,7 +161,13 @@ local plugins = {
 					"node_modules",
 				},
 				win = {
-					input = { keys = { ["jk"] = { "close", mode = "i" } } },
+					input = {
+						keys = {
+							["jk"] = { "close", mode = "i" },
+							["<S-Up>"] = { "history_back", mode = { "n", "i" } },
+							["<S-Down>"] = { "history_forward", mode = { "n", "i" } },
+						},
+					},
 					list = {
 						keys = {
 							["J"] = { "preview_scroll_down", mode = "n" },
@@ -347,6 +353,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "gI", Snacks.picker.lsp_implementations, lsp_opts)
 		map("n", "gr", Snacks.picker.lsp_references, lsp_opts)
 		map("n", "gd", Snacks.picker.lsp_definitions, lsp_opts)
+		map("n", "gt", Snacks.picker.lsp_type_definitions, lsp_opts)
 
 		map("n", "<leader>lf", function()
 			vim.lsp.buf.format({ async = true })
@@ -393,4 +400,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			vim.cmd.cd(git_root)
 		end
 	end,
+})
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	pattern = "scrollback*.log",
+	callback = function(data)
+		vim.loop.fs_unlink(vim.fn.fnameescape(data.file))
+	end,
+	once = false, -- or true if you want to delete immediately on leaving the window
 })
