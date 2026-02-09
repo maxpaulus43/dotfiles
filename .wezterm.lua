@@ -24,6 +24,7 @@ c.front_end = "WebGpu"
 -- }
 -- c.color_scheme = "My Brogrammer"
 c.color_scheme = "Tokyo Night"
+-- c.color_scheme = "Gruvbox Dark (Gogh)"
 
 c.font_size = 15.0
 -- c.font = wezterm.font("Hack Nerd Font Mono")
@@ -55,7 +56,7 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
 	f:write(text)
 	f:flush()
 	f:close()
-	window:perform_action(act.SendString("\x03nvim " .. name .. "\n"), pane)
+	window:perform_action(act.SendString("\x03 nvim " .. name .. "\n"), pane)
 end)
 
 c.keys = {
@@ -114,6 +115,26 @@ c.keys = {
 		key = "o",
 		mods = "CMD|SHIFT",
 		action = act.EmitEvent("trigger-vim-with-scrollback"),
+	},
+	{
+		key = "h",
+		mods = "CMD|SHIFT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "CMD|SHIFT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "k",
+		mods = "CMD|SHIFT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "CMD|SHIFT",
+		action = act.ActivatePaneDirection("Down"),
 	},
 }
 

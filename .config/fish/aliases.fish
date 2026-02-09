@@ -57,3 +57,9 @@ function mp4Desktop
         mp4 $i && rm $i
     end
 end
+
+function webpDesktop
+    for i in ~/Desktop/*.{mov,MOV}
+        webp $i && rm $i
+    end
+end

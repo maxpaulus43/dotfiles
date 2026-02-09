@@ -101,6 +101,10 @@ local plugins = {
 	{ "nvim-lualine/lualine.nvim", opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "tpope/vim-surround", config = function() end },
+	-- {
+	-- 	"maxpaulus43/llama-cmp.nvim",
+	-- 	opts = { model = "qwen3-coder:30b" },
+	-- },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -137,7 +141,7 @@ local plugins = {
 					git_signs = true,
 				},
 				show = { statusline = true, tabline = true },
-				win = { backdrop = { transparent = false }, width = 170 },
+				win = { backdrop = { transparent = false }, width = 150 },
 			},
 			explorer = { replace_netrw = true, trash = true },
 			indent = { animate = { enabled = false } },
@@ -252,6 +256,7 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		main = "nvim-treesitter.configs",
 		init = function()
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -259,6 +264,7 @@ local plugins = {
 		end,
 		opts = {
 			ensure_installed = "all",
+			ignore_install = { "ipkg" },
 			sync_install = false,
 			auto_install = true,
 			highlight = { enable = true },
@@ -291,7 +297,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-avante" },
 		version = "1.*",
 		opts = {
 			enabled = function()
@@ -306,7 +312,16 @@ local plugins = {
 			appearance = { nerd_font_variant = "mono" },
 			completion = { documentation = { auto_show = true } },
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "avante", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					avante = {
+						module = "blink-cmp-avante",
+						name = "Avante",
+						opts = {
+							-- options for blink-cmp-avante
+						},
+					},
+				},
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},

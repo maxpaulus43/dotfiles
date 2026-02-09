@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    cat <<'EOF'
+Usage:
+ webp [--from HH:MM:SS] [--to HH:MM:SS] [--fps N] [--quality 0-100] <input.mp4> [output.webp]
+
+Examples:
+ webp --from 00:00:00 --to 00:00:15 myVideo.mp4 myClip.webp
+ webp myVideo.mp4
+
+Defaults:
+ --from:   00:00:00
+ --to:     end of video
+ --fps:    12
+ --quality:75
+ output:   same name as input, with .webp extension
+EOF
+}
+
+from="00:00:00"
+to=""
+fps="12"
+quality="50"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --from)
+        shift
+        [[ $# -gt 0 ]] || {
+            echo "Error: --from requires a value" >&2
+            usage
+            exit 1
+        }
+        from="${1:-00:00:00}"
+        ;;
+    --to)
+        shift
+        [[ $# -gt 0 ]] || {
+            echo "Error: --to requires a value" >&2
+            usage
+            exit 1
+        }
+        to="${1:-}"
+        ;;
+    --fps)
+        shift
+        [[ $# -gt 0 ]] || {
+            echo "Error: --fps requires a value" >&2
+            usage
+            exit 1
+        }
+        fps="$1"
+        ;;
+    --quality)
+        shift
+        [[ $# -gt 0 ]] || {
+            echo "Error: --quality requires a value" >&2
+            usage
+            exit 1
+        }
+        quality="$1"
+        ;;
+    -h | --help)
+        usage
+        exit 0
+        ;;
+    --)
+        shift
+        break
+        ;;
+    -*)
+        echo "Error: unknown option '$1'" >&2
+        usage
+        exit 1
+        ;;
+    *)
+        break
+        ;;
+    esac
+    shift
+done
+
+[[ $# -ge 1 ]] || {
+    echo "Error: input file is required" >&2
+    usage
+    exit 1
+}
+input="$1"
+output="${2:-}"
+
+[[ -f "$input" ]] || {
+    echo "Error: input file not found: $input" >&2
+    exit 1
+}
+command -v ffmpeg >/dev/null 2>&1 || {
+    echo "Error: ffmpeg is not installed" >&2
+    exit 1
+}
+
+if [[ -z "$output" ]]; then
+    input_dir="$(dirname "$input")"
+    input_file="$(basename "$input")"
+    base_name="${input_file%.*}"
+    output="$input_dir/$base_name.webp"
+fi
+
+cmd=(ffmpeg -y -v warning -stats -i "$input")
+
+# defaults already applied; if --to omitted, ffmpeg runs to end
+[[ -n "$from" ]] && cmd+=(-ss "$from")
+[[ -n "$to" ]] && cmd+=(-to "$to")
+
+# Keep original dimensions: no scale filter.
+cmd+=(
+    -an
+    -loop 0
+    -vf "fps=${fps}"
+    -c:v libwebp
+    -quality "$quality"
+    "$output"
+)
+
+"${cmd[@]}"
+
+echo "WebP created: $output"
