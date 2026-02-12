@@ -114,18 +114,18 @@ local plugins = {
 			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
-	{
-		"NickvanDyke/opencode.nvim",
-		config = function()
-			vim.o.autoread = true
-			map({ "n", "v" }, "<leader>o", function()
-				require("opencode").select()
-			end, { desc = "Execute opencode action…" })
-			map({ "n", "t" }, "<C-/>", function()
-				require("opencode").toggle()
-			end, { desc = "Opencode: Toggle terminal" })
-		end,
-	},
+	-- {
+	-- 	"NickvanDyke/opencode.nvim",
+	-- 	config = function()
+	-- 		vim.o.autoread = true
+	-- 		map({ "n", "v" }, "<leader>o", function()
+	-- 			require("opencode").select()
+	-- 		end, { desc = "Execute opencode action…" })
+	-- 		map({ "n", "t" }, "<C-/>", function()
+	-- 			require("opencode").toggle()
+	-- 		end, { desc = "Opencode: Toggle terminal" })
+	-- 	end,
+	-- },
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -134,7 +134,17 @@ local plugins = {
 			gh = {},
 			terminal = {},
 			words = {},
-			lazygit = { win = { style = "lazygit" } },
+			lazygit = {
+				win = { style = "lazygit" },
+				config = {
+					os = {
+						edit = 'if test -z "$NVIM"; nvim -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; end',
+						editAtLine = 'if test -z "$NVIM"; nvim +{{line}} -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; and nvim --server "$NVIM" --remote-send ":{{line}}<CR>"; end',
+						openDirInEditor = 'if test -z "$NVIM"; nvim -- {{dir}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{dir}}; end',
+						openInTerminal = 'test -z "$NVIM"',
+					},
+				},
+			},
 			zen = {
 				toggles = {
 					dim = false,
@@ -297,7 +307,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-avante" },
+		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
 		opts = {
 			enabled = function()
@@ -308,20 +318,25 @@ local plugins = {
 				preset = "enter",
 				["<C-k>"] = { "select_prev", "fallback" },
 				["<C-j>"] = { "select_next", "fallback" },
+				-- ["<M-space>"] = {
+				-- 	function(cmp)
+				-- 		cmp.show()
+				-- 	end,
+				-- },
 			},
 			appearance = { nerd_font_variant = "mono" },
 			completion = { documentation = { auto_show = true } },
 			sources = {
-				default = { "avante", "lsp", "path", "snippets", "buffer" },
-				providers = {
-					avante = {
-						module = "blink-cmp-avante",
-						name = "Avante",
-						opts = {
-							-- options for blink-cmp-avante
-						},
-					},
-				},
+				default = { "lsp", "path", "snippets", "buffer" },
+				-- providers = {
+				-- 	avante = {
+				-- 		module = "blink-cmp-avante",
+				-- 		name = "Avante",
+				-- 		opts = {
+				-- 			-- options for blink-cmp-avante
+				-- 		},
+				-- 	},
+				-- },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
@@ -417,6 +432,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
+-- Delete temp scrollback logs when opened with wezterm cmd+shift+o shortcut
 vim.api.nvim_create_autocmd("BufWinLeave", {
 	pattern = "scrollback*.log",
 	callback = function(data)
