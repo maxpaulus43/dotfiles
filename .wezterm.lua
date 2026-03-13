@@ -13,6 +13,19 @@ if wezterm.config_builder then
 	c = wezterm.config_builder()
 end
 
+local function split_or_unzoom(split_action)
+	return wezterm.action_callback(function(window, pane)
+		local tab = pane:tab()
+		for _, p in ipairs(tab:panes_with_info()) do
+			if p.is_zoomed then
+				window:perform_action(act.TogglePaneZoomState, pane)
+				return
+			end
+		end
+		window:perform_action(split_action, pane)
+	end)
+end
+
 -- This is where you actually apply your config choices
 c.front_end = "WebGpu"
 
@@ -79,12 +92,12 @@ c.keys = {
 	{
 		key = "Enter",
 		mods = "CMD",
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = split_or_unzoom(act.SplitHorizontal({ domain = "CurrentPaneDomain" })),
 	},
 	{
 		key = "Enter",
 		mods = "CMD|SHIFT",
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = split_or_unzoom(act.SplitVertical({ domain = "CurrentPaneDomain" })),
 	},
 	{
 		key = "[",

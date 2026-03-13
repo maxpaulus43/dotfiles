@@ -12,6 +12,7 @@ abbr gds 'git diff --staged'
 abbr gf 'git fetch'
 abbr gfa 'git fetch --all --prune --jobs=10'
 abbr gfo 'git fetch origin'
+abbr gg 'nvim -c "lua Snacks.lazygit.open()"'
 abbr glo "git log --pretty='format:%Cblue%h %Cgreen%<(15,trunc)%an %Cred%d %Creset %s'"
 abbr grhh 'git reset HEAD --hard'
 abbr gst 'git status'

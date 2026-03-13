@@ -41,7 +41,7 @@
   plus-style = syntax darkgreen
   plus-non-emph-style = syntax
   minus-non-emph-style = syntax
-  line-numbers = true
+  ; line-numbers = true
 
 [merge]
   conflictstyle = diff3
@@ -57,7 +57,7 @@
 	trustExitCode = true
 
 [merge]
-	tool = "nvim"
+	tool = webstorm
 
 [mergetool]
 	keepBackup = false
@@ -65,3 +65,5 @@
 
 [mergetool "nvim"]
 	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+[mergetool "webstorm"]
+	cmd = webstorm merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
