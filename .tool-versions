@@ -1,4 +1,4 @@
-nodejs 24
+nodejs 22
 golang 1.25.3
 java   corretto-17.0.13.11.1
 rust   stable

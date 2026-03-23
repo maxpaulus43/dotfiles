@@ -93,7 +93,15 @@ map("v", "K", ":m '<-2<cr>gv=gv", opts)
 
 map({ "n", "v" }, "<leader>E", "<cmd>e %:h<cr>", opts)
 
+map({ "n", "v" }, "<leader>d", "<cmd>DiffviewOpen<cr>", opts)
+
 vim.cmd([[autocmd FileType markdown setlocal wrap linebreak]])
+
+vim.filetype.add({
+	pattern = {
+		["Dockerfile_.*"] = "dockerfile",
+	},
+})
 
 local plugins = {
 	{ "nvim-tree/nvim-web-devicons" },
@@ -101,6 +109,16 @@ local plugins = {
 	{ "nvim-lualine/lualine.nvim", opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "tpope/vim-surround", config = function() end },
+	{
+		"sindrets/diffview.nvim",
+		opts = {
+			view = {
+				merge_tool = {
+					disable_diagnostics = false,
+				},
+			},
+		},
+	},
 	-- {
 	-- 	"maxpaulus43/llama-cmp.nvim",
 	-- 	opts = { model = "qwen3-coder:30b" },
@@ -114,18 +132,6 @@ local plugins = {
 			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
-	-- {
-	-- 	"NickvanDyke/opencode.nvim",
-	-- 	config = function()
-	-- 		vim.o.autoread = true
-	-- 		map({ "n", "v" }, "<leader>o", function()
-	-- 			require("opencode").select()
-	-- 		end, { desc = "Execute opencode action…" })
-	-- 		map({ "n", "t" }, "<C-/>", function()
-	-- 			require("opencode").toggle()
-	-- 		end, { desc = "Opencode: Toggle terminal" })
-	-- 	end,
-	-- },
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -328,15 +334,6 @@ local plugins = {
 			completion = { documentation = { auto_show = true } },
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
-				-- providers = {
-				-- 	avante = {
-				-- 		module = "blink-cmp-avante",
-				-- 		name = "Avante",
-				-- 		opts = {
-				-- 			-- options for blink-cmp-avante
-				-- 		},
-				-- 	},
-				-- },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},

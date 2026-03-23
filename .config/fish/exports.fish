@@ -13,3 +13,4 @@ fish_add_path -p $HOME/bin
 
 # -a == "append"
 fish_add_path -a $GOPATH/bin
+fish_add_path -a ~/.bun/bin
