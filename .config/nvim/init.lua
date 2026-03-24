@@ -123,6 +123,20 @@ local plugins = {
 	-- 	"maxpaulus43/llama-cmp.nvim",
 	-- 	opts = { model = "qwen3-coder:30b" },
 	-- },
+	-- {
+	-- 	"Maxteabag/sqlit.nvim",
+	-- 	opts = {},
+	-- 	cmd = "Sqlit",
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>D",
+	-- 			function()
+	-- 				require("sqlit").open()
+	-- 			end,
+	-- 			desc = "Database (sqlit)",
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -272,7 +286,7 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs",
+		main = "nvim-treesitter.config",
 		init = function()
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -280,7 +294,7 @@ local plugins = {
 		end,
 		opts = {
 			ensure_installed = "all",
-			ignore_install = { "ipkg" },
+			ignore_install = { "ipkg", "verilog" },
 			sync_install = false,
 			auto_install = true,
 			highlight = { enable = true },
