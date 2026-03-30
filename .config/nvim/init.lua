@@ -1,4 +1,3 @@
-vim = vim
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -268,6 +267,10 @@ local plugins = {
                 "tailwindcss",
                 "svelte",
                 "rust_analyzer",
+                "lua_ls",
+                "shfmt",
+                "biome",
+                "black",
             },
         },
     },
