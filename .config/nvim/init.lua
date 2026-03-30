@@ -268,9 +268,7 @@ local plugins = {
                 "svelte",
                 "rust_analyzer",
                 "lua_ls",
-                "shfmt",
                 "biome",
-                "black",
             },
         },
     },
@@ -439,18 +437,24 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
--- Get all installed parsers and enable highlighting
-local file_extension_patterns = vim.tbl_map(function(parser) return "*." .. parser end,
-    require('nvim-treesitter').get_installed()
-)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        -- 1. Ignore "special" buffers like terminal, prompt, or UI widgets
+        local buftype = vim.bo[args.buf].buftype
+        if buftype ~= "" then return end
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = file_extension_patterns,
-    callback = function()
-        vim.treesitter.start()
-        vim.wo.foldmethod = 'expr'
-        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'               -- Folding
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- Indentation
-        vim.opt.foldlevel = 99
+        -- 2. Check if a parser exists
+        local has_parser, _ = pcall(vim.treesitter.get_parser, args.buf)
+
+        if has_parser then
+            -- 3. Use pcall here too, just to be safe against UI race conditions
+            pcall(vim.treesitter.start, args.buf)
+
+            vim.wo.foldmethod = 'expr'
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.opt.foldlevel = 99
+        end
     end,
 })
