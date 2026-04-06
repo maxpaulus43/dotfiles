@@ -32,6 +32,7 @@ abbr tree "eza -T"
 abbr v nvim
 abbr vd 'nvim ~/c/dotfiles'
 abbr vf "nvim (fzf)"
+abbr vt 'nvim -c "lua Snacks.picker.grep()"'
 abbr vn 'nvim ~/.config/nvim/init.lua'
 abbr vv "nvim ."
 abbr vz "nvim $__fish_config_dir/config.fish"
