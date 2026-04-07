@@ -94,13 +94,6 @@ map({ "n", "v" }, "<leader>E", "<cmd>e %:h<cr>", opts)
 
 map({ "n", "v" }, "<leader>d", "<cmd>DiffviewOpen<cr>", opts)
 
-
-vim.filetype.add({
-    pattern = {
-        ["Dockerfile_.*"] = "dockerfile",
-    },
-})
-
 local plugins = {
     { "nvim-tree/nvim-web-devicons" },
     { "github/copilot.vim" },
@@ -315,11 +308,6 @@ local plugins = {
                 preset = "enter",
                 ["<C-k>"] = { "select_prev", "fallback" },
                 ["<C-j>"] = { "select_next", "fallback" },
-                -- ["<M-space>"] = {
-                -- 	function(cmp)
-                -- 		cmp.show()
-                -- 	end,
-                -- },
             },
             appearance = { nerd_font_variant = "mono" },
             completion = { documentation = { auto_show = true } },
@@ -435,6 +423,12 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.opt_local.wrap = true
         vim.opt_local.linebreak = true
     end,
+})
+
+vim.filetype.add({
+    pattern = {
+        ["Dockerfile_.*"] = "dockerfile",
+    },
 })
 
 vim.api.nvim_create_autocmd("FileType", {

@@ -1,0 +1,67 @@
+# Theme
+theme = TokyoNight
+minimum-contrast = 1.5
+split-divider-color = #5c5c5c
+macos-titlebar-style = tabs
+macos-icon = retro
+
+# Font
+font-size = 15
+
+# Disable ligatures
+font-feature = -calt
+font-feature = -clig
+font-feature = -liga
+
+# Window padding
+window-padding-x = 0
+window-padding-y = 0
+
+# Scrollback
+scrollback-limit = 20000
+
+# Inactive pane dimming (Ghostty doesn't have HSB controls, but has unfocused dimming)
+unfocused-split-opacity = 0.8
+
+# Tab bar - Ghostty doesn't support bottom tab bar natively,
+# but you can use the basic tab style
+gtk-tabs-location = bottom
+
+# Keybindings
+# Toggle pane zoom
+keybind = f1=toggle_split_zoom
+
+# Split horizontal (right)
+keybind = super+enter=new_split:right
+
+# Split vertical (down)
+keybind = super+shift+enter=new_split:down
+
+# Close current pane
+keybind = super+shift+w=close_surface
+
+# Copy mode (similar to WezTerm's ActivateCopyMode)
+# Ghostty doesn't have a built-in copy mode like WezTerm.
+# You can use the scrollback search instead:
+keybind = super+[=write_screen_file:paste
+keybind = super+shift+o=write_screen_file:open
+
+# Clear scrollback + viewport
+keybind = super+k=clear_screen
+
+# Navigate tabs
+keybind = ctrl+alt+l=next_tab
+keybind = ctrl+alt+h=previous_tab
+
+# Navigate panes (directional)
+keybind = super+shift+h=goto_split:left
+keybind = super+shift+l=goto_split:right
+keybind = super+shift+k=goto_split:top
+keybind = super+shift+j=goto_split:bottom
+
+# Disable default alt+enter behavior
+keybind = alt+enter=unbind
+
+
+mouse-scroll-multiplier = 0.5
+
