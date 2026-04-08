@@ -62,6 +62,8 @@ keybind = super+shift+j=goto_split:bottom
 # Disable default alt+enter behavior
 keybind = alt+enter=unbind
 
-
+# mouse scroll was too fast
 mouse-scroll-multiplier = 0.5
 
+# I don't want to be asked to close a tab
+confirm-close-surface = false
