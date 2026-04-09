@@ -346,7 +346,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         for _, key in ipairs({ "grr", "grn", "gra", "grp", "gri", "grt" }) do
-            pcall(vim.keymap.del, "n", key)
+            pcall(vim.keymap.del, "n", key, { buffer = args.buf })
         end
 
         map("n", "gl", vim.diagnostic.open_float, lsp_opts)
@@ -357,7 +357,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "<leader>L", vim.diagnostic.setloclist, lsp_opts)
         map("n", "<a-cr>", vim.lsp.buf.code_action, lsp_opts)
         map("n", "gI", Snacks.picker.lsp_implementations, lsp_opts)
-        map("n", "gr", Snacks.picker.lsp_references, lsp_opts)
+        map("n", "gr", Snacks.picker.lsp_references, vim.tbl_extend("force", lsp_opts, { nowait = true }))
         map("n", "gd", Snacks.picker.lsp_definitions, lsp_opts)
         map("n", "gt", Snacks.picker.lsp_type_definitions, lsp_opts)
 

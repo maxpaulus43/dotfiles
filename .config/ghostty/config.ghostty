@@ -13,12 +13,11 @@ font-feature = -calt
 font-feature = -clig
 font-feature = -liga
 
+scrollback-limit = 400000000
+
 # Window padding
 window-padding-x = 0
 window-padding-y = 0
-
-# Scrollback
-scrollback-limit = 20000
 
 # Inactive pane dimming (Ghostty doesn't have HSB controls, but has unfocused dimming)
 unfocused-split-opacity = 0.8
@@ -43,8 +42,8 @@ keybind = super+shift+w=close_surface
 # Copy mode (similar to WezTerm's ActivateCopyMode)
 # Ghostty doesn't have a built-in copy mode like WezTerm.
 # You can use the scrollback search instead:
-keybind = super+[=write_screen_file:paste
-keybind = super+shift+o=write_screen_file:open
+keybind = super+[=write_scrollback_file:paste
+keybind = super+shift+o=write_scrollback_file:open
 
 # Clear scrollback + viewport
 keybind = super+k=clear_screen
@@ -67,3 +66,5 @@ mouse-scroll-multiplier = 0.5
 
 # I don't want to be asked to close a tab
 confirm-close-surface = false
+
+mouse-hide-while-typing = true
