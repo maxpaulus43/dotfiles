@@ -16,9 +16,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
     if [[ $platform == 'linux' ]]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-        sudo apt-get install g++ make
-        # brew tap wez/wezterm-linuxbrew
-        # brew install wezterm
+        sudo apt-get install -y g++ make
     fi
 
     brew install coreutils
@@ -40,7 +38,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install zoxide    # better cd
     brew install ollama    # running LLM's locally
     brew install stow      # symlink dotfiles folder to home folder
-    brew instal gawk       # better awk
+    brew install gawk      # better awk
     brew install 7zip      # zip files
 
     if [[ $platform == 'macos' ]]; then
@@ -57,7 +55,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
         brew install --cask spotify             # music
         brew install --cask typora              # markdown editor
         brew install --cask visual-studio-code  # code
-        brew install --cask wezterm             # terminal emulator that uses lua!
+        brew install --cask ghostty             # terminal emulator
         brew install --cask raycast             # window/pasteboard/other manager
 
         brew install mas # mac app store cli
@@ -78,15 +76,19 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
         killall Finder                                              # restart dock to pick up new settings
     fi
 
-    "$(brew --prefix)"/opt/fzf/install # CTRL+r to enable fuzzy history search
+    "$(brew --prefix)"/opt/fzf/install --all # CTRL+r to enable fuzzy history search
 
-    stow -d ~/c/dotfiles -t ~ .# symlink all my dotfiles to the ~ folder
+    # --adopt handles conflicts with existing files (e.g. .bashrc in Docker/fresh Linux)
+    # git checkout . restores the repo's versions after adopt overwrites them
+    stow --adopt -d ~/c/dotfiles -t ~ . # symlink all my dotfiles to the ~ folder
+    cd ~/c/dotfiles && git checkout . && cd -
 
-    mise install # install tools from /~/.tool-versions file
+    # Disable Python attestation check (fails in Docker/CI)
+    export MISE_PYTHON_GITHUB_ATTESTATIONS=false
+    mise install # install tools from ~/.tool-versions file
 
     fish_dir="$(which fish)"
     echo "Adding '$fish_dir' to /etc/shells"
     sudo sh -c "echo $fish_dir >> /etc/shells"
-
-    echo '...You should run chsh -s $(which fish)...'
+    sudo chsh -s "$fish_dir" "$(whoami)" # set fish as default shell
 fi
