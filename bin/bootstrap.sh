@@ -47,14 +47,13 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
         brew install --cask google-chrome       # browser
         brew install --cask google-drive        # cloud storage (keep notes here)
         brew install --cask intellij-idea       # good IDE
-        brew install --cask mac-mouse-fix       # better mouse shortcuts
-        brew install --cask obs                 # screen recorder
         brew install --cask slack               # instant messenger
         brew install --cask spotify             # music
         brew install --cask typora              # markdown editor
         brew install --cask visual-studio-code  # code
         brew install --cask ghostty             # terminal emulator
         brew install --cask raycast             # window/pasteboard/other manager
+        brew install --cask bettertouchtool     # customize trackpad gestures and keyboard shortcuts
 
         brew install mas # mac app store cli
         # mas install 668208984  # giphy capture
