@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 platform='unknown'
 unamestr=$(uname)
@@ -14,10 +15,7 @@ fi
 if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    if [[ $platform == 'linux' ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-        sudo apt-get install -y g++ make
-    fi
+    eval "$($(brew --prefix)/bin/brew shellenv)"
 
     brew install coreutils
     brew install git
@@ -89,6 +87,6 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
     fish_dir="$(which fish)"
     echo "Adding '$fish_dir' to /etc/shells"
-    sudo sh -c "echo $fish_dir >> /etc/shells"
+    echo "$fish_dir" | sudo tee -a /etc/shells >/dev/null
     sudo chsh -s "$fish_dir" "$(whoami)" # set fish as default shell
 fi

@@ -1,11 +1,8 @@
 if status is-interactive
     set fish_greeting
 
-    if test (string match -ei 'Linux' (uname))
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    else if test (string match -ei 'Darwin' (uname))
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    end
+    set -l brewprefix (brew --prefix)
+    eval ($brewprefix/bin/brew shellenv)
 
     source "$__fish_config_dir/exports.fish"
     source "$__fish_config_dir/aliases.fish"
