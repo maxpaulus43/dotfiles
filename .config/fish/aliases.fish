@@ -19,7 +19,8 @@ abbr gst 'git status'
 abbr gsta 'git stash push'
 abbr gstaa 'git stash apply'
 abbr gstp 'git stash pop'
-abbr icat "wezterm imgcat"
+# abbr icat "wezterm imgcat"
+abbr icat "chafa"
 abbr keycode_menu 'adb shell input keyevent "KEYCODE_MENU"'
 abbr la 'eza -1la'
 abbr ls 'eza --icons'

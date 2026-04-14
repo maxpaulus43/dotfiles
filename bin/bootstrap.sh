@@ -38,6 +38,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install stow      # symlink dotfiles folder to home folder
     brew install gawk      # better awk
     brew install 7zip      # zip files
+    brew install chafa     # terminal image viewer (for previewing images)
 
     if [[ $platform == 'macos' ]]; then
         brew tap homebrew/cask-fonts
