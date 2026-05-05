@@ -68,3 +68,10 @@ mouse-scroll-multiplier = 0.5
 confirm-close-surface = false
 
 mouse-hide-while-typing = true
+
+
+# Resize splits using Control + Shift + Arrow Keys
+keybind = ctrl+shift+up=resize_split:up,100
+keybind = ctrl+shift+down=resize_split:down,100
+keybind = ctrl+shift+left=resize_split:left,100
+keybind = ctrl+shift+right=resize_split:right,100
