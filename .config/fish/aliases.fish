@@ -2,6 +2,7 @@ abbr "..." "cd ../.."
 abbr "...." "cd ../../.."
 abbr "....." "cd ../../../.."
 abbr cat bat
+abbr cl "clear"
 abbr ding "afplay /System/Library/Sounds/Glass.aiff"
 abbr gaa 'git add --all'
 abbr gc 'git commit -v'
