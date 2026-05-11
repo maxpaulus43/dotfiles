@@ -69,9 +69,10 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
         defaults write com.apple.screencapture showsCursor -int 1   # show cursor when capturing screen
         defaults write com.apple.screencapture type jpg             # save screen caps as jpg (smaller file size)
         defaults write -g ApplePressAndHoldEnabled -bool false      # allow press and hold keys to repeat
-        killall Dock                                                # restart dock to pick up new settings
-        defaults write com.apple.finder AppleShowAllFiles true      # show hidden files in finder
-        killall Finder                                              # restart dock to pick up new settings
+        defaults write -g NSWindowShouldDragOnGesture -bool true
+        killall Dock                                           # restart dock to pick up new settings
+        defaults write com.apple.finder AppleShowAllFiles true # show hidden files in finder
+        killall Finder                                         # restart dock to pick up new settings
     fi
 
     "$(brew --prefix)"/opt/fzf/install --all # CTRL+r to enable fuzzy history search
