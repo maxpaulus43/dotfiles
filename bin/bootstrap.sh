@@ -42,7 +42,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
 
     if [[ $platform == 'macos' ]]; then
         brew tap homebrew/cask-fonts
-        brew install --cask disk-inventory-x    # windirstat for mac
+        # brew install --cask disk-inventory-x    # windirstat for mac
+        brew install --cask grandperspective    # windirstat for mac
         brew install --cask docker              # virtual environments
         brew install --cask font-hack-nerd-font # better terminal font with symbols
         brew install --cask google-chrome       # browser
