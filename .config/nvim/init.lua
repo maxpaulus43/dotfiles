@@ -94,6 +94,23 @@ map({ "n", "v" }, "<leader>E", "<cmd>e %:h<cr>", opts)
 
 map({ "n", "v" }, "<leader>d", "<cmd>DiffviewOpen<cr>", opts)
 
+_G.open_lazygit_then_quit = function()
+    vim.g.snacks_lazygit_opened_file = false
+    Snacks.lazygit.open({
+        win = {
+            on_close = function()
+                if vim.g.snacks_lazygit_opened_file then
+                    vim.g.snacks_lazygit_opened_file = false
+                    return
+                end
+                vim.schedule(function()
+                    vim.cmd("quitall")
+                end)
+            end,
+        },
+    })
+end
+
 local plugins = {
     { "nvim-tree/nvim-web-devicons" },
     { "github/copilot.vim" },
@@ -136,11 +153,11 @@ local plugins = {
                 config = {
                     os = {
                         edit =
-                        'if test -z "$NVIM"; nvim -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; end',
+                        'if test -z "$NVIM"; nvim -- {{filename}}; else; nvim --server "$NVIM" --remote-expr \'execute("let g:snacks_lazygit_opened_file = 1")\' >/dev/null; and nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; end',
                         editAtLine =
-                        'if test -z "$NVIM"; nvim +{{line}} -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; and nvim --server "$NVIM" --remote-send ":{{line}}<CR>"; end',
+                        'if test -z "$NVIM"; nvim +{{line}} -- {{filename}}; else; nvim --server "$NVIM" --remote-expr \'execute("let g:snacks_lazygit_opened_file = 1")\' >/dev/null; and nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{filename}}; and nvim --server "$NVIM" --remote-send ":{{line}}<CR>"; end',
                         openDirInEditor =
-                        'if test -z "$NVIM"; nvim -- {{dir}}; else; nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{dir}}; end',
+                        'if test -z "$NVIM"; nvim -- {{dir}}; else; nvim --server "$NVIM" --remote-expr \'execute("let g:snacks_lazygit_opened_file = 1")\' >/dev/null; and nvim --server "$NVIM" --remote-send "q"; and nvim --server "$NVIM" --remote {{dir}}; end',
                         openInTerminal = 'test -z "$NVIM"',
                     },
                 },
