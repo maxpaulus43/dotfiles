@@ -27,6 +27,7 @@ abbr la 'eza -1la'
 abbr ls 'eza --icons'
 abbr mcp-inspector "npx @modelcontextprotocol/inspector npm start"
 abbr pbjq "pbpaste | jq"
+abbr pir "pi --resume"
 abbr scr 'scrcpy 1>/dev/null & && disown $last_pid'
 abbr studio "open -a ~/Applications/JetBrains\ Toolbox/Android\ Studio.app"
 abbr sz "source $__fish_config_dir/config.fish"
