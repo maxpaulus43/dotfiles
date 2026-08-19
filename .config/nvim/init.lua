@@ -113,6 +113,15 @@ end
 
 local plugins = {
     { "nvim-tree/nvim-web-devicons" },
+    {
+        "pablopunk/pi.nvim",
+        keys = {
+            { "<leader>ai", "<cmd>PiAsk<cr>",          mode = "n", desc = "Ask pi" },
+            { "<leader>ai", "<cmd>PiAskSelection<cr>", mode = "v", desc = "Ask pi (selection)" },
+            { "<leader>ac", "<cmd>PiCancel<cr>",       mode = "n", desc = "Cancel pi request" },
+            { "<leader>al", "<cmd>PiLog<cr>",          mode = "n", desc = "Open pi log" },
+        },
+    },
     { "github/copilot.vim" },
     { "nvim-lualine/lualine.nvim",  opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
     { "lewis6991/gitsigns.nvim",    opts = {} },
@@ -292,6 +301,17 @@ local plugins = {
         opts = {
             default_format_opts = { timeout_ms = 500, lsp_format = "fallback" },
             format_on_save = {},
+            formatters = {
+                biome = {
+                    cwd = function(_, ctx)
+                        local config = vim.fs.find({ "biome.json", "biome.jsonc" }, {
+                            path = ctx.dirname,
+                            upward = true,
+                        })[1]
+                        return config and vim.fs.dirname(config) or nil
+                    end,
+                },
+            },
             formatters_by_ft = {
                 typescript = { "biome" },
                 typescriptreact = { "biome" },
