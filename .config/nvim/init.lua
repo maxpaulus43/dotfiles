@@ -114,13 +114,7 @@ end
 local plugins = {
     { "nvim-tree/nvim-web-devicons" },
     {
-        "pablopunk/pi.nvim",
-        keys = {
-            { "<leader>ai", "<cmd>PiAsk<cr>",          mode = "n", desc = "Ask pi" },
-            { "<leader>ai", "<cmd>PiAskSelection<cr>", mode = "v", desc = "Ask pi (selection)" },
-            { "<leader>ac", "<cmd>PiCancel<cr>",       mode = "n", desc = "Cancel pi request" },
-            { "<leader>al", "<cmd>PiLog<cr>",          mode = "n", desc = "Open pi log" },
-        },
+        dir = "/Users/maxpaulus/c/pi-nvim",
     },
     { "github/copilot.vim" },
     { "nvim-lualine/lualine.nvim",  opts = { sections = { lualine_c = { { "filename", path = 2 } } } } },
@@ -239,6 +233,7 @@ local plugins = {
                     map("n", "<leader>fg", Snacks.picker.git_status, opts)
                     map("n", "<leader>ff", Snacks.picker.files, opts)
                     map("n", "<leader>ft", Snacks.picker.grep, opts)
+                    map("n", "<leader>fk", Snacks.picker.keymaps, opts)
                     map("n", "g*", Snacks.picker.grep_word, opts)
                     map("n", "<leader>/", Snacks.picker.lines, opts)
                     map({ "n", "v" }, "<leader>e", function()
@@ -387,7 +382,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         map("n", "gl", vim.diagnostic.open_float, lsp_opts)
-        map("n", "<leader>li", "<cmd>LspInfo<cr>", lsp_opts)
+        map("n", "<leader>li", "<cmd>:checkhealth vim.lsp<cr>", lsp_opts)
         map("n", "<leader>lm", "<cmd>Mason<cr>", lsp_opts)
         map("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
         map("n", "<leader>ls", vim.lsp.buf.signature_help, lsp_opts)

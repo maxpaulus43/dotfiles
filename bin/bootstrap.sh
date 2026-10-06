@@ -56,6 +56,7 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
         brew install --cask ghostty             # terminal emulator
         brew install --cask raycast             # window/pasteboard/other manager
         brew install --cask bettertouchtool     # customize trackpad gestures and keyboard shortcuts
+        brew install --cask daisydisk           # disk space analyzer
 
         brew install mas # mac app store cli
         # mas install 668208984  # giphy capture

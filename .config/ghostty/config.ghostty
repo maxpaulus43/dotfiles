@@ -75,3 +75,5 @@ keybind = ctrl+shift+up=resize_split:up,100
 keybind = ctrl+shift+down=resize_split:down,100
 keybind = ctrl+shift+left=resize_split:left,100
 keybind = ctrl+shift+right=resize_split:right,100
+
+desktop-notifications = true
