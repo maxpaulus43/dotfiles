@@ -41,6 +41,8 @@ if [[ $platform == 'macos' || $platform == 'linux' ]]; then
     brew install chafa     # terminal image viewer (for previewing images)
 
     if [[ $platform == 'macos' ]]; then
+        brew install xcode-build-server # Swift LSP support for Xcode projects (requires Xcode)
+
         brew tap homebrew/cask-fonts
         # brew install --cask disk-inventory-x    # windirstat for mac
         brew install --cask grandperspective    # windirstat for mac
