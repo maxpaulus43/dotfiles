@@ -10,3 +10,4 @@ com.trusourcelabs.NoMAD.plist
 com.valvesoftware.steamclean.plist
 lazy-lock.json
 keys.fish
+/.config/fish/functions/get-cline-prs.fish
