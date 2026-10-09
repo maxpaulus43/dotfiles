@@ -366,6 +366,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(plugins)
+vim.lsp.enable("sourcekit")
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
