@@ -7,6 +7,10 @@ if status is-interactive
     source "$__fish_config_dir/exports.fish"
     source "$__fish_config_dir/aliases.fish"
 
+    if test -f  "$__fish_config_dir/keys.fish"
+        source "$__fish_config_dir/keys.fish"
+    end
+
     fish_add_plugin "jorgebucaran/autopair.fish" # auto-close brackets/quotes
 
     set -g man_blink -o red
