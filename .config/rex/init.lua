@@ -32,3 +32,11 @@ rex.bind("shift+cmd+h", "pane.focus", { direction = "left" })
 rex.bind("shift+cmd+l", "pane.focus", { direction = "right" })
 rex.bind("shift+cmd+k", "pane.focus", { direction = "up" })
 rex.bind("shift+cmd+j", "pane.focus", { direction = "down" })
+
+rex.bind("ctrl+cmd+left", "pane.resize", { direction = "left" })
+rex.bind("ctrl+cmd+right", "pane.resize", { direction = "right" })
+rex.bind("ctrl+cmd+up", "pane.resize", { direction = "up" })
+rex.bind("ctrl+cmd+down", "pane.resize", { direction = "down" })
+
+-- WezTerm
+rex.bind("alt+cmd+enter", "pane.split", { direction = "up" })
