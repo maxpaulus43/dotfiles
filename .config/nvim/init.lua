@@ -148,6 +148,7 @@ local plugins = {
         priority = 1000,
         lazy = false,
         opts = {
+            image = { force = true },
             gh = {},
             terminal = {},
             words = {},
